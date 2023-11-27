@@ -10,9 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_27_135808) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_27_154304) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "message", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "teacher_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_message_on_student_id"
+    t.index ["teacher_id"], name: "index_message_on_teacher_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.bigint "teacher_id", null: false
+    t.bigint "student_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["student_id"], name: "index_reservations_on_student_id"
+    t.index ["teacher_id"], name: "index_reservations_on_teacher_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +40,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_27_135808) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "last_name"
+    t.text "skills"
+    t.text "interest"
+    t.string "address"
+    t.integer "rating"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "message", "users", column: "student_id"
+  add_foreign_key "message", "users", column: "teacher_id"
+  add_foreign_key "reservations", "users", column: "student_id"
+  add_foreign_key "reservations", "users", column: "teacher_id"
 end
