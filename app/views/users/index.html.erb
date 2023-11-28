@@ -1,0 +1,9 @@
+<h1>je suis dans le user index</h1>
+<%= @users.each do |user| %>
+  <%= user.email %>
+  <%= user.last_name %>
+  <div class="card">
+    <%= user.skills %>
+  </div>
+  <br>
+<% end %>
