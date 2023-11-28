@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
- #  skip_before_action :authenticate_user!, only: :index
- before_action :set_user, only: [:show, :edit, :update, :destroy]
- # before_action :authentification
+  # skip_before_action :authenticate_user!, only: :index
+#  before_action :set_user, only: [:show, :edit, :update, :destroy]
+#  before_action :authentification
  def index
    @users = User.all
   @teachers = @users.where(role: "teach")
@@ -30,18 +30,18 @@ class UsersController < ApplicationController
  def edit
  end
 
- def  update
-   if @user.update(user_params)
-     redirect_to user_path(@user)
-   else
-     render :new, status: :unprocessable_entity
-   end
- end
+#  def  update
+#    if @user.update(user_params)
+#      redirect_to user_path(@user)
+#    else
+#      render :new, status: :unprocessable_entity
+#    end
+#  end
 
- def destroy
-   @user.destroy
-   redirect_to users_path
- end
+#  def destroy
+#    @user.destroy
+#    redirect_to users_path
+#  end
 
 
  private
