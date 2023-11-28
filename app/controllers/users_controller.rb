@@ -4,6 +4,10 @@ class UsersController < ApplicationController
  # before_action :authentification
  def index
    @users = User.all
+  @teachers = @users.where(role: "teach")
+  # @learns = @users.where(role: "learn")
+  # @users.select {|user| user.role == 'teach'}
+  # raise
  end
 
 
@@ -11,15 +15,14 @@ class UsersController < ApplicationController
    @user = User.new
  end
 
- def create
-   @user = User.new(user_params)
-   @boat.user = current_user
-   if @user.save
-     redirect_to user_path(@user)
-   else
-     render :new, status: :unprocessable_entity
-   end
- end
+#  def create
+#    @user = User.new(user_params)
+#    if @user.save
+#      redirect_to user_path(@user)
+#    else
+#      render :new, status: :unprocessable_entity
+#    end
+#  end
 
  def show
   @user = User.find(params[:id])
