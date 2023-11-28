@@ -4,10 +4,10 @@
   <%= f.error_notification %>
 
     <div data-controller="toggle" class="form-inputs">
+      <%= f.input :photo, as: :file %>
       <%= f.input :name, required: true, autofocus: true %>
-
-        <%= f.input :last_name, required: true, autofocus: true %>
-          <%= f.input :address, required: true, autofocus: true %>
+      <%= f.input :last_name, required: true, autofocus: true %>
+        <%= f.input :address, required: true, autofocus: true %>
             <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" }%>
               <div data-action="click->toggle#fire">
                 <%= f.input :role, as: :radio_buttons, collection: ['teach', 'learn' ], required: true, input_html: {
@@ -15,9 +15,6 @@
               </div>
               <div data-toggle-target="toggableElement" class="d-none">
                 <%= f.input :interest, required: true, autofocus: true %>
-
-
-
               </div>
 
               <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if

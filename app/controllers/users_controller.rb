@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
- #  skip_before_action :authenticate_user!, only: :index
+ skip_before_action :authenticate_user!, only: :index
  before_action :set_user, only: [:show, :edit, :update, :destroy]
  # before_action :authentification
  def index
+  @user = current_user
    @users = User.all
   @teachers = @users.where(role: "teach")
+  raise
   # @learns = @users.where(role: "learn")
   # @users.select {|user| user.role == 'teach'}
   # raise
@@ -48,6 +50,6 @@ class UsersController < ApplicationController
 
 
  def user_params
-   params.require(:user).permit(:name, :last_name, :address, :email, :skills, :interest, :teacher, :rating)
+   params.require(:user).permit(:name, :last_name, :address, :email, :skills, :interest, :photo, :teacher, :rating)
  end
 end

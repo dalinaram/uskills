@@ -5,6 +5,11 @@
     <div class="flat-card-content d-flex flex-column">
       <div class="flat-card-title">
     <% @teachers.each do |t| %>
+    <div class="cardimg">
+      <% if @user %>
+        <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill if @user.photo.attached? %> 
+      <% end %>
+    </div><div class="cardimg">
       <%= t.name %>
       <%= t.last_name %>
       <%= t.email %>
