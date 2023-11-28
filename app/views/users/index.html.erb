@@ -1,6 +1,20 @@
-<h1>je suis dans le user index</h1>
-<%= @users.each do |user| %>
-  <%= user.name %>
-  <%= user.last_name %>
-  <%= user.skills %>
-<% end %>
+<h1>Welcome</h1>
+<div class="col-md-3">
+  <div class="cardm">
+  <div class="flat-card d-flex">
+    <div class="flat-card-content d-flex flex-column">
+      <div class="flat-card-title">
+    <% @teachers.each do |t| %>
+      <%= t.name %>
+      <%= t.last_name %>
+      <%= t.email %>
+      <%= t.address %>
+      <%= t.interest %>
+    <% end %>
+  </div>
+</div>
+
+</div>
+
+</div>
+</div>
