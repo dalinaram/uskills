@@ -1,0 +1,20 @@
+
+<%= simple_form_for @formation, url: formation_path(@formation), method: :patch do |f| %>
+  <div class="container mt-4">
+    <h1 class="text-center">Edit Formation <%= @formation.name %></h1>
+
+    <div class="card mt-4">
+      <div class="card-body">
+        <%= f.input :name, label: "Name", input_html: { class: "form-control" } %>
+
+        <%= f.input :description, label: "Description", input_html: { class: "form-control" } %>
+
+
+
+        <div class="text-center mt-3">
+          <%= f.button :submit, "Update", class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

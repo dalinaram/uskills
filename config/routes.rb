@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :reservations, only: [:create, :show]
     resources :messages, only:[:create, :show]
   end
+  resources :formations
   # Defines the root path route ("/")
   # root "articles#index"
 end

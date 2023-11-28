@@ -1,20 +1,28 @@
-<h1>Welcome</h1>
-<div class="col-md-3">
-  <div class="cardm">
-  <div class="flat-card d-flex">
-    <div class="flat-card-content d-flex flex-column">
-      <div class="flat-card-title">
-    <% @teachers.each do |t| %>
-      <%= t.name %>
-      <%= t.last_name %>
-      <%= t.email %>
-      <%= t.address %>
-      <%= t.interest %>
+<div class="container mt-4">
+  <div class="text-center">
+    <h1>Welcome</h1>
+  </div>
+
+  <div class="row">
+    <% @teachers.each do |teacher| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-center"><%= teacher.name %> <%= teacher.last_name %></h5>
+            <p class="card-text">
+              <strong>Email:</strong> <%= teacher.email %><br>
+              <strong>Address:</strong> <%= teacher.address %><br>
+              <strong>Interest:</strong> <%= teacher.interest %>
+            </p>
+            <div class="text-center mt-3">
+              <a href="<%= user_path(teacher) %>" class="btn btn-success">See more..</a>
+            </div>
+          </div>
+          <div class="card-footer">
+            <!-- Ajoutez du contenu au pied de la carte si nécessaire -->
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
-</div>
-
-</div>
-
-</div>
 </div>
