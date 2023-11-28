@@ -1,20 +1,20 @@
 <div class="container mt-4">
   <div class="text-center">
-    <h1>Formations</h1>
+    <h1>Skills</h1>
   </div>
 
   <div class="row">
-    <% @formations.each do |formation| %>
+    <% @skills.each do |skill| %>
       <div class="col-md-4 mb-4">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title text-center"><%= formation.name %></h5>
+            <h5 class="card-title text-center"><%= skill.title %></h5>
             <p class="card-text">
-              <strong>name:</strong> <%= formation.name %><br>
-              <strong>description:</strong> <%= formation.description %><br>
+              <strong>title:</strong> <%= skill.title %><br>
+              <strong>description:</strong> <%= skill.description %><br>
             </p>
             <div class="text-center mt-3">
-              <a href="<%= formation_path(formation) %>" class="btn btn-success">See more..</a>
+              <a href="<%= skill_path(skill) %>" class="btn btn-success">See more..</a>
             </div>
           </div>
           <div class="card-footer">
