@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
    @users = User.all
    @teachers = @users.where(role: "teach")
-   # @learns = @users.where(role: "learn")
+   @students = @users.where(role: "learn")
    # @users.select {|user| user.role == 'teach'}
    # raise
 
