@@ -1,8 +1,10 @@
 class UsersController < ApplicationController
+
   #  skip_before_action :authenticate_user!, only: :index
  before_action :set_user, only: [:show, :edit, :update, :destroy]
   # before_action :authentification
   def index
+
    @users = User.all
    @teachers = @users.where(role: "teach")
    # @learns = @users.where(role: "learn")
@@ -33,6 +35,7 @@ class UsersController < ApplicationController
    #raise
   end
 
+
   def edit
 
   end
@@ -49,6 +52,7 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to users_path
   end
+
 
 
   private

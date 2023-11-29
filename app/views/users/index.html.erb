@@ -1,30 +1,56 @@
-<div class="container mt-4">
-  <div class="text-center">
-    <h1>Welcome</h1>
-  </div>
 
-  <div class="row">
-    <% @teachers.each do |teacher| %>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title text-center"><%= teacher.name %> <%= teacher.last_name %></h5>
-            <p class="card-text">
-              <strong>Email:</strong> <%= teacher.email %><br>
-              <strong>Address:</strong> <%= teacher.address %><br>
-              <strong>Interest:</strong> <%= teacher.interest %>
-            </p>
-            <div class="text-center mt-3">
-              <a href="<%= user_path(teacher) %>" class="btn btn-success">See more..</a>
+
+<%= render "shared/section" %>
+
+<div class="container">
+  <div class="col-12"><br>
+    <div class="row">
+      <% @teachers.each do |t| %>
+      <!--====== CARD FORMATEUR PART START ======-->
+        <div class="col-md-3">
+          <div class="cardm">
+            <div class="flat-card d-flex">
+              <div class="flat-card-content d-flex flex-column">
+                <div class="flat-card-title">
+                  <div class="cardimg">
+
+                    <img src="https://res.cloudinary.com/deydjvnm9/image/upload/v1700222106/qtazyi2l8ymjlfcnybhv.jpg"
+                      class="img-thumbnail" alt="exmpl" width="300" height="250">
+                  </div>
+                  <div class="cardm">
+                  <h5>
+                    <%= t.name %>
+                  </h5>
+                  <h5>
+                    <%= t.last_name %>
+                  </h5>
+                  <p>
+                    <%= t.email %>
+                  </p>
+                  <p>
+                    <%= t.address %>
+                  </p>
+                  <p>
+                    <%= t.interest %>
+                  </p>
+                  <%= link_to "View More details", users_path(@user)  %>
+                </div>
+              </div>
+              </div>
+
             </div>
           </div>
-          <div class="card-footer">
-            <!-- Ajoutez du contenu au pied de la carte si nécessaire -->
-          </div>
+
         </div>
-      </div>
-    <% end %>
+<!--====== CARD FORMATEUR PART END ======-->
+        <% end %>
+    </div>
   </div>
 </div>
+<<<<<<< HEAD
 
+=======
+<%= link_to "Go Back To Home" , users_path %>
+<%= render "shared/footer" %>
+>>>>>>> 99a94f2bec6f3bd91882f85e5472dcad1d81c205
 
