@@ -1,33 +1,53 @@
-<h2>Sign up</h2>
+<div class="container mt-5">
+  <h2 class="text-center">Sign up</h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
     <div data-controller="toggle" class="form-inputs">
-      <%= f.input :name, required: true, autofocus: true %>
+      <div class="mb-3">
+        <%= f.input :name, required: true, autofocus: true, class: "form-control" %>
+      </div>
 
-        <%= f.input :last_name, required: true, autofocus: true %>
-          <%= f.input :address, required: true, autofocus: true %>
-            <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email" }%>
-              <div data-action="click->toggle#fire">
-                <%= f.input :role, as: :radio_buttons, collection: ['teach', 'learn' ], required: true, input_html: {
-                  data: { toggle_target: "input" } } %>
-              </div>
-              <div data-toggle-target="toggableElement" class="d-none">
-                <%= f.input :interest, required: true, autofocus: true %>
+      <div class="mb-3">
+        <%= f.input :last_name, required: true, autofocus: true, class: "form-control" %>
+      </div>
 
+      <div class="mb-3">
+        <%= f.input :address, required: true, autofocus: true, class: "form-control" %>
+      </div>
 
+      <div class="mb-3">
+        <%= f.input :email, required: true, autofocus: true, input_html: { autocomplete: "email", class: "form-control" } %>
+      </div>
 
-              </div>
+      <div class="mb-3" data-action="click->toggle#fire">
+        <%= f.input :role, as: :radio_buttons, collection: ['teach', 'learn'], required: true, input_html: {
+          data: { toggle_target: "input" }, class: "form-check-input" } %>
+      </div>
 
-              <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if
-                @minimum_password_length), input_html: { autocomplete: "new-password" } %>
-                <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password" } %>
+      <div data-toggle-target="toggableElement" class="d-none">
+<div class="mb-3">
+          <%= f.input :rating, required: true, autofocus: true, as: :string, label: "skill", class: "form-control"%>
+        </div>
+      </div>
+<div class="mb-3">
+          <%= f.input :interest, required: true, autofocus: true, class: "form-control" %>
+        </div>
+      <div class="mb-3">
+        <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if
+          @minimum_password_length), input_html: { autocomplete: "new-password", class: "form-control" } %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password", class: "form-control" } %>
+      </div>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up" %>
+    <div class="form-actions text-center">
+      <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
     </div>
-    <% end %>
+  <% end %>
 
-      <%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>
