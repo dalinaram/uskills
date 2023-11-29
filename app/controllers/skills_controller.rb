@@ -1,19 +1,19 @@
 class SkillsController < ApplicationController
-  #  skip_before_action :authenticate_formation!, only: :index
- before_action :set_formation, only: [:show, :edit, :update, :destroy]
+  #  skip_before_action :authenticate_skill!, only: :index
+ before_action :set_skill, only: [:show, :edit, :update, :destroy]
   # before_action :authentification
   def index
-   @formations = Formation.all
+   @skills = Skill.all
   end
 
   def new
-    @formation = Formation.new
+    @skill = skill.new
   end
 
   def create
-   @formation = Formation.new(formation_params)
-   if @formation.save
-     redirect_to formation_path(@formation), notice: 'Formation was successfully created.'
+   @skill = Skill.new(skill_params)
+   if @skill.save
+     redirect_to skill_path(@skill), notice: 'skill was successfully created.'
    else
      render :new, status: :unprocessable_entity
    end
@@ -28,16 +28,16 @@ class SkillsController < ApplicationController
   end
 
   def  update
-   if @formation.update(formation_params)
-     redirect_to formation_path(@formation), notice: 'formation was successfully updated.'
+   if @skill.update(skill_params)
+     redirect_to skill_path(@skill), notice: 'skill was successfully updated.'
    else
      render :edit, status: :unprocessable_entity
    end
   end
 
   def destroy
-    @formation.destroy
-    redirect_to formations_path
+    @skill.destroy
+    redirect_to skills_path
   end
 
 
@@ -45,11 +45,11 @@ class SkillsController < ApplicationController
 
 
 
-  def formation_params
-   params.require(:formation).permit(:name, :description)
+  def skill_params
+   params.require(:skill).permit(:name, :description)
  end
 
-  def set_formation
-   @formation = Formation.find(params[:id])
+  def set_skill
+   @skill = Skill.find(params[:id])
  end
  end
