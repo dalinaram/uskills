@@ -1,0 +1,27 @@
+<div class="container mt-4">
+  <div class="text-center">
+    <h1>Formations</h1>
+  </div>
+
+  <div class="row">
+    <% @formations.each do |formation| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title text-center"><%= formation.name %></h5>
+            <p class="card-text">
+              <strong>name:</strong> <%= formation.name %><br>
+              <strong>description:</strong> <%= formation.description %><br>
+            </p>
+            <div class="text-center mt-3">
+              <a href="<%= formation_path(formation) %>" class="btn btn-success">See more..</a>
+            </div>
+          </div>
+          <div class="card-footer">
+
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
