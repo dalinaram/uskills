@@ -7,5 +7,5 @@ class User < ApplicationRecord
   has_many :skills
   has_many :reservations
   has_many :messages
-
+  has_many :reviews, dependent: :destroy
 end
