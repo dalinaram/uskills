@@ -3,12 +3,14 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   def create
-    if @user == 'learn'
-      @review = @user.reviews.create(review_params)
-    end
-
-    redirect_to user_path(@user)
+      @review = Review.new(review_params)
+      @review.user = @user
+      if @review.save
+        redirect_to user_path(@user)
+      end
   end
+
+  
 
   private
 

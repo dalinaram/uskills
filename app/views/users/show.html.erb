@@ -1,388 +1,84 @@
-<!-- 
-<div class="container mt-5">
+  <div class="cardm">
+    <!-- Contenu spécifique à l'enseignant -->
+    <p>Ceci est du contenu spécifique à l'enseignant.</p>
+    <!-- Ajoutez d'autres éléments HTML selon vos besoins -->
 
-  <h1 class="text-center">Formateur <%= @user.name %></h1>
+    <!--====== HEADER PART START ======-->
+    <header id="home" class="header-area">
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-xl-5 col-lg-6">
+            <div class="header-content-right">
+              <h4 class="sub-title">Hello, I’m</h4>
+              <h1 class="text-center"><%= @user.name %></h1>
+              <h3 class="card-title text-center"><%= @user.interest %></h3>
+              <!-- <a class="main-btn" href="#work">View CV</a> -->
+            </div> <!-- header content right -->
+          </div>
+          <div class="col-lg-6 offset-xl-1">
+            <div class="header-image d-none d-lg-block">
+              <img src="https://media.licdn.com/dms/image/D4E03AQESRl8wIrexZQ/profile-displayphoto-shrink_800_800/0/1695038981559?e=1703721600&v=beta&t=oV-OVn4l4qVrymIOsYqFsPAQiLeSLtm17Xw1zKNd_Zg" alt="hero">
+            </div> <!-- header image -->
+          </div>
+        </div> <!-- row -->
+      </div> <!-- container -->
+    </header>
+    <!--====== HEADER PART ENDS ======-->
 
-  <div class="card mt-4">
-    <div class="card-body">
-      <h3 class="card-title text-center"><%= @user.interest %></h3>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item"><strong>Email:</strong> <%= @user.email %></li>
-        <li class="list-group-item"><strong>Address:</strong> <%= @user.address %></li>
-      </ul>
-
-      <div class="d-flex justify-content-center mt-3">
-        <%# <%= link_to "Edit Formateur", edit_user_path(@user), class: "btn btn-primary mx-2" %>
-        <%= link_to "Come Back", users_path, class: "btn btn-secondary mx-2" %>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-
-
-<% if current_user.role == 'teach' %>
-<p>Profil Teacher</p>
-
-  <!--====== HEADER PART START ======-->
-
-  <header id="home" class="header-area">
-  
-
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-xl-5 col-lg-6">
-                    <div class="header-content-right">
-                        <h4 class="sub-title">Hello, I’m</h4>
-                        <h1 class="text-center"><%= @user.name %></h1>
-                        <h3 class="card-title text-center"><%= @user.interest %></h3>
-                        <!-- <a class="main-btn" href="#work">View CV</a> -->
-                    </div> <!-- header content right -->
-                </div>
-                <div class="col-lg-6 offset-xl-1">
-                    <div class="header-image d-none d-lg-block">
-                        <img src="https://media.licdn.com/dms/image/D4E03AQESRl8wIrexZQ/profile-displayphoto-shrink_800_800/0/1695038981559?e=1703721600&v=beta&t=oV-OVn4l4qVrymIOsYqFsPAQiLeSLtm17Xw1zKNd_Zg" alt="hero">
-                    </div> <!-- header image -->
-                </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-       
-</header>
-
-<!--====== HEADER PART ENDS ======-->
-
-
-
-<!--====== ABOUT PART START ======-->
-
-<section id="about" class="about-area pt-125 pb-130">
-    <div class="container">
-       <div class="cardm">
-        <div class="row">
+    <!--====== ABOUT PART START ======-->
+    <section id="about" class="about-area pt-125 pb-130">
+      <div class="container">
+        <div class="cardm">
+          <div class="row">
             <div class="col-lg-6">
-                <div class="about-content mt-50">
-                    <h1 class="text-center"><%= @user.name %></h1>
-                    <p>En effet, j’ai eu ces dernières années l’occasion d’acquérir une solide expérience. D’abord en tant que Responsable de développement au ministère de formation professionnelle et de l’emploi Agence tunisienne de formation professionnelle, jeune diplômé de l’institut Supérieur d'Informatique de Mahdia ISIMA,  je souhaiterais étendre et approfondir d'avantage mes connaissances et compléter mes aptitudes techniques grâce à votre société.
-                        J’ai su développer durant mes années d’études et mon expérience professionnelle les connaissances académiques ainsi que les qualités nécessaires qui me permettront d’assumer avec efficacité et dynamisme les différentes responsabilités.
-                        Dans mon entourage, je suis considéré comme une personne de confiance, dynamique et disponible. En vous remerciant de la prise en compte de ma candidature, je vous pris d'agréer madame, monsieur, l'expression de mes salutations distinguées.
-                        </p>
-                   
-                </div> <!-- about content -->
+              <div class="about-content mt-50">
+                <h1 class="text-center"><%= @user.name %></h1>
+                <p>lol</p>
+              </div> <!-- about content -->
             </div>
             <div class="col-xl-5 offset-xl-1 col-lg-6">
-                <div class="about-skills pt-25">
-                   
-                        
-                        <div class="skill-bar">
-                            <div class="bar-inner">
-                                <div class="bar progress-line" data-width="80">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item"><strong>skills:</strong> <%= @user.skills %></li>
-                                       
-                                      </ul>
-                                </div>
-                            </div>
-                        </div>
-                    
-                   
-                        <div class="skill-header">
-                         
-                        </div>
-                        <div class="skill-bar">
-                            <div class="bar-inner">
-                                <div class="bar progress-line" data-width="60">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item"><strong> interests:</strong> <%= @user.interest %></li>
-                                       
-                                      </ul>
-                                   
-                                </div>
-                            </div>
-                        </div>
-                  
-                    
-                   
-                </div> <!-- about skills -->
-            </div>
-        </div> <!-- row -->
-      </div>
-    </div> <!-- container -->
-
-   
-</section>
-
-<!--====== ABOUT PART ENDS ======-->
-
-
-
-
-
-
-
-<!--====== CONTACT PART START ======-->
-
-<section id="contact" class="contact-area pt-125 pb-130 gray-bg">
-    <div class="container">
-      <div class="cardm">
-        
-        <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 col-sm-7">
-                <div class="contact-box text-center mt-30">
-                    <div class="contact-icon">
-                        <i class="lni-map-marker"></i>
+              <div class="about-skills pt-25">
+                <div class="skill-bar">
+                  <div class="bar-inner">
+                    <div class="bar progress-line" data-width="80">
+                      <ul class="list-group list-group-flush">
+                        <% if @user.role == 'teach' %>
+                        <% @user.skills.each do |skill| %>
+                          <li class="list-group-item"><strong>skills:</strong> <%= skill.title %></li>
+                          <% end %>
+                        <% end %>
+                      </ul>
                     </div>
-                    <div class="contact-content">
-                        <h6 class="contact-title">Address</h6>
-                        <li class="list-group-item"><strong>Email:</strong> <%= @user.address %></li>
-                    </div>
-                </div> <!-- contact box -->
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-7">
-                <div class="contact-box text-center mt-30">
-                    <div class="contact-icon">
-                        <i class="lni-phone"></i>
-                    </div>
-                    <div class="contact-content">
-                        <h6 class="contact-title">Phone</h6>
-                        <p>+931 2222 5555</p>
-                       
-                    </div>
-                </div> <!-- contact box -->
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-7">
-                <div class="contact-box text-center mt-30">
-                    <div class="contact-icon">
-                        <i class="lni-envelope"></i>
-                    </div>
-                    <div class="contact-content">
-                        <h6 class="contact-title">Email</h6>
-                        <li class="list-group-item"><strong>Email:</strong> <%= @user.email %></li>
-                      
-                    </div>
-                </div> <!-- contact box -->
-            </div>
-        </div> <!-- row -->
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="contact-form pt-30">
-                    <form id="contact-form" action="assets/contact.php">
-                        <div class="single-form">
-                            <input type="text" name="name" placeholder="Name">
-                        </div> <!-- single form -->
-                        <div class="single-form">
-                            <input type="email" name="email" placeholder="Email">
-                        </div> <!-- single form -->
-                        <div class="single-form">
-                            <textarea name="message" placeholder="Message"></textarea>
-                        </div> <!-- single form -->
-                        <p class="form-message"></p>
-                        <div class="single-form">
-                            <button class="main-btn" type="submit">Send Message</button>
-                        </div> <!-- single form -->
-                    </form>
-                </div> <!-- contact form -->
-            </div>
-            <div class="col-lg-6">
-                <div class="contact-map mt-60">
-                    <div class="gmap_canvas">                            
-                        <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=Mission%20District%2C%20San%20Francisco%2C%20CA%2C%20USA&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                    </div>
-                </div> <!-- contact map -->
-            </div>
-        </div> <!-- row -->
-      </div>
-    </div> <!-- container -->
-    
-<!--====== BACK TOP TOP PART START ======-->
-
-<a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
-
-<!--====== BACK TOP TOP PART ENDS ======-->
-</section>
-
-<!--====== CONTACT PART ENDS ======-->
-
-
-
-
-<%end%>
-
-
-
-
-
-
-
- <% if current_user.role == 'learn' %>
-<p>Profil Student</p>
-
-
-  <!--====== HEADER PART START ======-->
-
-  <header id="home" class="header-area">
-  
-
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-xl-5 col-lg-6">
-                    <div class="header-content-right">
-                        <h4 class="sub-title">Hello, I’m</h4>
-                        <h1 class="text-center"><%= @user.name %></h1>
-                        <h3 class="card-title text-center"><%= @user.interest %></h3>
-                        <!-- <a class="main-btn" href="#work">View CV</a> -->
-                    </div> <!-- header content right -->
+                  </div>
                 </div>
-                <div class="col-lg-6 offset-xl-1">
-                    <div class="header-image d-none d-lg-block">
-                        <img src="https://media.licdn.com/dms/image/D4E03AQESRl8wIrexZQ/profile-displayphoto-shrink_800_800/0/1695038981559?e=1703721600&v=beta&t=oV-OVn4l4qVrymIOsYqFsPAQiLeSLtm17Xw1zKNd_Zg" alt="hero">
-                    </div> <!-- header image -->
+                <div class="skill-header"></div>
+                <div class="skill-bar">
+                  <div class="bar-inner">
+                    <div class="bar progress-line" data-width="60">
+                      <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong> interests:</strong> <%= @user.interest %></li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
-            </div> <!-- row -->
-        </div> <!-- container -->
-       
-</header>
-
-<!--====== HEADER PART ENDS ======-->
-
-
-
-<!--====== ABOUT PART START ======-->
-
-<section id="about" class="about-area pt-125 pb-130">
-    <div class="container">
-       <div class="cardm">
-        <div class="row">
-            
-            <div class="col-xl-5 offset-xl-1 col-lg-6">
-                <div class="about-skills pt-25">
-                   
-                        
-                        
-                    
-                   
-                        
-                         
-                       
-                        <div class="skill-bar">
-                            <div class="bar-inner">
-                                <div class="bar progress-line" data-width="60">
-                                    <ul class="list-group list-group-flush">
-                                        <li class="list-group-item"><strong> interests:</strong> <%= @user.interest %></li>
-                                       
-                                      </ul>
-                                   
-                                </div>
-                            </div>
-                        </div>
-                  
-                    
-                   
-                </div> <!-- about skills -->
+                <% if current_user.role == 'learn' %>
+                  <div class="cardm">
+                    <%= render "shared/form" %>
+                  </div>
+                <% end %>
+                <h2>Reviews</h2>
+                <% @user.reviews.each do |review| %>
+                   <%= review.content %>
+                <% end %>
+              </div>
             </div>
-        </div> <!-- row -->
-      </div>
-    </div> <!-- container -->
+          </div> <!-- row -->
+        </div>
+      </div> <!-- container -->
+    </section>
+    <!--====== ABOUT PART ENDS ======-->
 
-   
-</section>
+    <!--====== CONTACT PART START ======-->
+    <!-- Ajoutez le reste de votre code pour la section CONTACT ici -->
 
-<!--====== ABOUT PART ENDS ======-->
-
-
-
-
-
-
-
-<!--====== CONTACT PART START ======-->
-
-<section id="contact" class="contact-area pt-125 pb-130 gray-bg">
-    <div class="container">
-      <div class="cardm">
-        
-        <div class="row justify-content-center">
-            <div class="col-lg-4 col-md-6 col-sm-7">
-                <div class="contact-box text-center mt-30">
-                    <div class="contact-icon">
-                        <i class="lni-map-marker"></i>
-                    </div>
-                    <div class="contact-content">
-                        <h6 class="contact-title">Address</h6>
-                        <li class="list-group-item"><strong>Email:</strong> <%= @user.address %></li>
-                    </div>
-                </div> <!-- contact box -->
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-7">
-                <div class="contact-box text-center mt-30">
-                    <div class="contact-icon">
-                        <i class="lni-phone"></i>
-                    </div>
-                    <div class="contact-content">
-                        <h6 class="contact-title">Phone</h6>
-                        <p>+931 2222 5555</p>
-                       
-                    </div>
-                </div> <!-- contact box -->
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-7">
-                <div class="contact-box text-center mt-30">
-                    <div class="contact-icon">
-                        <i class="lni-envelope"></i>
-                    </div>
-                    <div class="contact-content">
-                        <h6 class="contact-title">Email</h6>
-                        <li class="list-group-item"><strong>Email:</strong> <%= @user.email %></li>
-                      
-                    </div>
-                </div> <!-- contact box -->
-            </div>
-        </div> <!-- row -->
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="contact-form pt-30">
-                    <form id="contact-form" action="assets/contact.php">
-                        <div class="single-form">
-                            <input type="text" name="name" placeholder="Name">
-                        </div> <!-- single form -->
-                        <div class="single-form">
-                            <input type="email" name="email" placeholder="Email">
-                        </div> <!-- single form -->
-                        <div class="single-form">
-                            <textarea name="message" placeholder="Message"></textarea>
-                        </div> <!-- single form -->
-                        <p class="form-message"></p>
-                        <div class="single-form">
-                            <button class="main-btn" type="submit">Send Message</button>
-                        </div> <!-- single form -->
-                    </form>
-                </div> <!-- contact form -->
-            </div>
-            <div class="col-lg-6">
-                <div class="contact-map mt-60">
-                    <div class="gmap_canvas">                            
-                        <iframe id="gmap_canvas" src="https://maps.google.com/maps?q=Mission%20District%2C%20San%20Francisco%2C%20CA%2C%20USA&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
-                    </div>
-                </div> <!-- contact map -->
-            </div>
-        </div> <!-- row -->
-      </div>
-    </div> <!-- container -->
-    <!--====== BACK TOP TOP PART START ======-->
-
-<a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
-
-<!--====== BACK TOP TOP PART ENDS ======-->
-</section>
-
-<!--====== CONTACT PART ENDS ======-->
-
-
-
-<!--====== BACK TOP TOP PART START ======-->
-
-<a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
-
-<!--====== BACK TOP TOP PART ENDS ======-->
-
-<%end%>
+  </div> <!-- Fin de la div cardm spécifique à l'enseignant -->

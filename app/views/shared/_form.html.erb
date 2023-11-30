@@ -1,0 +1,6 @@
+<%= simple_form_for [@user, @review] do |review| %>
+               <br>
+                        <%= review.input :rating, collection: 1..5 %>
+                        <%= review.input :content%>
+                        <%= review.submit class: "btn btn-primary btn-sm border-radius" %>
+                <% end %>
