@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :skills
 
   resources :users do
+    resources :reviews, only: [:create, :show, :edit, :update, :destroy]
     resources :reservations, only: [:create, :show]
     resources :messages, only:[:create, :show]
   end

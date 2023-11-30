@@ -17,14 +17,17 @@ class UsersController < ApplicationController
     @user = User.new
 
   end
-
   def create
     @user = User.new(user_params)
 
     if @user.save
-      if @user.role == 'teach'
+      if @user == 'learn' # Ajout de la condition ici pour vérifier si l'utilisateur est un étudiant
+        @review = Review.new(user: @user, teacher: some_teacher_instance, content: params[:review][:content], rating: params[:review][:rating])
+        @review.save
+      elsif @user == 'teach' # Ajout de la condition ici pour vérifier si l'utilisateur est un enseignant
         @skill = Skill.new(user: @user, title: params[:skills])
       end
+
       redirect_to user_path(@user)
     else
       render :new, status: :unprocessable_entity
@@ -32,7 +35,7 @@ class UsersController < ApplicationController
   end
 
   def show
-   #raise
+   @review = Review.new
   end
 
 
