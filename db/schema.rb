@@ -68,6 +68,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_30_101156) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+
   add_foreign_key "messages", "users", column: "student_id"
   add_foreign_key "messages", "users", column: "teacher_id"
   add_foreign_key "reservations", "users", column: "student_id"

@@ -1,4 +1,5 @@
 class SkillsController < ApplicationController
+
   #  skip_before_action :authenticate_skill!, only: :index
  before_action :set_skill, only: [:show, :edit, :update, :destroy]
   # before_action :authentification
