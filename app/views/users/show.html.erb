@@ -1,96 +1,164 @@
-  <div class="cardm" >
-    <!-- Contenu spécifique à l'enseignant -->
+<div data-controller="toggle" class="cardm">
+  <!-- Contenu spécifique à l'enseignant -->
+  <% if @user.role=='teach' %>
     <p>Ceci est du contenu spécifique à l'enseignant.</p>
-    <!-- Ajoutez d'autres éléments HTML selon vos besoins -->
-
-    <!--====== HEADER PART START ======-->
-    <header id="home" class="header-area">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-xl-5 col-lg-6">
-            <div class="header-content-right">
-              <h4 class="sub-title">Hello, I’m</h4>
-              <h1 class="text-center"><%= @user.name %></h1>
-              <h3 class="card-title text-center"><%= @user.interest %></h3>
-              <!-- <a class="main-btn" href="#work">View CV</a> -->
-            </div> <!-- header content right -->
-          </div>
-          <div class="col-lg-6 offset-xl-1">
-            <div class="header-image d-none d-lg-block">
-              <img src="https://media.licdn.com/dms/image/D4E03AQESRl8wIrexZQ/profile-displayphoto-shrink_800_800/0/1695038981559?e=1703721600&v=beta&t=oV-OVn4l4qVrymIOsYqFsPAQiLeSLtm17Xw1zKNd_Zg" alt="hero">
+    <% end %>
+      <!-- HEADER PART -->
+      <header id="home" class="header-area">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-xl-5 col-lg-6">
+              <div class="header-content-right">
+                <h4 class="sub-title">Hello, I’m</h4>
+                <h1 class="text-center">
+                  <%= @user.name %>
+                </h1>
+                <h3 class="card-title text-center">
+                  <%= @user.interest %>
+                </h3>
+              </div> <!-- header content right -->
             </div>
-          </div>
-        </div> <!-- row -->
-      </div> <!-- container -->
-    </header>
-    <!--====== HEADER PART ENDS ======-->
+            <div class="col-lg-6 offset-xl-1">
+              <div class="user-photo">
+                <!-- Utilisation d'une classe différente pour la div entourant la photo -->
+                <img
+                  src="https://media.licdn.com/dms/image/D4E03AQESRl8wIrexZQ/profile-displayphoto-shrink_800_800/0/1695038981559?e=1703721600&v=beta&t=oV-OVn4l4qVrymIOsYqFsPAQiLeSLtm17Xw1zKNd_Zg"
+                  alt="hero" class="img-fluid rounded-circle">
+              </div> <!-- user photo -->
+            </div>
+          </div> <!-- row -->
+        </div> <!-- container -->
+      </header>
+      <!-- HEADER PART ENDS -->
 
-    <!--====== ABOUT PART START ======-->
-    <section id="about" class="about-area pt-125 pb-130">
-      <div class="container">
-        <div class="cardm">
+      <!-- ABOUT PART -->
+      <section id="about" class="about-area pt-5 pb-5">
+        <div class="container">
           <div class="row">
             <div class="col-lg-6">
               <div class="about-content mt-50">
-                <h1 class="text-center"><%= @user.name %></h1>
-                <p>lol</p>
-            <!-- header image -->
+                <h1 class="text-center">
+                  <%= @user.name %>
+                </h1>
+
+                <% if @user.role=='teach' %>
+                  <input data-action="click->toggle#fire" type="submit" value="Book this formation❤️"
+                    class="btn btn-success mt-2" style="width: 100%">
+
+                  <div class="col-4">
+                    <div class="flat-show-card">
+                      <div class="mt-2">
+                        <div id="form" data-toggle-target="togglableElement" class="d-none">
+                          <div class="cardm">
+                            <%= simple_form_for([@user, @reservation]) do |b| %>
+                              <div class="input">
+                                <%= b.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } }
+                                  %>
+                                  <%= b.input :end_date, as: :string, input_html: { data: { controller: "datepicker" } }
+                                    %>
+                              </div>
+                              <%= b.submit class: "btn btn-info" %>
+                                <% end %>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <% end %>
               </div> <!-- about content -->
             </div>
             <div class="col-xl-5 offset-xl-1 col-lg-6">
               <div class="about-skills pt-25">
                 <div class="skill-bar">
                   <div class="bar-inner">
-                    <div class="bar progress-line" data-width="80">
-                      <ul class="list-group list-group-flush">
-                        <% if @user.role == 'teach' %>
+                    <div class="bar progress-line" data-width="80"></div>
+                    <ul class="list-group list-group-flush">
+                      <% if @user.role=='teach' %>
                         <% @user.skills.each do |skill| %>
-                          <li class="list-group-item"><strong>skills:</strong> <%= skill.title %></li>
+                          <li class="list-group-item"><strong>Skills:</strong>
+                            <%= skill.title %>
+                          </li>
                           <% end %>
-                        <% end %>
-                      </ul>
-                    </div>
+                            <% end %>
+                    </ul>
                   </div>
                 </div>
                 <div class="skill-header"></div>
                 <div class="skill-bar">
                   <div class="bar-inner">
-                    <div class="bar progress-line" data-width="60">
-                      <ul class="list-group list-group-flush">
-                        <li class="list-group-item"><strong> interests:</strong> <%= @user.interest %></li>
-
-                      </ul>
+                    <div class="bar progress-line" data-width="60"></div>
+                    <ul class="list-group list-group-flush">
+                      <li class="list-group-item"><strong>Interests:</strong>
+                        <%= @user.interest %>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <!-- map PART start here -->
+                <div class="cardimg">
+                  <div data-controller="map"
+                    data-map-api-key-value="pk.eyJ1IjoiZGFsaW5hbGVzb3VyZCIsImEiOiJjbG9teDd6MjgyeTZ3MmpwbDJqN253NmduIn0.TrksOV7ZrvFnBkvFnK7uvg">
+                    <div style="width: 300px; height: 300px;" data-map-markers-value="<%= @markers.to_json %>">
                     </div>
                   </div>
                 </div>
-                <div class="cardimg">
-                  <div  data-controller="map"
-  data-map-api-key-value="pk.eyJ1IjoiZGFsaW5hbGVzb3VyZCIsImEiOiJjbG9teDd6MjgyeTZ3MmpwbDJqN253NmduIn0.TrksOV7ZrvFnBkvFnK7uvg">
-                <div style="width: 300px; height: 300px;"
-                  data-map-markers-value="<%= @markers.to_json %>">
-                </div>
-                </div>
+                  <!-- map PART ENDS -->
+                  <% if @user.role=='teach' %>
+                    <div class="cardm">
+                      <%= render "shared/form" %>
+                    </div>
+                    <h3>Reviews</h3>
+                    <div id="reviews-container">
+                      <% @user.reviews.limit(3).each do |review| %>
+                        <div>
+                          <p>Star: <%= review.rating %> - Review: <br>
+                              <%= review.content %>
+                          </p>
+                        </div>
+                        <br>
+                        <hr>
+                        <% end %>
 
-                <% if current_user.role == 'learn' %>
-                  <div class="cardm">
-                    <%= render "shared/form" %>
-                  </div>
-                <% end %>
-                <h2>Reviews</h2>
-                <% @user.reviews.each do |review| %>
-                   <%= review.content %>
-                <% end %>
+                          <div id="additional-reviews" style="display: none;">
+                            <% @user.reviews.offset(3).each do |review| %>
+                              <div>
+                                <p>Star: <%= review.rating %> - Review: <br>
+                                    <%= review.content %>
+                                </p>
+                              </div>
+                              <br>
+                              <hr>
+                              <% end %>
+                          </div>
+
+                          <button id="toggle-reviews" class="btn btn-info mt-2">Voir plus</button>
+                    </div>
+                    <% else %>
+                      <h1>student</h1>
+                      <% end %>
+                </div>
               </div>
-            </div>
-          </div> <!-- row -->
-        </div>
-      </div> <!-- container -->
-    </section>
-    <!--====== ABOUT PART ENDS ======-->
+            </div> <!-- row -->
+          </div>
+      </section>
+      <!-- ABOUT PART ENDS -->
 
-    <!--====== CONTACT PART START ======-->
-    <!-- Ajoutez le reste de votre code pour la section CONTACT ici -->
+      <!-- CONTACT PART -->
+      <%= link_to "Back Home" , root_path, class: "btn btn-secondary my-2 my-sm-0 mx-5" %>
+        <% if @user.role=='learn' %>
+          <%= link_to "Edit profile" , edit_user_path(@user), class: "btn btn-warning my-2 my-sm-0 mx-5" %>
+            <% end %>
+</div> <!-- Fin de la div cardm spécifique à l'enseignant -->
 
-  </div>
-   <!-- Fin de la div cardm spécifique à l'enseignant -->
-</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const additionalReviews = document.getElementById('additional-reviews');
+    const toggleButton = document.getElementById('toggle-reviews');
+
+    if (additionalReviews && toggleButton) {
+      toggleButton.addEventListener('click', function () {
+        additionalReviews.style.display = (additionalReviews.style.display === 'none') ? 'block' : 'none';
+      });
+    }
+  });
+</script>
