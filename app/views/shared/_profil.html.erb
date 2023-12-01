@@ -1,17 +1,7 @@
 
- <!-- edit_user -->
 
-
-
-
-
-
-
-
-
- <% if current_user.role == 'learn' %>
-<p>Profil Student</p>
-
+<% if current_user.role == 'teach' %>
+<p>Profil Teacher</p>
 
   <!--====== HEADER PART START ======-->
 
@@ -48,26 +38,58 @@
     <div class="container">
        <div class="cardm">
         <div class="row">
+            <div class="col-lg-6">
+                <div class="about-content mt-50">
+                    <h1 class="text-center"><%= @user.name %></h1>
+                    <p>lol
+                        </p>
 
+                </div> <!-- about content -->
+            </div>
             <div class="col-xl-5 offset-xl-1 col-lg-6">
                 <div class="about-skills pt-25">
+
+
+                        <div class="skill-bar">
+                            <div class="bar-inner">
+                                <div class="bar progress-line" data-width="80">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item"><strong>skills:</strong> <%= @user.skills %></li>
+
+                                      </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                       
                         <div class="skill-bar">
                             <div class="bar-inner">
                                 <div class="bar progress-line" data-width="60">
                                     <ul class="list-group list-group-flush">
                                         <li class="list-group-item"><strong> interests:</strong> <%= @user.interest %></li>
+
                                       </ul>
 
                                 </div>
                             </div>
                         </div>
 
+                        <!-- <% if current_user.role == 'learn' %>
+                          < class="cardm">
+                            <%= render "shared/form" %>
+                          </div>
+                        <% end %>
+
+                        <% @teacher.reviews.each do |review| %>
+                         <%= review.content %>
+                        <% end %> -->
+
 
 
                 </div> <!-- about skills -->
             </div>
         </div> <!-- row -->
-
       </div>
     </div> <!-- container -->
 
@@ -89,17 +111,21 @@
       <div class="cardm">
 
         <div class="row justify-content-center">
+            <!-- contact box start adress mail -->
             <div class="col-lg-4 col-md-6 col-sm-7">
                 <div class="contact-box text-center mt-30">
                     <div class="contact-icon">
                         <i class="lni-map-marker"></i>
                     </div>
                     <div class="contact-content">
-                        <h6 class="contact-title">Address</h6>
-                        <li class="list-group-item"><strong>Email:</strong> <%= @user.address %></li>
+                        <!-- <h6 class="contact-title">Address</h6> -->
+                        <li class="list-group-item"><strong>Address:</strong> <%= @user.address %></li>
                     </div>
-                </div> <!-- contact box -->
+                </div> 
             </div>
+            <!--  end contact box adrr mail -->
+            
+<!-- contact box start phone -->
             <div class="col-lg-4 col-md-6 col-sm-7">
                 <div class="contact-box text-center mt-30">
                     <div class="contact-icon">
@@ -110,21 +136,11 @@
                         <p>+931 2222 5555</p>
 
                     </div>
-                </div> <!-- contact box -->
+                </div> 
             </div>
-            <div class="col-lg-4 col-md-6 col-sm-7">
-                <div class="contact-box text-center mt-30">
-                    <div class="contact-icon">
-                        <i class="lni-envelope"></i>
-                    </div>
-                    <div class="contact-content">
-                        <h6 class="contact-title">Email</h6>
-                        <li class="list-group-item"><strong>Email:</strong> <%= @user.email %></li>
 
-                    </div>
-                </div> <!-- contact box -->
-            </div>
         </div> <!-- row -->
+        <!-- bloc message box start here -->
         <div class="row">
             <div class="col-lg-6">
                 <div class="contact-form pt-30">
@@ -153,11 +169,13 @@
                 </div> <!-- contact map -->
             </div>
         </div> <!-- row -->
+        <!-- bloc message box Ends here -->
       </div>
     </div> <!-- container -->
-    <!--====== BACK TOP TOP PART START ======-->
 
-<a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
+<!--====== BACK TOP TOP PART START ======-->
+
+<!-- <%= link_to "Back To Top" , users_path %> -->
 
 <!--====== BACK TOP TOP PART ENDS ======-->
 </section>
@@ -166,10 +184,5 @@
 
 
 
-<!--====== BACK TOP TOP PART START ======-->
-
-<a href="#" class="back-to-top"><i class="lni-chevron-up"></i></a>
-
-<!--====== BACK TOP TOP PART ENDS ======-->
 
 <%end%>
