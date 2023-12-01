@@ -7,10 +7,11 @@ Rails.application.routes.draw do
       get :search
     end
   end
-  
+
   resources :users do
     resources :reviews, only: [:create, :show, :edit, :update, :destroy]
-    resources :reservations, only: [:index, :create, :show, :new]
+    resources :reservations
     resources :messages, only:[:create, :show]
   end
+
 end

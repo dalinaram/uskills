@@ -1,8 +1,8 @@
 <div data-controller="toggle" class="cardm">
   <!-- Contenu spécifique à l'enseignant -->
-   <% if @user.role == 'teach' %>
-  <p>Ceci est du contenu spécifique à l'enseignant.</p>
-  <%end %>
+  <% if @user.role == 'teach' %>
+    <p>Ceci est du contenu spécifique à l'enseignant.</p>
+  <% end %>
   <!-- HEADER PART -->
   <header id="home" class="header-area">
     <div class="container">
@@ -15,9 +15,10 @@
           </div> <!-- header content right -->
         </div>
         <div class="col-lg-6 offset-xl-1">
-          <div class="">
+          <div class="user-photo">
+            <!-- Utilisation d'une classe différente pour la div entourant la photo -->
             <img src="https://media.licdn.com/dms/image/D4E03AQESRl8wIrexZQ/profile-displayphoto-shrink_800_800/0/1695038981559?e=1703721600&v=beta&t=oV-OVn4l4qVrymIOsYqFsPAQiLeSLtm17Xw1zKNd_Zg" alt="hero" class="img-fluid rounded-circle">
-          </div> <!-- header image -->
+          </div> <!-- user photo -->
         </div>
       </div> <!-- row -->
     </div> <!-- container -->
@@ -32,16 +33,14 @@
           <div class="about-content mt-50">
             <h1 class="text-center"><%= @user.name %></h1>
 
-
             <% if @user.role == 'teach' %>
               <input data-action="click->toggle#fire" type="submit" value="Book this formation❤️" class="btn btn-success mt-2" style="width: 100%">
 
               <div class="col-4">
-
-                  <div class="flat-show-card">
-                    <div class="mt-2">
-                      <div id="form" data-toggle-target="togglableElement" class="d-none">
-<div class="cardm" >
+                <div class="flat-show-card">
+                  <div class="mt-2">
+                    <div id="form" data-toggle-target="togglableElement" class="d-none">
+                      <div class="cardm">
                         <%= simple_form_for([@user, @reservation]) do |b| %>
                           <div class="input">
                             <%= b.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
@@ -52,9 +51,7 @@
                       </div>
                     </div>
                   </div>
-
                 </div>
-
               </div>
             <% end %>
           </div> <!-- about content -->
@@ -87,13 +84,25 @@
                 <%= render "shared/form" %>
               </div>
               <h3>Reviews</h3>
-              <% @user.reviews.each do |review| %>
-                <div>
-                <p>Star: <%= review.rating %> - Review: <br><%=review.content %></p>
-                </div>
-                <br><hr>
+              <div id="reviews-container">
+                <% @user.reviews.limit(3).each do |review| %>
+                  <div>
+                    <p>Star: <%= review.rating %> - Review: <br><%= review.content %></p>
+                  </div>
+                  <br><hr>
+                <% end %>
 
-              <% end %>
+                <div id="additional-reviews" style="display: none;">
+                  <% @user.reviews.offset(3).each do |review| %>
+                    <div>
+                      <p>Star: <%= review.rating %> - Review: <br><%= review.content %></p>
+                    </div>
+                    <br><hr>
+                  <% end %>
+                </div>
+
+                <button id="toggle-reviews" class="btn btn-info mt-2">Voir plus</button>
+              </div>
             <% else %>
               <h1>student</h1>
             <% end %>
@@ -105,8 +114,21 @@
   <!-- ABOUT PART ENDS -->
 
   <!-- CONTACT PART -->
-<%= link_to "Back Home", root_path, class: "btn btn-secondary my-2 my-sm-0 mx-5" %>
-<% if @user.role == 'learn' %>
- <%= link_to "Edit profile",  edit_user_path(@user), class: "btn btn-warning my-2 my-sm-0 mx-5" %>
-<%end  %>
+  <%= link_to "Back Home", root_path, class: "btn btn-secondary my-2 my-sm-0 mx-5" %>
+  <% if @user.role == 'learn' %>
+    <%= link_to "Edit profile",  edit_user_path(@user), class: "btn btn-warning my-2 my-sm-0 mx-5" %>
+  <% end %>
 </div> <!-- Fin de la div cardm spécifique à l'enseignant -->
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const additionalReviews = document.getElementById('additional-reviews');
+    const toggleButton = document.getElementById('toggle-reviews');
+
+    if (additionalReviews && toggleButton) {
+      toggleButton.addEventListener('click', function() {
+        additionalReviews.style.display = (additionalReviews.style.display === 'none') ? 'block' : 'none';
+      });
+    }
+  });
+</script>

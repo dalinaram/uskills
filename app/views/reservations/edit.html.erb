@@ -1,0 +1,16 @@
+<%= simple_form_for @reservation, url: user_reservation_path(@reservation.teacher, @reservation), method: :patch do |f| %>
+  <div class="container mt-4">
+    <h1 class="text-center">Update Your Reservation</h1>
+
+    <div class="card mt-4">
+      <div class="card-body">
+        <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
+        <%= f.input :end_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
+
+        <div class="text-center mt-3">
+          <%= f.button :submit, "Update", class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
