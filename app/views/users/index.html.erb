@@ -1,23 +1,19 @@
-
-
 <%= render "shared/section" %>
 
-<div class="container">
-  <div class="col-12"><br>
-    <div class="row">
-      <% @teachers.each do |t| %>
+<div class="container mt-4">
+  <div class="row">
+    <% @teachers.each do |t| %>
       <!--====== CARD FORMATEUR PART START ======-->
-        <div class="col-md-3">
-          <div class="cardm">
-            <div class="flat-card d-flex">
-              <div class="flat-card-content d-flex flex-column">
-                <div class="flat-card-title">
-                  <div class="cardimg">
-
-                    <img src="https://res.cloudinary.com/deydjvnm9/image/upload/v1700222106/qtazyi2l8ymjlfcnybhv.jpg"
-                      class="img-thumbnail" alt="exmpl" width="300" height="250">
-                  </div>
-                  <div class="cardm">
+      <div class="col-md-3 mb-4">
+        <div class="cardm">
+          <div class="flat-card d-flex">
+            <div class="flat-card-content d-flex flex-column">
+              <div class="flat-card-title">
+                <div class="cardimg">
+                  <img src="https://res.cloudinary.com/deydjvnm9/image/upload/v1700222106/qtazyi2l8ymjlfcnybhv.jpg"
+                    class="img-thumbnail" alt="exmpl" width="300" height="250">
+                </div>
+                <div class="cardm">
                   <h5>
                     <%= t.name %>
                   </h5>
@@ -33,20 +29,16 @@
                   <p>
                     <%= t.interest %>
                   </p>
-                  <%= link_to "View More details", user_path(t)  %>
+                  <%= link_to "View More details", user_path(t), class: "btn btn-primary mt-2" %>
                 </div>
               </div>
-              </div>
-
             </div>
           </div>
-
         </div>
-<!--====== CARD FORMATEUR PART END ======-->
-        <% end %>
-    </div>
+      </div>
+      <!--====== CARD FORMATEUR PART END ======-->
+    <% end %>
   </div>
 </div>
-<%= link_to "Go Back To Home" , users_path %>
-<%= render "shared/footer" %>
 
+<%= link_to "Go Back To Home" , users_path, class: "btn btn-secondary my-2 my-sm-0 mx-5 mt-2" %>
