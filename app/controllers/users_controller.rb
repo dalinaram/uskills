@@ -1,22 +1,23 @@
 class UsersController < ApplicationController
-
   #  skip_before_action :authenticate_user!, only: :index
  before_action :set_user, only: [:show, :edit, :update, :destroy]
   # before_action :authentification
   def index
-
    @users = User.all
+   @markers = @users.geocoded.map do |user|
+    {
+      lat: user.latitude,
+      lng: user.longitude
+    }
+  end
    @teachers = @users.where(role: "teach")
    @students = @users.where(role: "learn")
-   # @users.select {|user| user.role == 'teach'}
-   # raise
-
   end
 
   def new
     @user = User.new
-
   end
+
   def create
     @user = User.new(user_params)
 
