@@ -1,0 +1,11 @@
+<h1 class="display-4 text-center mt-5 mb-4">DASHBOARD</h1>
+
+<% @reservations.each do |reservation| %>
+  <div class="card mb-3">
+    <div class="card-body">
+      <h5 class="card-title">Réservation</h5>
+      <p class="card-text">Date de début : <%= reservation.start_date %></p>
+      <p class="card-text">Date de fin : <%= reservation.end_date %></p>
+    </div>
+  </div>
+<% end %>

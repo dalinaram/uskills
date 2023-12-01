@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :reviews, only: [:create, :show, :edit, :update, :destroy]
-    resources :reservations, only: [:create, :show]
+    resources :reservations, only: [:index, :create, :show, :new]
     resources :messages, only:[:create, :show]
   end
 
