@@ -105,5 +105,8 @@
   <!-- ABOUT PART ENDS -->
 
   <!-- CONTACT PART -->
-  <%= link_to "Back Home", root_path, class: "btn btn-secondary my-2 my-sm-0 mx-5" %>
+<%= link_to "Back Home", root_path, class: "btn btn-secondary my-2 my-sm-0 mx-5" %>
+<% if @user.role == 'learn' %>
+ <%= link_to "Edit profile",  edit_user_path(@user), class: "btn btn-warning my-2 my-sm-0 mx-5" %>
+<%end  %>
 </div> <!-- Fin de la div cardm spécifique à l'enseignant -->

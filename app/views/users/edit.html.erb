@@ -1,10 +1,15 @@
 
 <%= simple_form_for @user, url: user_path(@user), method: :patch do |f| %>
   <div class="container mt-4">
-    <h1 class="text-center">Edit Formateur <%= @user.name %></h1>
+    <h1 class="text-center">Update Your Profile <%= @user.name %></h1>
 
     <div class="card mt-4">
       <div class="card-body">
+
+        <%= f.input :name, label: "Name", input_html: { class: "form-control" } %>
+
+        <%= f.input :last_name, label: "Last Name", input_html: { class: "form-control" } %>
+
         <%= f.input :interest, label: "Interest", input_html: { class: "form-control" } %>
 
         <%= f.input :email, label: "Email", input_html: { class: "form-control" } %>
