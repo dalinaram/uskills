@@ -1,11 +1,20 @@
-<h1 class="display-4 text-center mt-5 mb-4">DASHBOARD</h1>
+<div class="container">
+  <h1 class="display-4 text-center mt-5 mb-4">DASHBOARD</h1>
 
-<% @reservations.each do |reservation| %>
-  <div class="card mb-3">
-    <div class="card-body">
-      <h5 class="card-title">Réservation</h5>
-      <p class="card-text">Date de début : <%= reservation.start_date %></p>
-      <p class="card-text">Date de fin : <%= reservation.end_date %></p>
+  <% @reservations.each do |reservation| %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Réservation</h5>
+        <p class="card-text">Date de début : <%= reservation.start_date %></p>
+        <p class="card-text">Date de fin : <%= reservation.end_date %></p>
+        <div class="d-flex justify-content-between">
+          <%= link_to "See More..", user_reservation_path(reservation.teacher, reservation), class: "btn btn-success" %>
+          <%= link_to "Modifier", edit_user_reservation_path(reservation.teacher, reservation), class: "btn btn-primary" %>
+         <%= link_to "Supprimer", user_reservation_path(reservation.teacher, reservation), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+
+
+        </div>
+      </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
