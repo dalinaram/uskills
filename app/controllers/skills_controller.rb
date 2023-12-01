@@ -8,7 +8,7 @@ class SkillsController < ApplicationController
   end
 
   def new
-    @skill = skill.new
+    @skill = Skill.new
   end
 
   def create
@@ -26,6 +26,20 @@ class SkillsController < ApplicationController
 
   def edit
 
+  end
+
+  def search
+    @skills = if params[:query].present?
+               perform_search(params[:query])
+             else
+               Skill.all
+             end
+    render :index
+  end
+
+  def perform_search(query)
+    title_query = query["title"].downcase if query.present? && query["title"].present?
+    Skill.where("lower(title) = ?", title_query)
   end
 
   def  update
