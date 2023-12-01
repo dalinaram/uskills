@@ -31,6 +31,11 @@
                 <div class="col-lg-6 offset-xl-1">
                     <div class="header-image d-none d-lg-block">
                         <img src="https://media.licdn.com/dms/image/D4E03AQESRl8wIrexZQ/profile-displayphoto-shrink_800_800/0/1695038981559?e=1703721600&v=beta&t=oV-OVn4l4qVrymIOsYqFsPAQiLeSLtm17Xw1zKNd_Zg" alt="hero">
+                          <%= form_tag(search_skills_path, method: :get, class: "d-flex") do %>
+                          <input class="form-control me-2" name="query[title]" type="search" placeholder="Search by Category" aria-label="Search"
+                          value="<%= params.dig(:query, :title) %>">
+                          <button class="btn btn-success" type="submit">Search</button>
+                          <% end %>
                     </div> <!-- header image -->
                 </div>
             </div> <!-- row -->
