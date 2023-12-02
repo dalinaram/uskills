@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "users#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :skills do
+
     collection do
       get :search
     end
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :reviews, only: [:create, :show, :edit, :update, :destroy]
+    resources :skills, only: [:create, :show, :edit, :update, :destroy]
     resources :reservations
     resources :messages, only:[:create, :show]
   end

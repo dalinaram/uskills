@@ -14,7 +14,7 @@ class SkillsController < ApplicationController
   def create
    @skill = Skill.new(skill_params)
    if @skill.save
-     redirect_to skill_path(@skill), notice: 'skill was successfully created.'
+     redirect_to skills_path(@skill), notice: 'skill was successfully created.'
    else
      render :new, status: :unprocessable_entity
    end
