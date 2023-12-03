@@ -1,0 +1,57 @@
+.footer-area {
+  background-color: #f8f9fa; /* Light background for contrast */
+  color: #333; /* Dark text for readability */
+  padding-top: 40px;
+  padding-bottom: 20px;
+}
+
+.footer-logo {
+  width: 90px; /* Adjust as needed */
+  height: auto;
+}
+
+.footer h5 {
+  color: #007791; /* A color that matches your site's theme */
+  margin-bottom: 15px;
+}
+
+.footer-links,
+.footer-contact {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-links li a,
+.footer-contact li {
+  color: #666;
+  text-decoration: none;
+  line-height: 1.6; /* Spacing between lines */
+}
+
+.footer-links li a:hover {
+  color: #007791; /* Highlight color */
+}
+
+.social-icons {
+  padding-left: 0;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social-icons li a {
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.social-icons li a:hover {
+  color: #007791;
+}
+
+@media (max-width: 768px) {
+  .footer .row > div {
+    margin-bottom: 20px;
+  }
+}

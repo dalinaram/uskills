@@ -1,12 +1,56 @@
 .navbar-lewagon {
+  background: #ffffff; /* Or another color that matches your site's theme */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adds a subtle shadow for depth */
+  padding: 0.5rem 1rem;
   justify-content: space-between;
-  background: white;
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.navbar-lewagon .navbar-brand {
+  display: flex;
+  align-items: center;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.navbar-lewagon .navbar-logo {
+  width: 80px; /* Adjust as needed */
+  height: auto;
+}
+
+.navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+.navbar-nav .nav-item .nav-link {
+  color: #333333; /* Or your chosen text color */
+  margin-right: 1rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-item .nav-link:hover,
+.navbar-nav .nav-item .nav-link:focus {
+  color: #007791; /* Or a color that highlights the item */
+}
+
+.navbar-nav .nav-item .avatar {
+  border-radius: 50%;
+  width: 30px; /* Adjust based on your preference */
+  height: auto;
+}
+
+.dropdown-menu {
+  border-radius: 0.25rem;
+}
+
+.dropdown-item {
+  color: #333333; /* Or your chosen text color */
+}
+
+.dropdown-item:hover {
+  background-color: #f8f9fa; /* Or a light color for hover effect */
+}
+
+@media (max-width: 768px) {
+  .navbar-collapse {
+    background: white; /* Ensures the collapsed menu is readable */
+  }
 }
