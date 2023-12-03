@@ -1,61 +1,10 @@
 .cardm {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden; /* To maintain border-radius for images */
-}
 
-.section-title {
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  color: #333;
-}
+    border: 1px solid rgb(221, 221, 221);
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 6px 16px;
+    font-family: serif;
+    width: 100%;
 
-.cardm:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.cardimg img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-top-left-radius: 10px; /* Match the card's border-radius */
-  border-top-right-radius: 10px; /* Match the card's border-radius */
-}
-
-.card-body {
-  padding: 15px;
-}
-
-.rating {
-  color: gold; /* Or any other color */
-  font-size: 1.2em; /* Adjust size as needed */
-}
-
-
-.card-body h5 {
-  margin-bottom: 5px;
-}
-
-.card-body .rating {
-  margin-bottom: 10px;
-  /* Style for rating, e.g., stars */
-}
-
-.card-body p {
-  margin-bottom: 5px;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-// .btn-primary {
-//   background-color: #007791;
-//   border: none;
-// }
-
-// .btn-primary:hover {
-//   background-color: #005f6a;
-// }
+  }
