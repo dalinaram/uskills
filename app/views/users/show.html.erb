@@ -13,6 +13,7 @@
             <h1 class="text-center"><%= @user.name %></h1>
            
           </div> <!-- header content right -->
+          <%= link_to "Add Skills",    class: "btn btn-warning my-2 my-sm-0 mx-5" %>
         </div>
         <div class="col-lg-6 offset-xl-1">
           <div class="user-photo">
@@ -31,7 +32,8 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="about-content mt-50">
-            <h1 class="text-center"><%= @user.name %></h1>
+            
+           
 
             <% if @user.role == 'teach' %>
               <input data-action="click->toggle#fire" type="submit" value="Book this formation❤️" class="btn btn-success mt-2" style="width: 100%">
