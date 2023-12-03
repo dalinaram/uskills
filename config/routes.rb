@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     collection do
       get :search
     end
+    resources :skills, only: [:create, :show, :edit, :update, :destroy]
   end
 
   resources :users do
