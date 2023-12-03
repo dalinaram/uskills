@@ -1,0 +1,50 @@
+.form-links {
+  margin-top: 20px; /* Spacing above the links */
+}
+
+.form-links a {
+  display: block;
+  color: #007791; /* Color to match your site's theme */
+  margin-bottom: 10px; /* Spacing between links */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.form-links a:hover {
+  color: #005f6a; /* Slightly darker shade on hover */
+  text-decoration: underline;
+}
+
+
+.devise-links ul {
+  list-style: none;
+  padding: 0;
+}
+
+.devise-links li {
+  margin-bottom: 10px; /* Spacing between links */
+}
+
+.devise-links a,
+.devise-links button {
+  display: block;
+  text-decoration: none;
+  color: #007791; /* Or your primary color */
+  text-align: center;
+  padding: 10px;
+  border: 1px solid #007791; /* Or your primary color */
+  border-radius: 5px;
+  background-color: transparent;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.devise-links a:hover,
+.devise-links button:hover {
+  background-color: #007791; /* Or your primary color */
+  color: white;
+}
+
+/* Responsive adjustments if needed */
+@media (max-width: 768px) {
+  /* Your responsive CSS here */
+}
