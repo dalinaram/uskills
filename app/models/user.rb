@@ -10,10 +10,15 @@ class User < ApplicationRecord
   has_many :received_messages, foreign_key: 'teacher_id', class_name: 'Message'
   has_many :reviews, dependent: :destroy
 
+
   def self.teachers
     where(role: 'teach')
   end
   def self.students
     where(role: 'learn')
   end
+
+  geocoded_by :address
+  after_validation :geocode, if: :will_save_change_to_address?
+
 end
