@@ -1,14 +1,15 @@
-# Clear existing data
 
 Message.destroy_all
 Reservation.destroy_all
 Review.destroy_all
 Skill.destroy_all
+
  User.destroy_all
+
 # Users
 dalina = User.create(email: "dalina@gmail.com", name: "Dalina", last_name: "Lazourt", interest: "Algebra", address: "26 rue Richelieu, 75001 Paris", rating: 5, role: "teach", password: "123456")
 mahmoud = User.create(email: "mahmoud@gmail.com", name: "Mahmoud", last_name: "Lajimi", interest: "Web Development - Front End", address: "8 rue Abel, 75012 Paris", rating: 5, role: "learn", password: "123456")
-ahmed = User.create(email: "ahmed@gmail.com", name: "Ahmed", last_name: "Salah", interest: "General Learning", address: "4 rue de Picardie, 75003 Paris", rating: 3, role: "learn", password: "123456")
+ahmed = User.create(email: " ", name: "Ahmed", last_name: "Salah", interest: "General Learning", address: "4 rue de Picardie, 75003 Paris", rating: 3, role: "learn", password: "123456")
 thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
 
 # Additional demo users
