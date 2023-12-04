@@ -1,4 +1,4 @@
-<div data-controller="toggle" class="cardm">
+<div class="cardm">
   <!-- Contenu spécifique à l'enseignant -->
   <% if @user.role == 'teach' %>
     <p>Ceci est du contenu spécifique à l'enseignant.</p>
@@ -62,13 +62,13 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <div class="about-content mt-50">
+          <div class="about-content mt-50" data-controller="toggle">
 
 
             <% if @user.role == 'teach' %>
               <input data-action="click->toggle#fire" type="submit" value="Book this formation❤️" class="btn btn-success mt-2" style="width: 100%">
 
-              <div class="col-4">
+              <div class="col-4"  >
                 <div class="flat-show-card">
                   <div class="mt-2">
                     <div id="form" data-toggle-target="togglableElement" class="d-none">
@@ -114,7 +114,7 @@
               </div>
               <h3>Reviews</h3>
               <div id="reviews-container">
-                <% @user.reviews.limit(3).each do |review| %>
+                <% @reviews.each do |review| %>
                   <div>
                     <p>Star: <%= review.rating %> - Review: <br><%= review.content %></p>
                   </div>
@@ -122,7 +122,7 @@
                 <% end %>
 
                 <div id="additional-reviews" style="display: none;">
-                  <% @user.reviews.offset(3).each do |review| %>
+                  <% @reviews.each do |review| %>
                     <div>
                       <p>Star: <%= review.rating %> - Review: <br><%= review.content %></p>
                     </div>

@@ -46,6 +46,7 @@ class UsersController < ApplicationController
    @review = Review.new
    @user = User.find(params[:id])
    @reservation = Reservation.new
+   @reviews = Review.where(teacher_id: @user.id)
   end
 
 
