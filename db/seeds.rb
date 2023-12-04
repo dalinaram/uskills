@@ -17,16 +17,16 @@ julia = User.create(email: "julia@example.com", name: "Julia", last_name: "Rober
 marc = User.create(email: "marc@example.com", name: "Marc", last_name: "Dupont", interest: "Machine Learning", address: "15 rue Oberkampf, 75011 Paris", rating: 5, role: "learn", password: "123456")
 
 # Messages
-Message.create(student: mahmoud, teacher: dalina, content: "Hi Dalina, I'm interested in your Algebra course.")
-Message.create(student: ahmed, teacher: julia, content: "Hello Julia, can you provide more details about your Data Science program?")
+Message.create(from_id: mahmoud.id, to_id: dalina.id, content: "Hi Dalina, I'm interested in your Algebra course.")
+Message.create(from_id: ahmed.id, to_id: julia.id, content: "Hello Julia, can you provide more details about your Data Science program?")
 
 # Reservations
 Reservation.create(teacher: dalina, student: mahmoud, start_date: Date.today, end_date: Date.today + 30)
 Reservation.create(teacher: julia, student: thomas, start_date: Date.today, end_date: Date.today + 15)
 
 # Reviews
-Review.create(user: dalina, content: "Great learning experience!", rating: 5)
-Review.create(user: julia, content: "Highly recommended for anyone looking to learn Data Science.", rating: 5)
+Review.create(teacher_id: dalina.id, student_id: thomas.id, content: "Great learning experience!", rating: 5)
+Review.create(teacher_id: julia.id,student_id: thomas.id, content: "Highly recommended for anyone looking to learn Data Science.", rating: 5)
 
 # Skills
 Skill.create(title: "Advanced Algebra", description: "Covering all aspects of Algebra including linear equations, quadratic equations, and algebraic structures.", user: dalina)
