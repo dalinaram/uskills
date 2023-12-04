@@ -19,8 +19,6 @@
 
     <%= link_to 'Back', user_messages_path(current_user), class: 'btn btn-secondary mr-2' %>
 
-    <% if current_user == @message.student|| current_user == @message.teacher %>
-      <%= link_to 'Delete', user_message_path(@user, @message), method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn btn-danger' %>
-    <% end %>
+ 
   </div>
 </div>

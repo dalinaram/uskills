@@ -54,11 +54,13 @@ class MessagesController < ApplicationController
   def message_params
     params.require(:message).permit(:content, :teacher_id, :student_id)
   end
+  
   def set_user
     @user = User.find(params[:user_id])
   end
+
   def set_message
-    @message = current_user.sent_messages.find_by(id: params[:id])
+    @message = Message.find(params[:id])
     unless @message
       redirect_to user_messages_path(current_user), alert: 'Message not found.'
     end
