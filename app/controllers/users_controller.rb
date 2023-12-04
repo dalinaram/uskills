@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
    @users = User.all
    @teachers = @users.where(role: "teach")
+
    @students = @users.where(role: "learn")
    # @users.select {|user| user.role == 'teach'}
    # raise
@@ -42,7 +43,6 @@ class UsersController < ApplicationController
 
 
   def edit
-
   end
 
   def  update
