@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :reviews, only: [:create, :show, :edit, :update, :destroy]
     resources :reservations
-    resources :messages, only:[:create, :show]
+    resources :messages, only: [:index,:show, :new, :create, :destroy]
   end
 
 end

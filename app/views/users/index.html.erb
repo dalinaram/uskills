@@ -43,9 +43,7 @@
           </div>
           <div class="card-body">
             <h5><%= t.name %> <%= t.last_name %></h5>
-            <div class="rating">
-              <%= render_rating(t.rating) %> <!-- En supposant que vous avez une méthode d'assistance pour le rendu des évaluations -->
-            </div>
+            
             <p><i class="fas fa-envelope"></i> <%= t.email %></p>
             <p><i class="fas fa-map-marker-alt"></i> <%= t.address %></p>
             <p><i class="fas fa-book"></i> <%= t.interest %></p>
