@@ -116,7 +116,7 @@
     <!-- map PART ENDS -->
 
             <% if @user.role == 'teach' %>
-            
+            <%unless @user == current_user %>
               <div class="cardm">
                 <%= render "shared/form" %>
               </div>
@@ -137,7 +137,7 @@
                     <br><hr>
                   <% end %>
 
-
+            <% end %>
                 </div>
 
                 <button id="toggle-reviews" class="btn btn-info mt-2">Voir plus</button>

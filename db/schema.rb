@@ -43,13 +43,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_04_140309) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.bigint "student_id", null: false
-    t.bigint "teacher_id", null: false
+    t.bigint "from_id", null: false
+    t.bigint "to_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "content"
-    t.index ["student_id"], name: "index_messages_on_student_id"
-    t.index ["teacher_id"], name: "index_messages_on_teacher_id"
+    t.index ["from_id"], name: "index_messages_on_from_id"
+    t.index ["to_id"], name: "index_messages_on_to_id"
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -96,7 +96,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_04_140309) do
     t.text "interest"
     t.string "address"
     t.string "role", default: "learn"
-    t.integer "rating"
+    t.integer "rating", default: 0
     t.float "latitude"
     t.float "longitude"
     t.index ["email"], name: "index_users_on_email", unique: true
@@ -105,8 +105,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_04_140309) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "messages", "users", column: "student_id"
-  add_foreign_key "messages", "users", column: "teacher_id"
+  add_foreign_key "messages", "users", column: "from_id"
+  add_foreign_key "messages", "users", column: "to_id"
   add_foreign_key "reservations", "users", column: "student_id"
   add_foreign_key "reservations", "users", column: "teacher_id"
   add_foreign_key "reviews", "users", column: "student_id"

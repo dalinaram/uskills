@@ -6,13 +6,13 @@
     <%= simple_form_for [@user, @message] do |f| %>
       <% if current_user.role == 'learn' %>
         <div class="mb-3">
-          <%= f.label :teacher_id, 'To', class: 'form-label' %>
-          <%= f.collection_select :teacher_id, User.all.teachers, :id, :name, { prompt: 'Select Teacher' }, class: 'form-select' %>
+          <%= f.label :to_id, 'To', class: 'form-label' %>
+          <%= f.collection_select :to_id, User.all.teachers, :id, :name, { prompt: 'Select Teacher' }, class: 'form-select' %>
         </div>
       <% else %>
         <div class="mb-3">
-          <%= f.label :student_id, 'To', class: 'form-label' %>
-          <%= f.collection_select :student_id, User.all.students, :id, :name, { prompt: 'Select Student' }, class: 'form-select' %>
+          <%= f.label :to_id, 'To', class: 'form-label' %>
+          <%= f.collection_select :to_id, User.all.students, :id, :name, { prompt: 'Select Student' }, class: 'form-select' %>
         </div>
       <% end %>
 
