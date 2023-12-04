@@ -67,6 +67,7 @@
           <div class="about-content mt-50"  data-controller="toggle">
 
             <% if @user.role == 'teach' %>
+            <%unless @user == current_user %>
               <input data-action="click->toggle#fire" type="submit" value="Book this formation❤️" class="btn btn-success mt-2" style="width: 100%">
 
               <div class="col-4"  >
@@ -88,10 +89,13 @@
               </div>
             <% end %>
         <%if @user.role == "teach" %>
+        <%unless @user == current_user %>
             <div class="card">
             <%= month_calendar do |date| %>
   <%= date %>
 <% end %></div>
+<%end %>
+  <%end %>
   <%end %>
           </div> <!-- about content -->
         </div>
