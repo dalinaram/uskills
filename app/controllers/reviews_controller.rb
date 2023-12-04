@@ -4,13 +4,14 @@ class ReviewsController < ApplicationController
 
   def create
       @review = Review.new(review_params)
-      @review.user = @user
-      if @review.save
-        redirect_to user_path(@user)
+      @review.teacher_id = @user.id
+      @review.student_id = current_user.id
+      if Reservation.select {|resa| resa.student == current_user && resa.teacher == @user && resa.end_date <= Date.today}.count >= 1
+        if @review.save
+          redirect_to user_path(@user)
+        end
       end
   end
-
-  
 
   private
 
