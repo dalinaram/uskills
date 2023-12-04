@@ -86,10 +86,12 @@
                 </div>
               </div>
             <% end %>
+        <%if @user.role == "teach" %>
             <div class="card">
             <%= month_calendar do |date| %>
   <%= date %>
 <% end %></div>
+  <%end %>
           </div> <!-- about content -->
         </div>
 
