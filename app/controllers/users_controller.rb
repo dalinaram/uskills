@@ -6,6 +6,13 @@ class UsersController < ApplicationController
   def index
 
    @users = User.all
+   @markers = @users.geocoded.map do |user|
+    {
+      lat: user.latitude,
+      lng: user.longitude
+    }
+  end
+
    @teachers = @users.where(role: "teach")
    @students = @users.where(role: "learn")
    # @users.select {|user| user.role == 'teach'}

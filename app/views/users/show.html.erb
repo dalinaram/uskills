@@ -79,11 +79,28 @@
                 </div>
               </div>
             <% end %>
+            <div class="card">
+            <%= month_calendar do |date| %>
+  <%= date %>
+<% end %></div>
           </div> <!-- about content -->
         </div>
+
+
+
         <div class="col-xl-5 offset-xl-1 col-lg-6">
           <div class="about-skills pt-25">
 
+  <!-- map PART start here -->
+  <div class="cardimg">
+    <div data-controller="map"
+      data-map-api-key-value="pk.eyJ1IjoiZGFsaW5hbGVzb3VyZCIsImEiOiJjbG9teDd6MjgyeTZ3MmpwbDJqN253NmduIn0.TrksOV7ZrvFnBkvFnK7uvg">
+      <div style="width: 300px; height: 300px;" data-map-markers-value="<%= @markers.to_json %>">
+      </div>
+    </div>
+  </div>
+    <!-- map PART ENDS -->
+    
             <% if @user.role == 'teach' %>
               <div class="cardm">
                 <%= render "shared/form" %>
