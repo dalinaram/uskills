@@ -62,8 +62,9 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-          <div class="about-content mt-50" data-controller="toggle">
 
+
+          <div class="about-content mt-50"  data-controller="toggle">
 
             <% if @user.role == 'teach' %>
               <input data-action="click->toggle#fire" type="submit" value="Book this formation❤️" class="btn btn-success mt-2" style="width: 100%">
@@ -71,7 +72,7 @@
               <div class="col-4"  >
                 <div class="flat-show-card">
                   <div class="mt-2">
-                    <div id="form" data-toggle-target="togglableElement" class="d-none">
+                    <div id="form"  class="d-none">
                       <div class="cardm">
                         <%= simple_form_for([@user, @reservation]) do |b| %>
                           <div class="input">
@@ -86,10 +87,12 @@
                 </div>
               </div>
             <% end %>
+        <%if @user.role == "teach" %>
             <div class="card">
             <%= month_calendar do |date| %>
   <%= date %>
 <% end %></div>
+  <%end %>
           </div> <!-- about content -->
         </div>
 
