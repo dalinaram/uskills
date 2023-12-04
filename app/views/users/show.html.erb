@@ -11,7 +11,32 @@
           <div class="header-content-right">
             <h4 class="sub-title">Hello, I’m</h4>
             <h1 class="text-center"><%= @user.name %></h1>
-           
+
+<div class="skill-bar">
+              <div class="bar-inner">
+                <ul class="list-group list-group-flush">
+                  <% if @user.role == 'teach' %>
+                    <% @user.skills.each do |skill| %>
+                      <li class="list-group-item"><strong>Skills:</strong> <%= skill.title %></li>
+                      <div>Description: <%= skill.description %></div>
+                    <% end %>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+            <div class="skill-header"></div>
+            <div class="skill-bar">
+              <div class="bar-inner">
+                <div class="bar progress-line" data-width="60"></div>
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item"><strong>Interests:</strong> <%= @user.interest %></li>
+                </ul>
+              </div>
+            </div>
+
+          <%= link_to "Add a Skill",  new_skill_path, class: "btn btn-info" %>
+
+          <%= link_to "See More",  skills_path, class: "btn btn-primary" %>
           </div> <!-- header content right -->
         </div>
         <div class="col-lg-6 offset-xl-1">
@@ -31,7 +56,7 @@
       <div class="row">
         <div class="col-lg-6">
           <div class="about-content mt-50">
-            <h1 class="text-center"><%= @user.name %></h1>
+
 
             <% if @user.role == 'teach' %>
               <input data-action="click->toggle#fire" type="submit" value="Book this formation❤️" class="btn btn-success mt-2" style="width: 100%">
@@ -58,27 +83,7 @@
         </div>
         <div class="col-xl-5 offset-xl-1 col-lg-6">
           <div class="about-skills pt-25">
-            <div class="skill-bar">
-              <div class="bar-inner">
-                <div class="bar progress-line" data-width="80"></div>
-                <ul class="list-group list-group-flush">
-                  <% if @user.role == 'teach' %>
-                    <% @user.skills.each do |skill| %>
-                      <li class="list-group-item"><strong>Skills:</strong> <%= skill.title %></li>
-                    <% end %>
-                  <% end %>
-                </ul>
-              </div>
-            </div>
-            <div class="skill-header"></div>
-            <div class="skill-bar">
-              <div class="bar-inner">
-                <div class="bar progress-line" data-width="60"></div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><strong>Interests:</strong> <%= @user.interest %></li>
-                </ul>
-              </div>
-            </div>
+
             <% if @user.role == 'teach' %>
               <div class="cardm">
                 <%= render "shared/form" %>
