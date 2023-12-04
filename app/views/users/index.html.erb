@@ -8,8 +8,9 @@
       <div class="col-md-3 mb-4">
         <div class="cardm">
           <div class="cardimg">
-            <img src="https://res.cloudinary.com/deydjvnm9/image/upload/v1700222106/qtazyi2l8ymjlfcnybhv.jpg"
-                 class="img-fluid" alt="<%= t.name %> <%= t.last_name %>" >
+          <%= cl_image_tag(t.photo.key, height: 300, width: 300, crop: :fill) if t.photo.attached? %>
+
+
           </div>
           <div class="card-body">
             <h5><%= t.name %> <%= t.last_name %></h5>
