@@ -5,6 +5,13 @@
     <%= f.error_notification %>
 
     <div data-controller="toggle" class="form-inputs">
+
+     
+          <%= f.input :photo, as: :file %>
+
+
+
+
       <div class="mb-3">
         <%= f.input :name, required: true, autofocus: true, class: "form-control" %>
       </div>
@@ -26,7 +33,7 @@
           data: { toggle_target: "input" }, class: "form-check-input" } %>
       </div>
 
-     
+
 <div class="mb-3">
           <%= f.input :interest, required: true, autofocus: true, class: "form-control" %>
         </div>

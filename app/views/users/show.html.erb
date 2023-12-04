@@ -47,7 +47,9 @@
         <div class="col-lg-6 offset-xl-1">
           <div class="user-photo">
             <!-- Utilisation d'une classe différente pour la div entourant la photo -->
-            <img src="https://media.licdn.com/dms/image/D4E03AQESRl8wIrexZQ/profile-displayphoto-shrink_800_800/0/1695038981559?e=1703721600&v=beta&t=oV-OVn4l4qVrymIOsYqFsPAQiLeSLtm17Xw1zKNd_Zg" alt="hero" class="img-fluid rounded-circle">
+           <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill if @user.photo.attached? %>
+          </div>
+
           </div> <!-- user photo -->
         </div>
       </div> <!-- row -->
@@ -105,7 +107,7 @@
     </div>
   </div>
     <!-- map PART ENDS -->
-    
+
             <% if @user.role == 'teach' %>
               <div class="cardm">
                 <%= render "shared/form" %>
