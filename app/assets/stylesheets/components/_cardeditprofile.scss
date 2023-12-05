@@ -1,0 +1,10 @@
+.cardeditprofile {
+
+    
+        animation: bg 3s infinite;
+        @keyframes bg {
+          100%{filter: hue-rotate(360deg);}
+        }
+       
+      
+}

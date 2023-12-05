@@ -1,175 +1,234 @@
 <div class="cardm">
   <!-- Contenu spécifique à l'enseignant -->
-  <% if @user.role == 'teach' %>
-    <p>Ceci est du contenu spécifique à l'enseignant.</p>
-  <% end %>
-  <!-- HEADER PART -->
-  <header id="home" class="header-area">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-xl-5 col-lg-6">
-          <div class="header-content-right">
-            <h4 class="sub-title">Hello, I’m</h4>
-            <h1 class="text-center"><%= @user.name %></h1>
+  <% if @user.role=='teach' %>
+    <p>Votre Profile.</p>
+    <% end %>
+      <!-- HEADER PART -->
+      <header id="home" class="header-area">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-xl-5 col-lg-6">
+              <div class="header-content-right">
+                <h4 class="sub-title">Hello, I’m</h4>
+                <h1 class="text-center">
+                  <%= @user.name %>
+                </h1>
+                <div class="cardm">
+                  <div class="skill-bar">
+                    <div class="bar-inner">
+                      <ul class="list-group list-group-flush">
+                        <% if @user.role=='teach' %>
 
-<div class="skill-bar">
-              <div class="bar-inner">
-                <ul class="list-group list-group-flush">
-                  <% if @user.role == 'teach' %>
-                    <% @user.skills.each do |skill| %>
-                      <li class="list-group-item"><strong>Skills:</strong> <%= skill.title %></li>
-                      <div>Description: <%= skill.description %></div>
-                    <% end %>
-                  <% end %>
-                </ul>
+                          <% @user.skills.each do |skill| %>
+                            <div class="single-form">
+                              <li class="list-group-item"><strong>Skills:</strong>
+                                <%= skill.title %>
+                              </li>
+                            </div>
+                            <div class="single-form">Description: <%= skill.description %>
+                            </div>
+                            <% end %>
+                              <% end %>
+                    </div>
+                   
+
+                  </div>
+
+
+
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Interests:</strong>
+                      <%= @user.interest %>
+                    </li>
+                  </ul>
+                  
+                </div>
+              </div>
+              <%if current_user==@user %>
+              <% if @user.role=="teach" %>
+                  <div class="d-inline-flex gap-1">
+                    <%= link_to "Ajouter une compétence" , new_skill_path, class: "shadow__btn" %>
+                      </div>
+                  <%end %> <%end %><!-- header content right -->
+            </div>
+            <!-- user photo start  -->
+
+            <div class="col-lg-6 offset-xl-1">
+              <div class="user-photo">
+                <div class="cardimg">
+                  <!-- Utilisation d'une classe différente pour la div entourant la photo -->
+                  <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill if @user.photo.attached? %>
+                </div>
               </div>
             </div>
-            <div class="skill-header"></div>
-            <div class="skill-bar">
-              <div class="bar-inner">
-                <div class="bar progress-line" data-width="60"></div>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item"><strong>Interests:</strong> <%= @user.interest %></li>
-                </ul>
-              </div>
-            </div>
-            <%if current_user == @user %>
-              <% if @user.role == "teach" %>
-        <div>
-          <%= link_to "Ajouter une compétence",  new_skill_path, class: "btn btn-info" %>
 
-          <%= link_to "Voir les détails",  skills_path, class: "btn btn-primary" %>
-           <%= link_to "Voir mes réservations", user_reservations_path(current_user), class: "btn-primary-index mt-2" %>
-        </div>
-        <%end %>
-        <%end %>
-          </div> <!-- header content right -->
-        </div>
-        <div class="col-lg-6 offset-xl-1">
-          <div class="user-photo">
-            <!-- Utilisation d'une classe différente pour la div entourant la photo -->
-           <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill if @user.photo.attached? %>
+            <!-- user photo end-->
           </div>
-
-          </div> <!-- user photo -->
         </div>
-      </div> <!-- row -->
-    </div> <!-- container -->
-  </header>
-  <!-- HEADER PART ENDS -->
-
-  <!-- ABOUT PART -->
-  <section id="about" class="about-area pt-5 pb-5">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-6">
+</div> <!-- row -->
+</div> <!-- container -->
+</header>
 
 
+<%if current_user==@user %>
+  <% if @user.role=="teach" %>
+    <div class="class="d-inline-flex gap-1"">
+        <%= link_to "Voir les détails" , skills_path, class: "shadow__btn" %>
+     
+        </div>
+    <%end %>
+      <%end %>
 
-          <div class="about-content mt-50"  data-controller="toggle">
 
-            <% if @user.role == 'teach' %>
-            <%unless @user == current_user %>
-              <input data-action="click->toggle#fire" type="submit" value="Book this formation❤️" class="btn btn-success mt-2" style="width: 100%">
+        <!-- HEADER PART ENDS -->
 
-              <div class="col-4"  >
-                <div class="flat-show-card">
-                  <div class="mt-2">
-                    <div id="form"  class="d-none">
-                      <div class="cardm">
-                        <%= simple_form_for([@user, @reservation]) do |b| %>
-                          <div class="input">
-                            <%= b.input :start_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
-                            <%= b.input :end_date, as: :string, input_html: { data: { controller: "datepicker" } } %>
+        <!-- ABOUT PART -->
+        <section id="about" class="about-area pt-5 pb-5">
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6">
+
+
+
+                <div class="about-content mt-50" data-controller="toggle">
+
+                  <% if @user.role=='teach' %>
+                    <%unless @user==current_user %>
+                      <input data-action="click->toggle#fire" type="submit" value="Book this formation❤️"
+                        class="btn btn-success mt-2" style="width: 100%">
+
+                      <div class="col-8">
+                        <div class="flat-show-card">
+                          <div class="mt-4">
+                            <div id="form" class="d-none">
+                              <div class="cardm">
+                                <%= simple_form_for([@user, @reservation]) do |b| %>
+                                  <div class="input">
+                                    <%= b.input :start_date, as: :string, input_html: { data: { controller: "datepicker"
+                                      } } %>
+                                      <%= b.input :end_date, as: :string, input_html: { data: { controller: "datepicker"
+                                        } } %>
+                                  </div>
+                                  <%= b.submit class: "btn btn-info" %>
+                                    <% end %>
+                              </div>
+                            </div>
                           </div>
-                          <%= b.submit class: "btn btn-info" %>
-                        <% end %>
+                        </div>
+                      </div>
+                      <% end %>
+
+                        <!-- affichage contenue comment pour le teach -->
+
+                       
+
+                        <!-- <%if @user.role=="teach" %>
+                          <%unless @user==current_user %>
+                            <div class="card">
+                              <%= month_calendar do |date| %>
+                                <%= date %>
+                                  <% end %>
+                            </div>
+                            <%end %>
+                              <%end %>
+                                <%end %> -->
+                </div> <!-- about content -->
+              </div>
+
+
+
+              <div class="col-xl-5 offset-xl-1 col-lg-6">
+                <div class="about-skills pt-25">
+
+                  <!-- map PART start here -->
+                  <div class="cardimg">
+                    <div data-controller="map"
+                      data-map-api-key-value="pk.eyJ1IjoiZGFsaW5hbGVzb3VyZCIsImEiOiJjbG9teDd6MjgyeTZ3MmpwbDJqN253NmduIn0.TrksOV7ZrvFnBkvFnK7uvg">
+                      <div style="width: 300px; height: 300px;" data-map-markers-value="<%= @markers.to_json %>">
                       </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            <% end %>
-        <%if @user.role == "teach" %>
-        <%unless @user == current_user %>
-            <div class="card">
-            <%= month_calendar do |date| %>
-  <%= date %>
-<% end %></div>
-<%end %>
-  <%end %>
-  <%end %>
-          </div> <!-- about content -->
-        </div>
-
-
-
-        <div class="col-xl-5 offset-xl-1 col-lg-6">
-          <div class="about-skills pt-25">
-
-  <!-- map PART start here -->
-  <div class="cardimg">
-    <div data-controller="map"
-      data-map-api-key-value="pk.eyJ1IjoiZGFsaW5hbGVzb3VyZCIsImEiOiJjbG9teDd6MjgyeTZ3MmpwbDJqN253NmduIn0.TrksOV7ZrvFnBkvFnK7uvg">
-      <div style="width: 300px; height: 300px;" data-map-markers-value="<%= @markers.to_json %>">
-      </div>
-    </div>
-  </div>
-    <!-- map PART ENDS -->
-
-            <% if @user.role == 'teach' %>
-            <%unless @user == current_user %>
-              <div class="cardm">
-                <%= render "shared/form" %>
-              </div>
-              <h3>Reviews</h3>
-              <div id="reviews-container">
-                <% @reviews.each do |review| %>
                   <div>
-                    <p>Star: <%= review.rating %> - Review: <br><%= review.content %></p>
+                    <%if current_user==@user %>
+                      <% if @user.role=="teach" %>
+                        <% @reviews.each do |review| %>
+                          <div class="single-form">
+                            <p>Star: <%= review.rating %> - Review: <br>
+                                <%= review.content %>
+                            </p>
+                          </div>
+                          <br>
+                          <hr>
+                          <% end %>
+                            <% end %>
+                              <% end %>
                   </div>
-                  <br><hr>
-                <% end %>
 
-                <div id="additional-reviews" style="display: none;">
-                  <% @reviews.each do |review| %>
-                    <div>
-                      <p>Star: <%= review.rating %> - Review: <br><%= review.content %></p>
-                    </div>
-                    <br><hr>
-                  <% end %>
+                  <!-- map PART ENDS -->
 
-            <% end %>
+                  <% if @user.role=='teach' %>
+                    <%unless @user==current_user %>
+                      <div class="cardm">
+                        <%= render "shared/form" %>
+                      </div>
+                      <h3>Reviews</h3>
+                      <div id="reviews-container">
+                        <% @reviews.each do |review| %>
+                          <div class="single-form">
+                            <p>Star: <%= review.rating %> - Review: <br>
+                                <%= review.content %>
+                            </p>
+                          </div>
+                          <br>
+                          <hr>
+                          <% end %>
+
+                            <div id="additional-reviews" style="display: none;">
+                              <% @reviews.each do |review| %>
+                                <div>
+                                  <p>Star: <%= review.rating %> - Review: <br>
+                                      <%= review.content %>
+                                  </p>
+                                </div>
+                                <br>
+                                <hr>
+                                <% end %>
+
+                                  <% end %>
+                            </div>
+
+                            <button id="toggle-reviews" class="btn btn-info mt-2">Voir plus</button>
+                      </div>
+                      <% else %>
+                        <h1>student</h1>
+                        <% end %>
+
                 </div>
-
-                <button id="toggle-reviews" class="btn btn-info mt-2">Voir plus</button>
               </div>
-            <% else %>
-              <h1>student</h1>
-            <% end %>
+            </div> <!-- row -->
           </div>
-        </div>
-      </div> <!-- row -->
-    </div>
-  </section>
-  <!-- ABOUT PART ENDS -->
+        </section>
+        <!-- ABOUT PART ENDS -->
 
-  <!-- CONTACT PART -->
-  <%= link_to "Back Home", root_path, class: "btn btn-secondary my-2 my-sm-0 mx-5" %>
-  <% if current_user == @user %>
-    <%= link_to "Edit profile",  edit_user_path(current_user), class: "btn btn-warning my-2 my-sm-0 mx-5" %>
-  <% end %>
-</div> <!-- Fin de la div cardm spécifique à l'enseignant -->
+       
 
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const additionalReviews = document.getElementById('additional-reviews');
-    const toggleButton = document.getElementById('toggle-reviews');
 
-    if (additionalReviews && toggleButton) {
-      toggleButton.addEventListener('click', function() {
-        additionalReviews.style.display = (additionalReviews.style.display === 'none') ? 'block' : 'none';
-      });
-    }
-  });
-</script>
+        <!-- CONTACT PART -->
+        <%= link_to "Back Home" , root_path, class: "btn btn-secondary my-2 my-sm-0 mx-5" %>
+          <% if current_user==@user %>
+            <%= link_to "Edit profile" , edit_user_path(current_user), class: "btn btn-warning my-2 my-sm-0 mx-5" %>
+              <% end %>
+                </div> <!-- Fin de la div cardm spécifique à l'enseignant -->
+
+                <script>
+                  document.addEventListener('DOMContentLoaded', function () {
+                    const additionalReviews = document.getElementById('additional-reviews');
+                    const toggleButton = document.getElementById('toggle-reviews');
+
+                    if (additionalReviews && toggleButton) {
+                      toggleButton.addEventListener('click', function () {
+                        additionalReviews.style.display = (additionalReviews.style.display === 'none') ? 'block' : 'none';
+                      });
+                    }
+                  });
+                </script>
