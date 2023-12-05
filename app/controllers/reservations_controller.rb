@@ -29,8 +29,8 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-    @reservation.destroy
-    redirect_to user_reservations_path(current_user), notice: 'La réservation a été supprimée avec succès.'
+    @reservation.update(statut: 'Refusée')
+    redirect_to user_reservations_path(current_user), notice: 'La réservation a été refusée.'
   end
 
   def edit
@@ -44,6 +44,12 @@ class ReservationsController < ApplicationController
       flash.now[:alert] = 'Erreur lors de la mise à jour de la réservation.'
       render :edit, status: :unprocessable_entity
     end
+  end
+
+  def validate
+    @reservation = Reservation.find(params[:reservation_id].to_i)
+    @reservation.update(statut: "Validée")
+    redirect_to user_reservations_path(current_user)
   end
 
   private

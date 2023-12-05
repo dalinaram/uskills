@@ -7,14 +7,22 @@
         <h5 class="card-title">Réservation</h5>
         <p class="card-text">Date de début : <%= reservation.start_date %></p>
         <p class="card-text">Date de fin : <%= reservation.end_date %></p>
-        <div class="d-flex justify-content-between">
-          <%= link_to "See More..", user_reservation_path(reservation.teacher, reservation), class: "btn btn-success" %>
-          <%= link_to "Modifier", edit_user_reservation_path(reservation.teacher, reservation), class: "btn btn-primary" %>
-         <%= link_to "Supprimer", user_reservation_path(reservation.teacher, reservation), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+          <%= reservation.statut %>
+
+          <% if current_user.role == 'teach' %>
+          <%= button_to "Accepter", validate_path(), method: :post, params: {reservation_id: reservation.id},class: "btn btn-primary" %>
+         <%= link_to "Refuser", user_reservation_path(reservation.teacher, reservation), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
+<% end %>
+      </div>
+    </div>
+
+ <div class="d-flex justify-content-between">
+
 
 
         </div>
-      </div>
-    </div>
+
   <% end %>
+
 </div>
+
