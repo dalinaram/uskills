@@ -20,12 +20,12 @@
                         <% if @user.role=='teach' %>
 
                           <% @user.skills.each do |skill| %>
-                            <div class="single-form">
-                              <li class="list-group-item"><strong>Skills:</strong>
+                            <div class="btn btn-outline-primary">
+                              <li class="btn btn-outline-primary"><strong>Skills:</strong>
                                 <%= skill.title %>
                               </li>
                             </div>
-                            <div class="single-form">Description: <%= skill.description %>
+                            <div class="btn btn-outline-primary">Description: <%= skill.description %>
                             </div>
                             <% end %>
                               <% end %>
@@ -37,23 +37,18 @@
 
 
                   <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><strong>Interests:</strong>
+                    <li class="btn btn-outline-primary"><strong>Interests:</strong>
                       <%= @user.interest %>
                     </li>
                   </ul>
                   
                 </div>
               </div>
-              <%if current_user==@user %>
-              <% if @user.role=="teach" %>
-                  <div class="d-inline-flex gap-1">
-                    <%= link_to "Ajouter une compétence" , new_skill_path, class: "shadow__btn" %>
-                      </div>
-                  <%end %> <%end %><!-- header content right -->
+             <!-- header content right -->
             </div>
             <!-- user photo start  -->
 
-            <div class="col-lg-6 offset-xl-1">
+            <div class="col-lg-4 offset-xl-1">
               <div class="user-photo">
                 <div class="cardimg">
                   <!-- Utilisation d'une classe différente pour la div entourant la photo -->
@@ -72,13 +67,16 @@
 
 <%if current_user==@user %>
   <% if @user.role=="teach" %>
-    <div class="class="d-inline-flex gap-1"">
-        <%= link_to "Voir les détails" , skills_path, class: "shadow__btn" %>
+    <div class="d-inline-flex gap-3">
+        <%= link_to "Voir les détails" , skills_path(@skill), class: "shadow__btn" %>
      
+    
+          <%= link_to "Ajouter une compétence" , new_skill_path, class: "shadow__btn" %>
+           
         </div>
     <%end %>
       <%end %>
-
+     
 
         <!-- HEADER PART ENDS -->
 
@@ -97,7 +95,7 @@
                       <input data-action="click->toggle#fire" type="submit" value="Book this formation❤️"
                         class="btn btn-success mt-2" style="width: 100%">
 
-                      <div class="col-8">
+                      <div class="col-12">
                         <div class="flat-show-card">
                           <div class="mt-4">
                             <div id="form" class="d-none">
@@ -152,7 +150,7 @@
                     <%if current_user==@user %>
                       <% if @user.role=="teach" %>
                         <% @reviews.each do |review| %>
-                          <div class="single-form">
+                          <div class="btn btn-outline-primary">
                             <p>Star: <%= review.rating %> - Review: <br>
                                 <%= review.content %>
                             </p>
@@ -174,7 +172,7 @@
                       <h3>Reviews</h3>
                       <div id="reviews-container">
                         <% @reviews.each do |review| %>
-                          <div class="single-form">
+                          <div class="btn btn-outline-primary">
                             <p>Star: <%= review.rating %> - Review: <br>
                                 <%= review.content %>
                             </p>
