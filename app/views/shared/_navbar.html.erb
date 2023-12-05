@@ -13,7 +13,7 @@
         <% if user_signed_in? %>
           <li class="nav-item">
              <%= link_to user_messages_path(user_id: current_user.id), class: "nav-link" do %>
-              <i class="fas fa-envelope"></i>
+             <i class="fa-regular fa-envelope"></i>
             <% end %>
           </li>
           <li class="nav-item">
