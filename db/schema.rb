@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_04_140309) do
+ActiveRecord::Schema[7.0].define(version: 2023_12_05_092320) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +59,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_04_140309) do
     t.datetime "updated_at", null: false
     t.date "start_date"
     t.date "end_date"
+    t.string "statut", default: "En attente"
     t.index ["student_id"], name: "index_reservations_on_student_id"
     t.index ["teacher_id"], name: "index_reservations_on_teacher_id"
   end
