@@ -31,32 +31,5 @@
 <%= link_to "Retour à l'accueil", users_path, class: "btn btn-secondary my-2 my-sm-0 mx-5 mt-2" %>
  <% end %>
 
- <% if current_user.role == 'teach' %>
-<div class="container mt-4">
-  <h2 class="section-title">Nos Meilleurs Formateurs</h2>
-  <div class="row">
-    <% @students.each do |t| %>
-      <div class="col-md-3 mb-4">
-        <div class="cardm">
-          <div class="cardimg">
-            <img src="https://res.cloudinary.com/deydjvnm9/image/upload/v1700222106/qtazyi2l8ymjlfcnybhv.jpg"
-                 class="img-fluid" alt="<%= t.name %> <%= t.last_name %>" >
-          </div>
-          <div class="card-body">
-            <h5><%= t.name %> <%= t.last_name %></h5>
-
-            <p><i class="fas fa-envelope"></i> <%= t.email %></p>
-            <p><i class="fas fa-map-marker-alt"></i> <%= t.address %></p>
-            <p><i class="fas fa-book"></i> <%= t.interest %></p>
-            <%= link_to "Voir plus de détails", user_path(t), class: "btn-primary-index mt-2" %>
-          </div>
-        </div>
-      </div>
-    <% end %>
-  </div>
-</div>
 
 <%= link_to "Retour à l'accueil", users_path, class: "btn btn-secondary my-2 my-sm-0 mx-5 mt-2" %>
-
-
- <% end %>

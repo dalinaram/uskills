@@ -36,9 +36,10 @@
             <%if current_user == @user %>
               <% if @user.role == "teach" %>
         <div>
-          <%= link_to "Add a Skill",  new_skill_path, class: "btn btn-info" %>
+          <%= link_to "Ajouter une compétence",  new_skill_path, class: "btn btn-info" %>
 
-          <%= link_to "See More",  skills_path, class: "btn btn-primary" %>
+          <%= link_to "Voir les détails",  skills_path, class: "btn btn-primary" %>
+           <%= link_to "Voir mes réservations", user_reservations_path(current_user), class: "btn-primary-index mt-2" %>
         </div>
         <%end %>
         <%end %>
@@ -62,7 +63,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-6">
-+---3
+
 
 
           <div class="about-content mt-50"  data-controller="toggle">

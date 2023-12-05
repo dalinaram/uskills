@@ -1,79 +1,88 @@
 <div class="container mt-5">
   <div class="d-flex flex-wrap flex-row gap-5">
-    <div class="card">
-      <div class="face back">
-        <div class="content">
-          <span class="stars"></span>
-          <b class="desc">Hello</b>
-          <p class="desc">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
+    <%= link_to search_skills_path(:query => "Developpement") do %>
+      <div class="card">
+        <div class="face back">
+          <div class="content">
+            <span class="stars"></span>
+            <b class="desc">Hello</b>
+            <p class="desc">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </p>
+          </div>
+        </div>
+        <div class="face front" style="background-image: url('<%= asset_path 'developpement.jpeg' %>'); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 15px; transition: 0.5s;">
+          <b class="small-text">Developpement</b>
         </div>
       </div>
-      <div class="face front" style="background-image: url('<%= asset_path 'developpement.jpeg' %>'); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 15px; transition: 0.5s;">
-        <b class="small-text">Developpement</b>
-      </div>
-    </div>
+    <% end %>
 
-    <div class="card">
-      <div class="face back">
-        <div class="content">
-          <span class="stars"></span>
-          <b class="desc">Hello</b>
-          <p class="desc">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
+    <%= link_to skills_path(:query => "danse") do %>
+      <div class="card">
+        <div class="face back">
+          <div class="content">
+            <span class="stars"></span>
+            <b class="desc">Hello</b>
+            <p class="desc">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </p>
+          </div>
+        </div>
+        <div class="face front" style="background-image: url('<%= asset_path 'danse.jpeg' %>'); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 15px; transition: 0.5s;">
+          <b class="small-text">Danse</b>
         </div>
       </div>
-      <div class="face front" style="background-image: url('<%= asset_path 'danse.jpeg' %>'); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 15px; transition: 0.5s;">
-        <b class="small-text">Danse</b>
-      </div>
-    </div>
+    <% end %>
 
-     <div class="card">
-      <div class="face back">
-        <div class="content">
-          <span class="stars"></span>
-          <b class="desc">Hello</b>
-          <p class="desc">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
+    <%= link_to skills_path(:query => "design") do %>
+      <div class="card">
+        <div class="face back">
+          <div class="content">
+            <span class="stars"></span>
+            <b class="desc">Hello</b>
+            <p class="desc">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </p>
+          </div>
+        </div>
+        <div class="face front" style="background-image: url('<%= asset_path 'design.jpeg' %>'); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 15px; transition: 0.5s;">
+          <b class="small-text">Design</b>
         </div>
       </div>
-      <div class="face front" style="background-image: url('<%= asset_path 'design.jpeg' %>'); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 15px; transition: 0.5s;">
-        <b class="small-text">Design</b>
-      </div>
-    </div>
+    <% end %>
 
-
-     <div class="card">
-      <div class="face back">
-        <div class="content">
-          <span class="stars"></span>
-          <b class="desc">Hello</b>
-          <p class="desc">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
+    <%= link_to skills_path(:query => "cuisine") do %>
+      <div class="card">
+        <div class="face back">
+          <div class="content">
+            <span class="stars"></span>
+            <b class="desc">Hello</b>
+            <p class="desc">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </p>
+          </div>
+        </div>
+        <div class="face front" style="background-image: url('<%= asset_path 'cuisine.jpeg' %>'); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 15px; transition: 0.5s;">
+          <b class="small-text">Cuisine</b>
         </div>
       </div>
-      <div class="face front" style="background-image: url('<%= asset_path 'cuisine.jpeg' %>'); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 15px; transition: 0.5s;">
-        <b class="small-text">Cuisine</b>
-      </div>
-    </div>
+    <% end %>
 
-    <div class="card">
-      <div class="face back">
-        <div class="content">
-          <span class="stars"></span>
-          <b class="desc">Hello</b>
-          <p class="desc">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-          </p>
+    <%= link_to skills_path(:query => "mathématiques") do %>
+      <div class="card">
+        <div class="face back">
+          <div class="content">
+            <span class="stars"></span>
+            <b class="desc">Hello</b>
+            <p class="desc">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            </p>
+          </div>
+        </div>
+        <div class="face front" style="background-image: url('<%= asset_path 'mathématiques.jpeg' %>'); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 15px; transition: 0.5s;">
+          <b class="small-text">Mathématiques</b>
         </div>
       </div>
-      <div class="face front" style="background-image: url('<%= asset_path 'mathématiques.jpeg' %>'); background-size: cover; background-position: center; background-repeat: no-repeat; border-radius: 15px; transition: 0.5s;">
-        <b class="small-text">Mathématiques</b>
-      </div>
-    </div>
+    <% end %>
   </div>
 </div>

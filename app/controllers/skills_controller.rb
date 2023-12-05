@@ -4,7 +4,11 @@ class SkillsController < ApplicationController
  before_action :set_skill, only: [:show, :edit, :update, :destroy]
   # before_action :authentification
   def index
-   @skills = Skill.all
+    if params[:query].present?
+      @skills = Skill.where(title: params[:query])
+    else
+      @skills = Skill.all
+    end
   end
 
   def new
