@@ -1,12 +1,19 @@
-<div class="class mt-4" data-controller="sweetalert">
-  <div class="container show-reservation">
-    <div class="reservation-card card border-border-black mb-3">
+<div class="mt-4" data-controller="sweetalert">
+  <div class="container show-reservation ">
+    <% if @reservation.statut == 'Validée' %>
+      <div class="reservation-card card border border-black mb-3 bg-success">
+    <% elsif @reservation.statut == 'Refusée'%>
+      <div class="reservation-card card border border-black mb-3 bg-danger">
+    <% else %>
+      <div class="reservation-card card border border-black mb-3">
+    <% end %>
       <div class="card-header bg-transparent border-black">
         <h1>Détails de votre Réservation</h1>
       </div>
         <div class="card-body text-black">
-    <p>Start Date: <%= @reservation.start_date %></p>
-          <p>End Date: <%= @reservation.end_date %></p>
+          <p><%= @reservation.student.name %> <%= @reservation.student.last_name %> te propose une demande déchanges de compétences</p>
+          <p>du: <%= @reservation.start_date %></p>
+          <p>au: <%= @reservation.end_date %></p>
         </div>
       <div class="card-footer bg-transparent border-black">
         Merci pour votre réservation.
@@ -14,9 +21,8 @@
     </div>
 
     <div class="d-grid gap-2 col-6 mx-auto">
- <%= link_to 'Back to Home', user_reservations_path(@reservation.teacher), class: "btn btn-primary" %>
-
-
+      <%= link_to 'Back to Home', user_reservations_path(@reservation.teacher), class: "btn btn-primary" %>
+    </div>
   </div>
-  </div>
+
 </div>

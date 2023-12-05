@@ -14,7 +14,12 @@
   <div class="row">
     <% @skills.each do |skill| %>
       <div class="col-md-4 mb-4">
-        <div class="card">
+         <div class="cardm">
+
+          <div class="cardimg">
+          <%= cl_image_tag(skill.user.photo.key, height: 300, width: 300, crop: :fill) if skill.user.photo.attached? %>
+          </div>
+
           <div class="card-body">
             <h5 class="card-title text-center"><%= skill.title %></h5>
             <p class="card-text">
@@ -22,7 +27,7 @@
               <strong>description:</strong> <%= skill.description %><br>
             </p>
             <div class="text-center mt-3">
-              <a href="<%= skill_path(skill) %>" class="btn btn-success">See more..</a>
+              <a href="<%= user_path(skill.user) %>" class="btn btn-success">Voir Details Profil..</a>
             </div>
           </div>
           <div class="card-footer">
@@ -31,6 +36,24 @@
         </div>
       </div>
     <% end %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <%= link_to "Come Back", user_path(current_user), class: "btn btn-secondary mt-2" %>
 
   </div>
