@@ -12,13 +12,13 @@ mahmoud = User.create(email: "mahmoud@gmail.com", name: "Mahmoud", last_name: "L
 ahmed = User.create(email: " ", name: "Ahmed", last_name: "Salah", interest: "General Learning", address: "4 rue de Picardie, 75003 Paris", rating: 3, role: "learn", password: "123456")
 thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
 
-# thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
-# thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
-# thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
-# thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
-# thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
-# thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
-# thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
+bob = User.create(email: "bob@gmail.com", name: "Bob", last_name: "Marly", interest: "Music", address: "9 rue Colbert", rating: 5, role: "teach", password: "123456")
+gilson = User.create(email: "gilson@gmail.com", name: "Gilson", last_name: "Silva", interest: "Developpement", address: "30 Faubourg du Temple ", rating: 3, role: "learn", password: "123456")
+rahma = User.create(email: "rahma@gmail.com", name: "Rahma", last_name: "chengou", interest: "Java", address: "22 Esplanade Fléchambault", rating: 4, role: "teach", password: "123456")
+yeva = User.create(email: "evo@gmail.com", name: " Yeva", last_name: "evo", interest: "Dance", address: "108-110 Quai de Jemmapes", rating: 4, role: "learn", password: "123456")
+edward = User.create(email: "edward@gmail.com", name: "Edward", last_name: "Thatch", interest: "Tango", address: "76 rue des Poissonniers ", rating: 5, role: "teach", password: "123456")
+lionel = User.create(email: "messi@gmail.com", name: "Lionel", last_name: "Messi", interest: "Tango", address: "35 Av du Général Leclerc ", rating: 4, role: "learn", password: "123456")
+mamadou = User.create(email: "mamou@gmail.com", name: "Mamadou", last_name: "Traore", interest: "mathematique", address: "23 Bld des Batignolles", rating: 4, role: "learn", password: "123456")
 # # Additional demo users
 julia = User.create(email: "julia@example.com", name: "Julia", last_name: "Roberts", interest: "Data Science", address: "10 rue de Rivoli, 75004 Paris", rating: 4, role: "teach", password: "123456")
 marc = User.create(email: "marc@example.com", name: "Marc", last_name: "Dupont", interest: "Machine Learning", address: "15 rue Oberkampf, 75011 Paris", rating: 5, role: "learn", password: "123456")
@@ -38,5 +38,8 @@ Review.create(teacher_id: julia.id,student_id: thomas.id, content: "Highly recom
 # Skills
 Skill.create(title: "Advanced Algebra", description: "Covering all aspects of Algebra including linear equations, quadratic equations, and algebraic structures.", user: dalina)
 Skill.create(title: "Front-End Web Development", description: "Comprehensive course on HTML, CSS, JavaScript, and React.", user: mahmoud)
+Skill.create(title: "Advanced Java", description: "Développement d'applications. Créez, gérez et distribuez en continu des applications cloud, en utilisant la plateforme ou le langage de votre choix.", user: rahma)
+Skill.create(title: "Tango", description: "Le tango est une danse de bal qui se danse à deux. C'est aujourd'hui une danse d'improvisation, au sens où les pas ne sont pas fixés à l'avance pour être répétés séquentiellement, mais où les deux partenaires marchent ensemble vers une direction impromptue à chaque instant.", user: edward)
+
 
 puts "Seeds created successfully!"
