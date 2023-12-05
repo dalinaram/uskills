@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :sent_messages, foreign_key: 'student_id', class_name: 'Message'
   has_many :received_messages, foreign_key: 'teacher_id', class_name: 'Message'
   has_many :reviews, dependent: :destroy
+ 
 
 
   def self.teachers

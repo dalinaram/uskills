@@ -1,46 +1,50 @@
+<center>
+  <h1 class="mb-4">Messages</h1>
+</center>
 
-<h1 class="mb-4">Messages</h1>
+<%= link_to "New message +", new_user_message_path, class: "btn btn-primary text-white" %>
+<br><br>
 
 <% if @messages_send.any? %>
-  <div class="card-deck">
+  <div class="iphone-message-container">
     <% @messages_send.each do |message| %>
-      <div class="card mb-4">
-        <div class="card-body">
-          <h5 class="card-title">From: <%= message.from.name %></h5>
-          <h6 class="card-subtitle mb-2 text-muted">To: <%= message.to.name %></h6>
-          <p class="card-text"><strong>Content:</strong> <%= message.content %></p>
-          <p class="card-text"><strong>Sent at:</strong> <%= message.created_at %></p>
-         <%= link_to "see more", user_message_path(@user, message), class: "btn btn-primary mt-4" %>
-
+      <div class="iphone-message">
+        <div class="iphone-message-header">
+          <span class="iphone-sender"><%= message.from.name %></span>
+          <span class="iphone-date"><%= message.created_at %></span>
         </div>
+        <div class="message-bubble">
+          <p><strong></strong> <% message.to.name %></p>
+          <p><strong></strong> <%= message.content %></p>
+        </div>
+        <%= link_to "See more", user_message_path(@user, message), class: "btn btn-primary iphone-btn mt-4" %>
       </div>
     <% end %>
   </div>
 <% else %>
   <div class="alert alert-info" role="alert">
-    No messages available.
+    No sent messages available.
   </div>
 <% end %>
 
 <% if @messages_received.any? %>
-  <div class="card-deck">
+  <div class="iphone-message-container">
     <% @messages_received.each do |message| %>
-      <div class="card mb-4">
-        <div class="card-body">
-          <h5 class="card-title">From: <%= message.from.name %></h5>
-          <h6 class="card-subtitle mb-2 text-muted">To: <%= message.to.name %></h6>
-          <p class="card-text"><strong>Content:</strong> <%= message.content %></p>
-          <p class="card-text"><strong>Sent at:</strong> <%= message.created_at %></p>
-         <%= link_to "see more", user_message_path(@user, message), class: "btn btn-primary mt-4" %>
-
+      <div class="iphone-message">
+        <div class="iphone-message-header">
+          <span class="iphone-sender"><%= message.from.name %></span>
+          <span class="iphone-date"><%= message.created_at %></span>
         </div>
+        <div class="message-bubble">
+          <p><strong></strong> <% message.to.name %></p>
+          <p><strong></strong> <%= message.content %></p>
+        </div>
+        <%= link_to "See more", user_message_path(@user, message), class: "btn btn-primary iphone-btn mt-4" %>
       </div>
     <% end %>
   </div>
 <% else %>
   <div class="alert alert-info" role="alert">
-    No messages available.
+    No received messages available.
   </div>
 <% end %>
-
-<%= link_to "New Message", new_user_message_path, class: "btn btn-primary mt-4" %>

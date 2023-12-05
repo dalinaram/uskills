@@ -1,0 +1,58 @@
+/* Styles for iPhone-like message container */
+.iphone-message-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Styles for iPhone-like messages */
+.iphone-message {
+  background-color: #f0f0f0; /* Fond gris pour le reste de la carte */
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Styles for iPhone-like message header */
+.iphone-message-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+/* Styles for iPhone-like sender and date */
+.iphone-sender {
+  font-weight: bold;
+}
+
+.iphone-date {
+  color: #777;
+}
+
+/* Styles for iPhone-like message content */
+.iphone-message-content {
+  margin-bottom: 12px;
+}
+
+/* Styles for iPhone-like message bubble */
+.message-bubble {
+  background-color: white; /* Fond bleu pour la zone de message */
+  color: #fff; /* Texte blanc */
+  border-radius: 8px;
+  padding: 8px;
+}
+
+/* Styles for iPhone-like buttons */
+.iphone-btn {
+  background-color: #007aff; /* Fond bleu pour les boutons */
+  color: #fff; /* Texte blanc */
+  border: none;
+  border-radius: 8px;
+}
+
+.iphone-btn:hover {
+  background-color: #0056b3;
+}
+.iphone-sender {
+  color: black; /* Ajoutez la couleur souhaitée ici, par exemple, noir */
+}
