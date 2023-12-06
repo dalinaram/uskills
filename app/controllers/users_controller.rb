@@ -45,8 +45,17 @@ class UsersController < ApplicationController
   def show
    @review = Review.new
    @user = User.find(params[:id])
+   @users = User.all
    @reservation = Reservation.new
    @reviews = Review.where(teacher_id: @user.id)
+   @markers = @users.geocoded.map do |user|
+      if user == @user
+        {
+          lat: user.latitude,
+          lng: user.longitude
+        }
+      end
+    end
   end
 
 
