@@ -1,27 +1,28 @@
 <!-- app/views/messages/new.html.erb -->
-<div class="card mt-4">
-  <div class="card-body">
-    <h1 class="card-title mb-4">New Message</h1>
-
-    <%= simple_form_for [@user, @message] do |f| %>
-      <% if current_user.role == 'learn' %>
+<div class="container mt-4">
+  <center>
+    <h1 class="mb-4">New message 📤</h1>
+  </center>
+  <div class="iphone-message-container">
+    <div class="iphone-message">
+      <%= simple_form_for [@user, @message] do |f| %>
         <div class="mb-3">
           <%= f.label :to_id, 'To', class: 'form-label' %>
-          <%= f.collection_select :to_id, User.all.teachers, :id, :name, { prompt: 'Select Teacher' }, class: 'form-select' %>
+          <%= f.collection_select :to_id, User.all, :id, :name, { prompt: 'Select User' }, class: 'form-select' %>
         </div>
-      <% else %>
+
         <div class="mb-3">
-          <%= f.label :to_id, 'To', class: 'form-label' %>
-          <%= f.collection_select :to_id, User.all.students, :id, :name, { prompt: 'Select Student' }, class: 'form-select' %>
+          <%= f.label :content, 'Message Content', class: 'form-label' %>
+          <%= f.text_area :content, rows: 4, class: 'form-control', placeholder: 'Enter your message...' %>
+        </div>
+
+        <div class="d-grid">
+          <center>
+            <%= f.button :submit, class: 'btn btn-primary btn-block' %>
+          </center>
         </div>
       <% end %>
-
-      <div class="mb-3">
-        <%= f.label :content, 'Message Content', class: 'form-label' %>
-        <%= f.text_area :content, rows: 4, class: 'form-control', placeholder: 'Enter your message...' %>
-      </div>
-
-      <%= f.button :submit, class: 'btn btn-primary' %>
-    <% end %>
+    </div>
   </div>
 </div>
+<br>

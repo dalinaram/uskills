@@ -8,20 +8,22 @@ Skill.destroy_all
 
 # Users
 dalina = User.create(email: "dalina@gmail.com", name: "Dalina", last_name: "Lazourt", interest: "Algebra", address: "26 rue Richelieu, 75001 Paris", rating: 5, role: "teach", password: "123456")
-mahmoud = User.create(email: "mahmoud@gmail.com", name: "Mahmoud", last_name: "Lajimi", interest: "Web Development - Front End", address: "8 rue Abel, 75012 Paris", rating: 5, role: "learn", password: "123456")
-ahmed = User.create(email: " ", name: "Ahmed", last_name: "Salah", interest: "General Learning", address: "4 rue de Picardie, 75003 Paris", rating: 3, role: "learn", password: "123456")
-thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
+dalina.photo.attach(io: URI.open('https://source.unsplash.com/random/profil'), filename: 'dalina.jpg')
 
-# thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
-# thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
-# thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
-# thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
-# thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
-# thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
-# thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
-# # Additional demo users
+mahmoud = User.create(email: "mahmoud@gmail.com", name: "Mahmoud", last_name: "Lajimi", interest: "Web Development - Front End", address: "8 rue Abel, 75012 Paris", rating: 5, role: "learn", password: "123456")
+mahmoud.photo.attach(io: URI.open('https://source.unsplash.com/random/profil'), filename: 'mahmoud.jpg')
+
+ahmed = User.create(email: "ahmed@example.com", name: "Ahmed", last_name: "Salah", interest: "General Learning", address: "4 rue de Picardie, 75003 Paris", rating: 3, role: "learn", password: "123456")
+ahmed.photo.attach(io: URI.open('https://source.unsplash.com/random/profil'), filename: 'ahmed.jpg')
+
+thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Traore", interest: "Algebra", address: "9 rue Argenteuil, 75001 Paris", rating: 4, role: "learn", password: "123456")
+thomas.photo.attach(io: URI.open('https://source.unsplash.com/random/profil'), filename: 'thomas.jpg')
+
 julia = User.create(email: "julia@example.com", name: "Julia", last_name: "Roberts", interest: "Data Science", address: "10 rue de Rivoli, 75004 Paris", rating: 4, role: "teach", password: "123456")
+julia.photo.attach(io: URI.open('https://source.unsplash.com/random/profil'), filename: 'julia.jpg')
+
 marc = User.create(email: "marc@example.com", name: "Marc", last_name: "Dupont", interest: "Machine Learning", address: "15 rue Oberkampf, 75011 Paris", rating: 5, role: "learn", password: "123456")
+marc.photo.attach(io: URI.open('https://source.unsplash.com/random/profil'), filename: 'marc.jpg')
 
 # Messages
 Message.create(from_id: mahmoud.id, to_id: dalina.id, content: "Hi Dalina, I'm interested in your Algebra course.")
@@ -38,5 +40,7 @@ Review.create(teacher_id: julia.id,student_id: thomas.id, content: "Highly recom
 # Skills
 Skill.create(title: "Advanced Algebra", description: "Covering all aspects of Algebra including linear equations, quadratic equations, and algebraic structures.", user: dalina)
 Skill.create(title: "Front-End Web Development", description: "Comprehensive course on HTML, CSS, JavaScript, and React.", user: mahmoud)
+
+
 
 puts "Seeds created successfully!"

@@ -4,30 +4,26 @@
       <%= image_tag("uskillslogo.png", alt: "App Logo", class: "navbar-logo") %>
     <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-             <%= link_to user_messages_path(user_id: current_user.id), class: "nav-link" do %>
-              <i class="fas fa-envelope"></i>
+            <%= link_to user_messages_path(user_id: current_user.id), class: "nav-link" do %>
+              <i class="fa-regular fa-envelope"></i>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to user_path(current_user), class: "nav-link" do %>
-              Profile
+            <%= link_to user_path(current_user), class: "nav-link", style: "color: white; background-color: black; padding: 10px; border-radius: 5px;" do %>
+              Profil
             <% end %>
           </li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-<!--
-              <%= image_tag "https://avatars.githubusercontent.com/u/130217659?v=4", class: "avatar", alt: "User avatar" %>
-               -->
-
-               <%= cl_image_tag(current_user.photo.key, height: 40, width: 40, crop: :fill) if current_user.photo.attached? %>
+              <%= cl_image_tag(current_user.photo.key, height: 40, width: 40, crop: :fill) if current_user.photo.attached? %>
             </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Log out", destroy_user_session_path, data: { turbo_method: :delete }, class: "dropdown-item" %>
