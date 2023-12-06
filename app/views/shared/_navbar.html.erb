@@ -2,8 +2,11 @@
   <div class="container-fluid">
     <%= link_to users_path, class: "navbar-brand" do %>
       <%= image_tag("uskillslogo.png", alt: "App Logo", class: "navbar-logo") %>
-      <%= link_to "Reservation" , user_reservations_path(current_user), class: "btn btn-secondary" %>
-    <% end %>
+      <% if user_signed_in? %>
+        <%= link_to "Reservation" , user_reservations_path(current_user), class: "btn btn-secondary" %>
+      <% end %>
+
+      <% end %>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
