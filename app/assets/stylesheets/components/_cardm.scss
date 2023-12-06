@@ -1,104 +1,57 @@
-.cardm {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;
-}
-
-.section-title {
-  margin-bottom: 20px;
-  font-size: 1.5rem;
-  color: #0b0303;
-}
-
-.cardm:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
-}
-
-.cardimg img {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-}
-
-.card-body {
-  padding: 15px;
-}
-
-.rating {
-  color: gold;
-  font-size: 1.2em;
-}
-
-.card-body h5 {
-  margin-bottom: 5px;
-}
-
-.card-body .rating {
-  margin-bottom: 10px;
-}
-
-.card-body p {
-  p {
-    font-size: 20px;
-    font-weight: 400;
-    line-height: 28px;
-    color: #02040c;
-    margin: 0px; }
-    @media (max-width: 767px) {
-      p {
-        font-size: 15px; } }
-}
-
 .card_formateur {
-  max-width: 320px;
+  display: flex; /* Align image and info side by side */
   border-radius: 1rem;
   background-color: rgba(31, 41, 55, 1);
-  padding: 1rem;
-  position: relative;
+  overflow: hidden; /* Ensures the border-radius applies to the image */
+  text-decoration: none;
 }
 
-.btn_details {
-  display: inline-block;
-  width: 19.37px;
-  height: 16.99px;
-  margin-right: 10px;
-  margin-top: 10px;
-  float: right;
+.btn-search{
+  background-color: rgba(31, 41, 55, 1);
+  color: white;
 }
 
-.custom-btn {
-  background-color: rgb(118, 36, 194);
-  border-color: rgb(118, 36, 194);
+.btn-search:hover{
+  background-color: lighten($color: rgba(31, 41, 55, 1), $amount: 10);
+  color: white;
+}
+
+.card_formateur:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
 .infos {
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
-  grid-gap: 1rem;
+  align-items: center;
   gap: 1rem;
+  flex-wrap: wrap; /* Allow wrapping for smaller screens */
 }
 
 .image {
-  height: 7rem;
-  width: 7rem;
-  border-radius: 0.5rem;
-  background-color: rgb(118, 36, 194);
-  background: linear-gradient(to bottom right, rgb(118, 36, 194), rgb(185, 128, 240));
+  flex-shrink: 0; /* Prevent the image from shrinking */
+  width: 50%; /* Set image width to half of the card */
+  height: 100%; /* Full height of the card */
 }
 
+.image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Cover the entire area */
+}
+
+
 .info {
-  height: 7rem;
-  flex: 1;
+  padding: 1rem; /* Add some padding around the info */
+  flex-grow: 1; /* Allow the info section to take the remaining space */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.name, .function {
+  margin: 0;
 }
 
 .name {
@@ -106,51 +59,70 @@
   line-height: 1.75rem;
   font-weight: 500;
   color: rgba(255, 255, 255, 1);
+  margin-bottom: 0.25rem;
 }
 
 .function {
-  font-size: 0.75rem;
-  line-height: 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   color: rgba(156, 163, 175, 1);
+  margin-bottom: 0.5rem;
+}
+
+#avis{
+  color: white !important;
 }
 
 .stats {
-  width: 100%;
+  background-color: #434f5f;
   border-radius: 0.5rem;
-  background-color: rgba(255, 255, 255, 1);
   padding: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.75rem;
-  line-height: 1rem;
-  color: rgba(0, 0, 0, 1);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+
+
 }
 
 .flex {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 4px;
 }
 
 .state-value {
   font-weight: 700;
-  color: rgb(118, 36, 194);
+  color: #ffd700;
 }
 
 .request {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   width: 100%;
   border: 1px solid transparent;
   border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
   font-size: 1rem;
   line-height: 1.5rem;
-  transition: all .3s ease;
+  background-color: rgb(118, 36, 194);
+  color: #fff;
+  text-align: center;
+  transition: background-color .3s ease;
 }
 
 .request:hover {
-  background-color: rgb(118, 36, 194);
-  color: #fff;
+  background-color: rgb(140, 58, 218);
+}
+
+.btn-message {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-message svg {
+
+  width: 20px;
+  height: 20px;
 }
