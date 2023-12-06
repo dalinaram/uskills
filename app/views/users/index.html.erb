@@ -1,45 +1,38 @@
 <%= render "shared/section" %>
+<div class="container gap-3 d-flex flex-column mt-4">
 <%= render "shared/category" %>
 <% if current_user.role == 'learn' %>
-<div class="container mt-4">
-  <h2 class="section-title">Nos Meilleurs Formateurs</h2>
+  <h3 class="text-center my-4">Nos Meilleurs Formateurs</h3>
   <div class="row">
     <% @teachers.each do |t| %>
-      <div class="col-md-3 mb-4">
-        <div class="card_formateur">
-          <div class="infos">
-            <div class="image">
-              <%= cl_image_tag(t.photo.key, height: 112, width: 70, crop: :fill) if t.photo.attached? %>
-            </div>
-            <div class="info">
-              <div>
-                <p class="name"><%= t.name %> <%= t.last_name %></p>
-                <p class="function"><i class="fas fa-book"></i> <%= t.interest %></p>
-              </div>
-              <div class="stats">
-                <p class="flex flex-col">
-                  Contributions
-                  <span class="state-value">98</span>
-                </p>
-                <p class="flex">
-                  Avis
-                  <span class="state-value"><%= render_rating(t.rating) %> </span>
-                </p>
-              </div>
-               <div class="btn-message">
-               <%= link_to user_path(t), class: "btn-message ml-2" do %>
-              <svg viewBox="0 0 16 16" class="bi bi-chat-dots-fill" fill="white" height="16" width="16">
-                <path d="M0 0h16v16H0z"/>
-              </svg>
-            <% end %>
-            </div>
-            </div>
-          </div>
+  <div class="col-md-3 mb-4">
+     <%= link_to user_path(t), class:"card_formateur" do %>
+
+      <% if t.photo.attached? %>
+        <div class="image">
+          <%= cl_image_tag(t.photo.key, height: 112, width: 70, crop: :fill) %>
         </div>
+      <% end %>
+      <div class="info">
+        <div>
+          <p class="name"><%= t.name %> <%= t.last_name %></p>
+          <p class="function"><i class="fas fa-book"></i> <%= t.interest %></p>
+        </div>
+        <div class="stats">
+          <p class="flex" id="avis">
+            Avis
+            <span class="state-value"><%= render_rating(t.rating) %></span>
+          </p>
+        </div>
+
       </div>
-    <% end %>
+
+   <% end %>
   </div>
+<% end %>
+
 </div>
 <% end %>
+  </div>
 
 <%= link_to "Retour à l'accueil", users_path, class: "btn btn-secondary my-2 my-sm-0 mx-5 mt-2" %>
