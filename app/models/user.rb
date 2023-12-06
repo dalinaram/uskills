@@ -18,6 +18,9 @@ class User < ApplicationRecord
   def self.students
     where(role: 'learn')
   end
+  # def validated_reservations_count
+  #   reservations.where(statut: 'Validée').count
+  # end
 
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?

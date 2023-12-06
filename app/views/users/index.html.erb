@@ -6,30 +6,40 @@
   <div class="row">
     <% @teachers.each do |t| %>
       <div class="col-md-3 mb-4">
-        <div class="cardm">
-          <div class="cardimg">
-          <%= cl_image_tag(t.photo.key, height: 300, width: 300, crop: :fill) if t.photo.attached? %>
-
-
-          </div>
-          <div class="card-body">
-            <h5><%= t.name %> <%= t.last_name %></h5>
-            <div class="rating">
-              <%= render_rating(t.rating) %> <!-- En supposant que vous avez une méthode d'assistance pour le rendu des évaluations -->
+        <div class="card_formateur">
+          <div class="infos">
+            <div class="image">
+              <%= cl_image_tag(t.photo.key, height: 112, width: 70, crop: :fill) if t.photo.attached? %>
             </div>
-            <p><i class="fas fa-envelope"></i> <%= t.email %></p>
-            <p><i class="fas fa-map-marker-alt"></i> <%= t.address %></p>
-            <p><i class="fas fa-book"></i> <%= t.interest %></p>
-            <%= link_to "Voir plus de détails", user_path(t), class: "btn-primary-index mt-2" %>
+            <div class="info">
+              <div>
+                <p class="name"><%= t.name %> <%= t.last_name %></p>
+                <p class="function"><i class="fas fa-book"></i> <%= t.interest %></p>
+              </div>
+              <div class="stats">
+                <p class="flex flex-col">
+                  Contributions
+                  <span class="state-value">98</span>
+                </p>
+                <p class="flex">
+                  Avis
+                  <span class="state-value"><%= render_rating(t.rating) %> </span>
+                </p>
+              </div>
+               <div class="btn-message">
+               <%= link_to user_path(t), class: "btn-message ml-2" do %>
+              <svg viewBox="0 0 16 16" class="bi bi-chat-dots-fill" fill="white" height="16" width="16">
+                <path d="M0 0h16v16H0z"/>
+              </svg>
+            <% end %>
+            </div>
+            </div>
           </div>
         </div>
       </div>
     <% end %>
   </div>
 </div>
-
-<%= link_to "Retour à l'accueil", users_path, class: "btn btn-secondary my-2 my-sm-0 mx-5 mt-2" %>
- <% end %>
-
+<% end %>
 
 

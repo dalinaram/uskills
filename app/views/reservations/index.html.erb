@@ -4,10 +4,17 @@
   <% @reservations.each do |reservation| %>
     <div class="card mb-3">
       <div class="card-body">
-        <h5 class="card-title">Réservation</h5>
+        <h5 class="card-title">Mes demandes d'échanges de compétences</h5>
         <p class="card-text">Date de début : <%= reservation.start_date %></p>
         <p class="card-text">Date de fin : <%= reservation.end_date %></p>
-          <%= reservation.statut %>
+          <% if reservation.statut == 'Validée' %>
+      <div class="reservation-card card border border-black mb-3 bg-success">
+    <% elsif reservation.statut == 'Refusée'%>
+      <div class="reservation-card card border border-black mb-3 bg-danger">
+    <% else %>
+      <div class="reservation-card card border border-black mb-3">
+    <% end %> <%= reservation.statut %>
+    </div>
 
           <% if current_user.role == 'teach' %>
           <%= button_to "Accepter", validate_path(), method: :post, params: {reservation_id: reservation.id},class: "btn btn-primary" %>
@@ -25,4 +32,3 @@
   <% end %>
 
 </div>
-
