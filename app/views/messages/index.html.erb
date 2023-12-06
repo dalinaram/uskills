@@ -2,7 +2,7 @@
   <h1 class="mb-4">Messages</h1>
 </center>
 
-<%= link_to "New message +", new_user_message_path, class: "btn btn-primary text-white" %>
+<%= link_to "New message +", new_user_message_path, class: "btn btn-primary text-light" %>
 <br><br>
 
 <% if @messages_send.any? %>
@@ -39,7 +39,7 @@
           <p><strong></strong> <% message.to.name %></p>
           <p><strong></strong> <%= message.content %></p>
         </div>
-     
+
       </div>
     <% end %>
   </div>
