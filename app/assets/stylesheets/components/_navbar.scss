@@ -3,10 +3,9 @@
   box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Adds a subtle shadow for depth */
   padding: 0.5rem 1rem;
   justify-content: space-between;
-
   height: 80px;
 
-  
+
 
 }
 
@@ -17,10 +16,9 @@
 
 .navbar-lewagon .navbar-logo {
   width: 80px; /* Adjust as needed */
-
   height: 80px, auto;
 
-  
+
 }
 
 .navbar-toggler {
@@ -37,7 +35,6 @@
 .navbar-nav .nav-item .nav-link:hover,
 .navbar-nav .nav-item .nav-link:focus {
   color: #007791; /* Or a color that highlights the item */
-
   height: 80px, auto;
 
 }
@@ -70,6 +67,5 @@
 .navbar-nav {
   display: flex;
   align-items: center;
- 
-}
 
+}
