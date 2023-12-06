@@ -43,8 +43,7 @@ class SkillsController < ApplicationController
   end
 
   def perform_search(query)
-    title_query = query["title"].downcase if query.present? && query["title"].present?
-    Skill.where("lower(title) = ?", title_query)
+    Skill.where("lower(title) ILIKE ?", "%#{query.downcase}%")
   end
 
   def  update
