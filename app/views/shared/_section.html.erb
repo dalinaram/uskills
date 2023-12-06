@@ -6,9 +6,9 @@
           <h2 class="hero-title">Apprenez à Votre Rythme, Enrichissez Votre Avenir</h2>
           <p class="hero-subtitle">Découvrez des Cours Uniques Dispensés par des Experts</p>
           <%= form_tag(search_skills_path, method: :get, class: "d-flex") do %>
-                          <input class="form-control me-2" name="query[title]" type="search" placeholder="Search by Category" aria-label="Search"
+                          <input class="form-control me-2" name="query[title]" type="search" placeholder="Rechercher une catégorie" aria-label="Search"
                           value="<%= params.dig(:query, :title) %>">
-                          <button class="btn btn-search" type="submit">Search</button>
+                          <button class="btn btn-search" type="submit">Rechercher</button>
                           <% end %>
 
         </div>

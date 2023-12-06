@@ -20,12 +20,12 @@
                         <% if @user.role=='teach' %>
 
                           <% @user.skills.each do |skill| %>
-                            <div class="btn btn-outline-primary">
-                              <li class="btn btn-outline-primary"><strong>Skills:</strong>
+                            <div class="#">
+                              <li class="#"><strong>Skills:</strong>
                                 <%= skill.title %>
                               </li>
                             </div>
-                            <div class="btn btn-outline-primary">Description: <%= skill.description %>
+                            <div class="#">Description: <%= skill.description %>
                             </div>
                             <% end %>
                               <% end %>
@@ -37,7 +37,7 @@
 
 
                   <ul class="list-group list-group-flush">
-                    <li class="btn btn-outline-primary"><strong>Interests:</strong>
+                    <li class="#"><strong>Interests:</strong>
                       <%= @user.interest %>
                     </li>
                   </ul>
@@ -68,7 +68,7 @@
 <%if current_user==@user %>
   <% if @user.role=="teach" %>
     <div class="d-inline-flex gap-3">
-        <%= link_to "Voir les détails" , skills_path(@skill), class: "shadow__btn" %>
+        <!-- <%= link_to "Voir les détails" , skills_path(@skill), class: "shadow__btn" %> -->
 
 
           <%= link_to "Ajouter une compétence" , new_skill_path, class: "shadow__btn" %>
@@ -149,7 +149,7 @@
                     <%if current_user==@user %>
                       <% if @user.role=="teach" %>
                         <% @reviews.each do |review| %>
-                          <div class="btn btn-outline-primary">
+                          <div class="cardm">
                             <p>Star: <%= review.rating %> - Review: <br>
                                 <%= review.content %>
                             </p>
