@@ -1,34 +1,61 @@
 <div class="container">
-  <h1 class="display-4 text-center mt-5 mb-4">Reservations</h1>
+  <h2>Bonjour, voici tes demandes d'échanges</h2>
+  <h3 class="display-4 text-center mt-5 mb-4">Reservations</h3>
 
   <% @reservations.each do |reservation| %>
-    <div class="card mb-3">
-      <div class="card-body">
-        <h5 class="card-title">Mes demandes d'échanges de compétences</h5>
-        <p class="card-text">Date de début : <%= reservation.start_date %></p>
-        <p class="card-text">Date de fin : <%= reservation.end_date %></p>
-          <% if reservation.statut == 'Validée' %>
-      <div class="reservation-card card border border-black mb-3 bg-success">
+
+<div class="d-flex list">
+     <div class="card_formateur">
+          <div class="infos">
+            <div class="image">
+             <%= cl_image_tag(reservation.teacher.photo.key, height: 300, width: 300, crop: :fill) if reservation.teacher.photo.attached? %>
+            </div>
+            <div class="info">
+              <div>
+                <p class="name"><%= reservation.teacher.name %> <%= reservation.teacher.last_name %></p>
+                <p class="function"><i class="fas fa-book"></i> <%= reservation.teacher.interest %></p>
+              </div>
+              <div class="stats">
+                <p class="flex flex-col">
+                  Contributions
+                  <span class="state-value">98</span>
+                </p>
+                <p class="flex">
+                  Avis
+                  <span class="state-value"><%= render_rating(reservation.teacher.rating) %> </span>
+                </p>
+              </div>
+      <div class="d-block">
+        <div>Date de début : <%= reservation.start_date %></div>
+        <div>Date de fin : <%= reservation.end_date %></div>
+<div class="btn btn-primary">
+
+<% if reservation.statut == 'Validée' %>
+  <% if current_user.role == 'teach' %>
+            <%= button_to "Accepter", validate_path(), method: :post, params: {reservation_id:  reservation.id},class: "btn btn-primary" %>
     <% elsif reservation.statut == 'Refusée'%>
-      <div class="reservation-card card border border-black mb-3 bg-danger">
+             <%= link_to "Refuser", user_reservation_path(reservation.teacher, reservation), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
     <% else %>
-      <div class="reservation-card card border border-black mb-3">
-    <% end %> <%= reservation.statut %>
-    </div>
 
-          <% if current_user.role == 'teach' %>
-          <%= button_to "Accepter", validate_path(), method: :post, params: {reservation_id: reservation.id},class: "btn btn-primary" %>
-         <%= link_to "Refuser", user_reservation_path(reservation.teacher, reservation), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
-<% end %>
+    <% end %>
+      <%= reservation.statut %>
+ <% end %>
+
+    </div>
       </div>
-    </div>
-
- <div class="d-flex justify-content-between">
+</div>
 
 
+</ul>
 
-        </div>
+
+
+
+
+
+
+
+
 
   <% end %>
-
 </div>
