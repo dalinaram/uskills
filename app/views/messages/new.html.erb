@@ -1,19 +1,20 @@
 <!-- app/views/messages/new.html.erb -->
 <div class="container mt-4">
   <center>
-    <h1 class="mb-4">New message 📤</h1>
+    <h1 class="mb-4">Nouveau message 📤</h1>
   </center>
   <div class="iphone-message-container">
     <div class="iphone-message">
       <%= simple_form_for [@user, @message] do |f| %>
         <div class="mb-3">
-          <%= f.label :to_id, 'To', class: 'form-label' %>
-          <%= f.collection_select :to_id, User.all, :id, :name, { prompt: 'Select User' }, class: 'form-select' %>
+          <%= f.label :to_id, 'A:', class: 'form-label' %>
+          <%= f.collection_select :to_id, User.all, :id, :name, { prompt: '
+          Choisir un destinataire:' }, class: 'form-select' %>
         </div>
 
         <div class="mb-3">
-          <%= f.label :content, 'Message Content', class: 'form-label' %>
-          <%= f.text_area :content, rows: 4, class: 'form-control', placeholder: 'Enter your message...' %>
+          <%= f.label :content, 'Contenu du message', class: 'form-label' %>
+          <%= f.text_area :content, rows: 4, class: 'form-control', placeholder: 'Entrez votre message...' %>
         </div>
 
         <div class="d-grid">
