@@ -1,50 +1,69 @@
-<center>
-  <h1 class="mb-4">Messages</h1>
-</center>
+<div class="bg">
+  <center>
+    <h1 class="mb-4 " style="color: aliceblue;">Messages</h1>
+  </center>
 
-<%= link_to "New message +", new_user_message_path, class: "btn btn-primary text-light" %>
-<br><br>
+  <%= link_to "Nouveau message +" , new_user_message_path, class: "btn btn-primary text-light" %>
+    <br><br>
 
-<% if @messages_send.any? %>
-  <div class="iphone-message-container">
-    <% @messages_send.each do |message| %>
-      <div class="iphone-message">
-        <div class="iphone-message-header">
-          <span class="iphone-sender"><%= message.from.name %></span>
-          <span class="iphone-date"><%= message.created_at %></span>
-        </div>
-        <div class="message-bubble">
-          <p><strong></strong> <% message.to.name %></p>
-          <p><strong></strong> <%= message.content %></p>
-        </div>
+    <% if @messages_send.any? %>
+      <div class="iphone-message-container">
+        <% @messages_send.each do |message| %>
+          <div class="iphone-message">
+            <div class="iphone-message-header">
+              <span class="iphone-sender">
+                <%= message.from.name %>
+              </span>
+              <span class="iphone-date">
+                <%= message.created_at %>
+              </span>
+            </div>
+            <div class="message-bubble">
+              <p><strong></strong>
+                <% message.to.name %>
+              </p>
+              <p><strong></strong>
+                <%= message.content %>
+              </p>
+            </div>
 
+          </div>
+          <% end %>
       </div>
-    <% end %>
-  </div>
-<% else %>
-  <div class="alert alert-info" role="alert">
-    No sent messages available.
-  </div>
-<% end %>
-
-<% if @messages_received.any? %>
-  <div class="iphone-message-container">
-    <% @messages_received.each do |message| %>
-      <div class="iphone-message">
-        <div class="iphone-message-header">
-          <span class="iphone-sender"><%= message.from.name %></span>
-          <span class="iphone-date"><%= message.created_at %></span>
+      <% else %>
+        <div class="alert alert-info" role="alert">
+          Aucun message envoyé disponible.
         </div>
-        <div class="message-bubble">
-          <p><strong></strong> <% message.to.name %></p>
-          <p><strong></strong> <%= message.content %></p>
-        </div>
+        <% end %>
 
-      </div>
-    <% end %>
-  </div>
-<% else %>
-  <div class="alert alert-info" role="alert">
-    No received messages available.
-  </div>
-<% end %>
+          <% if @messages_received.any? %>
+            <div class="iphone-message-container">
+              <% @messages_received.each do |message| %>
+                <div class="iphone-message">
+                  <div class="iphone-message-header">
+                    <span class="iphone-sender">
+                      <%= message.from.name %>
+                    </span>
+                    <span class="iphone-date">
+                      <%= message.created_at %>
+                    </span>
+                  </div>
+                  <div class="message-bubble">
+                    <p><strong></strong>
+                      <% message.to.name %>
+                    </p>
+                    <p><strong></strong>
+                      <%= message.content %>
+                    </p>
+                  </div>
+
+                </div>
+                <% end %>
+            </div>
+            <% else %>
+              <div class="alert alert-info" role="alert">
+Aucun message reçu disponible.
+              </div>
+              <% end %>
+
+</div>
