@@ -1,35 +1,36 @@
 <!-- app/views/messages/show.html.erb -->
 
+<div class="bg">
+  <div class="card mt-4">
+    <div class="card-body">
+      <h1 class="card-title mb-4">
+        Détails du message</h1>
 
-<div class="card mt-4">
-  <div class="card-body">
-    <h1 class="card-title mb-4">
-      Détails du message</h1>
+      <dl class="row">
+        <dt class="col-sm-3">Message De:</dt>
+        <dd class="col-sm-9">
+          <%= @message.student.name %>
+        </dd>
 
-    <dl class="row">
-      <dt class="col-sm-3">Message De:</dt>
-      <dd class="col-sm-9">
-        <%= @message.student.name %>
-      </dd>
+        <dt class="col-sm-3">À:</dt>
+        <dd class="col-sm-9">
+          <%= @message.teacher.name %>
+        </dd>
 
-      <dt class="col-sm-3">À:</dt>
-      <dd class="col-sm-9">
-        <%= @message.teacher.name %>
-      </dd>
+        <dt class="col-sm-3">Contenu:</dt>
+        <dd class="col-sm-9">
+          <%= @message.content %>
+        </dd>
 
-      <dt class="col-sm-3">Contenu:</dt>
-      <dd class="col-sm-9">
-        <%= @message.content %>
-      </dd>
+        <dt class="col-sm-3">Envoyé à:</dt>
+        <dd class="col-sm-9">
+          <%= @message.created_at %>
+        </dd>
+      </dl>
 
-      <dt class="col-sm-3">Envoyé à:</dt>
-      <dd class="col-sm-9">
-        <%= @message.created_at %>
-      </dd>
-    </dl>
-
-    <%= link_to 'Retour' , user_messages_path(current_user), class: 'btn secondary mr-2' %>
+      <%= link_to 'Retour' , user_messages_path(current_user), class: 'btn secondary mr-2' %>
 
 
+    </div>
   </div>
 </div>
