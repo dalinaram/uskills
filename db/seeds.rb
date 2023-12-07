@@ -19,7 +19,7 @@ thomas = User.create(email: "thomas@gmail.com", name: "Thomas", last_name: "Trao
 thomas.photo.attach(io: URI.open('https://ca.slack-edge.com/T02NE0241-U05UABYTT7A-7ae67a85c0df-512'), filename: 'thomas.jpg')
 
 julia = User.create(email: "julia@example.com", name: "Julia", last_name: "Roberts", interest: "Data Science", address: "10 rue de Rivoli, 75004 Paris", rating: 4, role: "teach", password: "123456")
-julia.photo.attach(io: URI.open('https://www.beziehungsratgeber.net/wp-content/uploads/2018/05/Wie-verliebt-sich-ein-Mann-in-mich-Interview-mit-einem-Experten.jpg'), filename: 'julia.jpg')
+julia.photo.attach(io: URI.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRgUoLW5Ngr28Qtg-BAQqe87H33X_lbaSUHsTEx3MuDtdd8gaOns0choWMY60QvhW4q0jM&usqp=CAU'), filename: 'julia.jpg')
 
 marc = User.create(email: "marc@example.com", name: "Marc", last_name: "Dupont", interest: "Machine Learning", address: "15 rue Oberkampf, 75011 Paris", rating: 5, role: "learn", password: "123456")
 marc.photo.attach(io: URI.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTJ4E6F6WTY0AgnUXrwFH3V6vRBzaLSrdNlwQ&usqp=CAU'), filename: 'marc.jpg')
@@ -55,12 +55,17 @@ amandine.photo.attach(io: URI.open('https://www.monatout-rencontres.fr/blog/imgs
 adrian = User.create(email: "mamou@gmail.com", name: "Adrian", last_name: "Barbara", interest: "Mathématique", address: "Localisation ZAE la Grue 5 rue Gustave Eiffel 26120 Chabeuil  ", rating: 2, role: "teach", password: "123456")
 adrian.photo.attach(io: URI.open('https://source.unsplash.com/random/profil'), filename: 'adrian.jpg')
 
+son = User.create(email: "son@gmail.com", name: "Son", last_name: "Yang", interest: "Mathématique", address: "Localisation ZAE la Grue 5 rue Gustave Eiffel 26120 Chabeuil  ", rating: 5, role: "teach", password: "123456")
+son.photo.attach(io: URI.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbGYg5-oYG4oQgcDWUfn_gdcaOdZlcZxabYA&usqp=CAU'), filename: 'son.jpg')
+
 # # Additional demo users end here
 
 
 # Messages
-Message.create(from_id: mahmoud.id, to_id: dalina.id, content: "Salut Dalina, je suis intéressé par ton cours d'algèbre.")
+Message.create(from_id: thomas.id, to_id: dalina.id, content: "Salut Dalina, je suis intéressé par ton cours d'algèbre.")
 Message.create(from_id: ahmed.id, to_id: julia.id, content: "Bonjour Julia, pouvez-vous fournir plus de détails sur votre programme de Science des Données ?")
+Message.create(from_id: dalina.id, to_id: thomas.id, content: "Salut Thomas, je suis diponible pour te former sur le cours que tu as choisit pendant les dates tu as selactionnées.")
+Message.create(from_id: thomas.id, to_id: dalina.id, content: "Merci beaucoup,j'espère que je serai à la hauteur de votre confiance.")
 
 # Réservations
 Reservation.create(teacher: dalina, student: mahmoud, start_date: Date.today, end_date: Date.today + 30)
@@ -86,11 +91,9 @@ Skill.create(title: "Analyse Mathématique", description: "Maîtrisez les concep
 Skill.create(title: "Développement Web Full-Stack", description: "Apprenez le développement complet d'applications web, du front-end au back-end.", user: thomas)
 Skill.create(title: "Science des Données Avancée", description: "Explorez les techniques avancées d'analyse de données et de machine learning.", user: julia)
 Skill.create(title: "Intelligence Artificielle", description: "Plongez dans le monde passionnant de l'intelligence artificielle.", user: marc)
-Skill.create(
-  title: "Composition Musicale",
-  description: "Apprenez les fondamentaux de la composition musicale, y compris la théorie musicale, l'harmonie et l'arrangement.",
-  user: bob
+Skill.create(title: "Composition Musicale",description: "Apprenez les fondamentaux de la composition musicale, y compris la théorie musicale, l'harmonie et l'arrangement.",user: bob
 )
+Skill.create(title: "Mathématiques Discrètes", description: "Explorez les concepts avancés des mathématiques discrètes, y compris les graphes, les arbres et les ensembles.", user: son)
 
 # Skills for Rahma Chengou (Interest: Java)
 Skill.create(
