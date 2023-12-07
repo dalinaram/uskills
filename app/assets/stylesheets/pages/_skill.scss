@@ -1,0 +1,88 @@
+/* Style for the skill cards */
+.custom-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  height: 100%;
+  position: relative;
+}
+
+/* Style for the user profile image (centered big avatar) */
+.custom-card-img-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  width: 200px; /* Adjust the height of the avatar */
+}
+
+.custom-card-img-top img {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 50%; /* Creates a circular avatar */
+}
+
+/* Style for the skill title */
+.custom-card-title {
+  font-size: 24px;
+  margin-top: 15px;
+  text-align: center; /* Center the title text */
+}
+
+/* Style for the skill description */
+.custom-card-text {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #6c757d;
+  text-align: center; /* Center the description text */
+}
+
+/* Style for the "View Profile" button */
+.custom-btn-success {
+  position: absolute;
+  bottom: 10px; /* Center the button at the bottom */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  background-color: rgba(31, 41, 55, 1);
+  border-color: rgba(31, 41, 55, 1);
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.2s ease-in-out;
+  width: 150px; /* Adjust button width as needed */
+}
+
+.custom-btn-success:hover {
+  background-color: lighten($color: rgba(31, 41, 55, 1), $amount: 10);
+}
+
+.custom-btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  padding: 10px 15px;
+  cursor: pointer;
+  display: inline-block;
+  transition: background-color 0.2s ease-in-out;
+  width: 150px; /* Adjust button width as needed */
+}
+
+.custom-btn-secondary:hover {
+  background-color: lighten(#6c757d, 10%);
+}

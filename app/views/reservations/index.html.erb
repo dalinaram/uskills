@@ -1,42 +1,43 @@
-<div class="container">
-  <h2>Bonjour, voici tes demandes d'échanges</h2>
-  <h3 class="display-4 text-center mt-5 mb-4">Reservations</h3>
+<div class="container mt-4">
+   <div class="header">
+    <h2 class="greeting mb-4"> 👋 Bonjour <%= current_user.name %>, voici tes réservations :</h2>
+
+  </div>
 
   <% @reservations.each do |reservation| %>
-    <div class="d-flex list">
-      <div class="card_formateur">
-        <div class="image">
-          <%= cl_image_tag(reservation.teacher.photo.key, height: 300, width: 300, crop: :fill) if reservation.teacher.photo.attached? %>
+    <div class="card-formateur mb-4">
+      <div class="card-formateur-header">
+        <div class="card-formateur-image">
+          <%= cl_image_tag(reservation.teacher.photo.key, height: 100, width: 100, crop: :fill) if reservation.teacher.photo.attached? %>
         </div>
-        <div class="info">
-          <div>
-            <p class="name"><%= reservation.teacher.name %> <%= reservation.teacher.last_name %></p>
-            <p class="function"><i class="fas fa-book"></i> <%= reservation.teacher.interest %></p>
+        <div class="card-formateur-info">
+          <p class="card-formateur-name"><%= reservation.teacher.name %> <%= reservation.teacher.last_name %></p>
+          <p class="card-formateur-interest"><i class="fas fa-book"></i> <%= reservation.teacher.interest %></p>
+        </div>
+      </div>
+      <div class="card-formateur-body">
+        <div class="card-formateur-stats">
+          <p class="card-formateur-avis">
+            Avis
+            <span class="state-value"><%= render_rating(reservation.teacher.rating) %></span>
+          </p>
+        </div>
+        <div class="card-formateur-details">
+          <div class="card-formateur-date">
+            <p>Début : <%= reservation.start_date.strftime('%d %b %Y') %></p>
+            <p>Fin : <%= reservation.end_date.strftime('%d %b %Y') %></p>
           </div>
-          <div class="stats">
-            <p class="flex flex-col">
-              Contributions
-              <span class="state-value">98</span>
-            </p>
-            <p class="flex">
-              Avis
-              <span class="state-value"><%= render_rating(reservation.teacher.rating) %> </span>
-            </p>
-          </div>
-          <div class="d-block">
-            <div>Date de début : <%= reservation.start_date %></div>
-            <div>Date de fin : <%= reservation.end_date %></div>
-            <div class="btn btn-primary">
-              <% if reservation.statut == 'Validée' %>
-                <% if current_user.role == 'teach' %>
-                  <%= button_to "Accepter", validate_path(), method: :post, params: { reservation_id:  reservation.id},class: "btn btn-primary" %>
-                <% elsif reservation.statut == 'Refusée'%>
-                  <%= link_to "Refuser", user_reservation_path(reservation.teacher, reservation), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: "btn btn-danger" %>
-                <% else %>
-                <% end %>
-                <%= reservation.statut %>
+          <div class="card-formateur-actions">
+            <% if reservation.statut == 'Validée' %>
+              <% if current_user.role == 'teach' %>
+                <%= button_to "Accepter", validate_path(), method: :post, params: { reservation_id: reservation.id }, class: "btn btn-primary" %>
+              <% elsif reservation.statut == 'Refusée' %>
+                <%= link_to "Refuser", user_reservation_path(reservation.teacher, reservation), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr(e)?" }, class: "btn btn-danger" %>
+              <% else %>
+                <!-- Handle other cases as needed -->
               <% end %>
-            </div>
+              <%= reservation.statut %>
+            <% end %>
           </div>
         </div>
       </div>

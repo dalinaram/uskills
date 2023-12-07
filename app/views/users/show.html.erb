@@ -1,231 +1,114 @@
-<div class="cardm">
-  <!-- Contenu spécifique à l'enseignant -->
-  <% if @user.role=='teach' %>
-    <p>Votre Profile.</p>
+<div class="teacher-profile">
+
+  <!-- Header Section with Avatar and Name -->
+  <div class="teacher-header">
+    <div class="teacher-avatar">
+      <%= cl_image_tag @user.photo.key, height: 400, width: 400, crop: :fill, class: "avatar-img" if @user.photo.attached? %>
+    </div>
+    <div class="teacher-info">
+      <h4>Bonjour, je suis</h4>
+      <h1><%= @user.name %></h1>
+    </div>
+  </div>
+
+  <!-- Skills and Interests Section -->
+<% if @user.role == 'teach' %>
+  <div class="teacher-details">
+    <h2><i class="fas fa-cog"></i>Compétences</h2>
+    <ul>
+      <% @user.skills.each do |skill| %>
+        <li class="skill">
+          <strong><%= skill.title %>:</strong> <%= skill.description %>
+        </li>
+      <% end %>
+    </ul>
+    <p class="interests"><strong>Intérêts :</strong> <%= @user.interest %></p>
+  </div>
+<% end %>
+
+
+  <!-- Action Button for Teachers -->
+  <% if current_user == @user && @user.role == "teach" %>
+    <div class="teacher-actions">
+      <%= link_to "Ajouter une compétence", new_skill_path, class: "action-btn" %>
+    </div>
+  <% end %>
+
+  <!-- Booking Section for Students -->
+  <div class="about-content" data-controller="toggle">
+    <% if @user.role == 'teach' && @user != current_user %>
+      <button class="toggle-btn" data-action="click->toggle#fire"><i class='fas fa-calendar-alt'></i>  Réserver cette formation</button>
+      <div data-toggle-target="display" class="reservation-form d-none">
+        <%= simple_form_for([@user, @reservation]) do |f| %>
+          <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker" }, placeholder: 'JJ/MM/AAAA' }, label: 'Date de début', label_html: { class: 'form-label' } %>
+          <%= f.input :end_date, as: :string, input_html: { data: { controller: "datepicker" }, placeholder: 'JJ/MM/AAAA' }, label: 'Date de fin', label_html: { class: 'form-label' } %>
+
+          <%= f.submit "Réserver maintenant", class: "btn btn-info" %>
+        <% end %>
+      </div>
     <% end %>
-      <!-- HEADER PART -->
-      <header id="home" class="header-area">
-        <div class="container">
-          <div class="row align-items-center">
-            <div class="col-xl-5 col-lg-6">
-              <div class="header-content-right">
-                <h4 class="sub-title">Hello, I’m</h4>
-                <h1 class="text-center">
-                  <%= @user.name %>
-                </h1>
-                <div class="cardm">
-                  <div class="skill-bar">
-                    <div class="bar-inner">
-                      <ul class="list-group list-group-flush">
-                        <% if @user.role=='teach' %>
 
-                          <% @user.skills.each do |skill| %>
-                            <div class="#">
-                              <li class="#"><strong>Skills:</strong>
-                                <%= skill.title %>
-                              </li>
-                            </div>
-                            <div class="#">Description: <%= skill.description %>
-                            </div>
-                            <% end %>
-                              <% end %>
-                    </div>
+  </div>
+
+    <div class="map-container" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-map-markers-value="<%= @markers.to_json %>"></div>
 
 
-                  </div>
+<div class="reviews" data-controller="reviews">
 
+    <div class="title-review">
 
+      <h3>Avis des étudiants</h3>
+       <% if @reviews.size > 1 %>
+      <button data-action="click->reviews#toggleReviews" data-reviews-target="toggleButton" class="btn btn-info mt-2">Voir plus</button>
+    <% end %>
+    </div>
+  <div id="reviews-container">
+    <% displayed_reviews = @reviews.take(1) %>
+    <% additional_reviews = @reviews.drop(1) %>
 
-                  <ul class="list-group list-group-flush">
-                    <li class="#"><strong>Interests:</strong>
-                      <%= @user.interest %>
-                    </li>
-                  </ul>
+    <% displayed_reviews.each do |review| %>
+      <div class="review">
+        <p><span class="star-rating"><%= render_rating(review.rating) %></span> <br><%= review.content %></p>
+      </div>
+    <% end %>
 
-                </div>
-              </div>
-             <!-- header content right -->
-            </div>
-            <!-- user photo start  -->
+    <% if additional_reviews.any? %>
+      <div class="additional-reviews d-none" data-reviews-target="additionalReviews" >
+        <% additional_reviews.each do |review| %>
+          <div class="review">
+            <p><span class="star-rating"><%= render_rating(review.rating) %></span> <br><%= review.content %></p>
 
-            <div class="col-lg-4 offset-xl-1">
-              <div class="user-photo">
-                <div class="cardimg">
-                  <!-- Utilisation d'une classe différente pour la div entourant la photo -->
-                  <%= cl_image_tag @user.photo.key, height: 300, width: 400, crop: :fill if @user.photo.attached? %>
-                </div>
-              </div>
-            </div>
-
-            <!-- user photo end-->
           </div>
-        </div>
-</div> <!-- row -->
-</div> <!-- container -->
-</header>
+        <% end %>
+      </div>
+
+    <% end %>
+  </div>
 
 
-<%if current_user==@user %>
-  <% if @user.role=="teach" %>
-    <div class="d-inline-flex gap-3">
-        <!-- <%= link_to "Voir les détails" , skills_path(@skill), class: "shadow__btn" %> -->
+  <%= form_with(model: [@user, Review.new], url: user_reviews_path(@user), local: true) do |form| %>
+    <div class="form-group">
+      <%= form.label :rating, 'Votre note:' %>
+      <%= form.number_field :rating, class: 'form-control', placeholder: 'Entrez votre note' %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :content, 'Votre commentaire:' %>
+      <%= form.text_area :content, class: 'form-control', placeholder: 'Partagez votre expérience...' %>
+    </div>
+
+    <%= form.submit 'Envoyer la critique', class: 'btn btn-primary' %>
+  <% end %>
 
 
-          <%= link_to "Ajouter une compétence" , new_skill_path, class: "shadow__btn" %>
-
-        </div>
-    <%end %>
-      <%end %>
-
-
-        <!-- HEADER PART ENDS -->
-
-        <!-- ABOUT PART -->
-        <section id="about" class="about-area pt-5 pb-5">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-6">
-
-
-
-                <div class="about-content mt-50" data-controller="toggle">
-
-                  <% if @user.role=='teach' %>
-                    <%unless @user==current_user %>
-                      <input data-action="click->toggle#fire" type="submit" value="Book this formation❤️"
-                        class="btn btn-success mt-2" style="width: 100%">
-
-                      <div class="col-12">
-                        <div class="flat-show-card">
-                          <div class="mt-4">
-                            <div id="form" class="d-none">
-                              <div class="cardm">
-                                <%= simple_form_for([@user, @reservation]) do |b| %>
-                                  <div class="input">
-                                    <%= b.input :start_date, as: :string, input_html: { data: { controller: "datepicker"
-                                      } } %>
-                                      <%= b.input :end_date, as: :string, input_html: { data: { controller: "datepicker"
-                                        } } %>
-                                  </div>
-                                  <%= b.submit class: "btn btn-info" %>
-                                    <% end %>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <% end %>
-
-                        <!-- affichage contenue comment pour le teach -->
-
-
-
-                        <!-- <%if @user.role=="teach" %>
-                          <%unless @user==current_user %>
-                            <div class="card">
-                              <%= month_calendar do |date| %>
-                                <%= date %>
-                                  <% end %>
-                            </div>
-                            <%end %>
-                              <%end %>
-                                <%end %> -->
-                </div> <!-- about content -->
-              </div>
-
-
-
-              <div class="col-xl-5 offset-xl-1 col-lg-6">
-                <div class="about-skills pt-25">
-
-                  <!-- map PART start here -->
-                  <div class="cardimg">
-                    <div data-controller="map"
-                       style="height: 300px;" data-map-markers-value="<%= @markers.to_json %>"
-                      data-map-api-key-value="pk.eyJ1IjoiZGFsaW5hbGVzb3VyZCIsImEiOiJjbG9teDd6MjgyeTZ3MmpwbDJqN253NmduIn0.TrksOV7ZrvFnBkvFnK7uvg">
-                    </>
-                  </div>
-                  <div>
-                    <%if current_user==@user %>
-                      <% if @user.role=="teach" %>
-                        <% @reviews.each do |review| %>
-                          <div class="cardm">
-                            <p>Star: <%= review.rating %> - Review: <br>
-                                <%= review.content %>
-                            </p>
-                          </div>
-                          <br>
-                          <hr>
-                          <% end %>
-                            <% end %>
-                              <% end %>
-                  </div>
-
-                  <!-- map PART ENDS -->
-
-                  <% if @user.role=='teach' %>
-                    <%unless @user==current_user %>
-                      <div class="cardm">
-                        <%= render "shared/form" %>
-                      </div>
-                      <h3>Reviews</h3>
-                      <div id="reviews-container">
-                        <% @reviews.each do |review| %>
-                          <div class="btn btn-outline-primary">
-                            <p>Star: <%= review.rating %> - Review: <br>
-                                <%= review.content %>
-                            </p>
-                          </div>
-                          <br>
-                          <hr>
-                          <% end %>
-
-                            <div id="additional-reviews" style="display: none;">
-                              <% @reviews.each do |review| %>
-                                <div>
-                                  <p>Star: <%= review.rating %> - Review: <br>
-                                      <%= review.content %>
-                                  </p>
-                                </div>
-                                <br>
-                                <hr>
-                                <% end %>
-
-                                  <% end %>
-                            </div>
-
-                            <button id="toggle-reviews" class="btn btn-info mt-2">Voir plus</button>
-                      </div>
-                      <% else %>
-                        <h1>student</h1>
-                        <% end %>
-
-                </div>
-              </div>
-            </div> <!-- row -->
-          </div>
-        </section>
-        <!-- ABOUT PART ENDS -->
+</div>
 
 
 
 
-        <!-- CONTACT PART -->
-        <%= link_to "Back Home" , root_path, class: "btn btn-secondary my-2 my-sm-0 mx-5" %>
-          <% if current_user==@user %>
-            <%= link_to "Edit profile" , edit_user_path(current_user), class: "btn btn-warning my-2 my-sm-0 mx-5" %>
-              <% end %>
-                </div> <!-- Fin de la div cardm spécifique à l'enseignant -->
-
-                <script>
-                  document.addEventListener('DOMContentLoaded', function () {
-                    const additionalReviews = document.getElementById('additional-reviews');
-                    const toggleButton = document.getElementById('toggle-reviews');
-
-                    if (additionalReviews && toggleButton) {
-                      toggleButton.addEventListener('click', function () {
-                        additionalReviews.style.display = (additionalReviews.style.display === 'none') ? 'block' : 'none';
-                      });
-                    }
-                  });
-                </script>
+  <!-- Footer Actions -->
+  <div class="footer-actions">
+    <%= link_to "Retour à l'accueil", root_path, class: "btn btn-secondary" %>
+    <%= link_to "Modifier le profil", edit_user_path(current_user), class: "btn btn-warning" if current_user == @user %>
+  </div>
+</div>

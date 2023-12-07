@@ -1,1 +1,248 @@
-// Specific CSS for your home-page
+.teacher-profile {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff; // Light background for better readability
+  color: #333; // Dark text for contrast
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  .teacher-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+
+    .teacher-avatar {
+      margin-right: 20px;
+
+      img {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+    }
+
+    .teacher-info {
+      h4 {
+        margin: 0;
+        color: #777;
+        font-size: 24px;
+      }
+      h1 {
+        margin-top: 0;
+        font-size: 36px;
+      }
+    }
+  }
+
+  .teacher-details {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #333; // Harmonizing text color
+
+    h2 {
+      display: flex;
+      align-items: center;
+      color: #333; // Title color
+      margin-bottom: 15px; // More space below the title
+
+      i {
+        margin-right: 10px; // Space between icon and text
+        // Add specific icon style if needed
+      }
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+
+      li.skill {
+        margin-bottom: 15px; // Increased spacing between skill items
+
+        strong {
+          color: #333; // Consistent color for skill title
+        }
+      }
+    }
+  }
+
+  .teacher-actions {
+    text-align: center;
+    margin-bottom: 20px;
+
+    .action-btn {
+      background-color: rgb(118, 36, 194);
+      &:hover {
+        background-color: rgb(140, 58, 218);
+      }
+    }
+  }
+
+  .about-content {
+    margin-bottom: 20px;
+
+    .toggle-btn {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+
+  .reservation-form {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 15px;
+
+    .form-label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+
+      input[type="string"] {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+
+        &:focus {
+          border-color: #28a745;
+          box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.25);
+        }
+      }
+    }
+
+    .btn.btn-info {
+      padding: 10px 15px;
+      margin-top: 10px;
+      width: 100%;
+    }
+  }
+}
+
+  .map-container {
+    height: 300px;
+    margin-bottom: 20px;
+  }
+
+
+
+  .footer-actions {
+    text-align: center;
+
+    .btn {
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: lighten($color: rgba(31, 41, 55, 1), $amount: 10);
+        color: white;
+      }
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+      color: white;
+    }
+
+    .btn-warning {
+      background-color: #ffc107;
+      color: black;
+    }
+  }
+}
+
+.reviews {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .reviews-title {
+    margin-bottom: 20px; // More space below the title
+    color: #333;
+    font-size: 28px; // Larger font size for the title
+  }
+
+  .review {
+    padding: 10px;
+    margin-bottom: 15px; // Increased spacing between each review
+    border-bottom: 1px solid #ddd; // Adds a separator line between reviews
+
+    &:last-child {
+      border-bottom: none; // Removes the border from the last review
+    }
+
+    p {
+      margin: 0 0 10px 0; // Spacing after each paragraph
+      color: #333;
+
+      .star-rating {
+        color: gold; // Gold color for the stars
+        // Additional star rating styles if needed
+      }
+    }
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    input[type="number"],
+    textarea {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+
+      &:focus {
+        border-color: #28a745;
+        outline: none;
+      }
+    }
+  }
+
+  .btn-primary {
+    background-color: rgba(31, 41, 55, 1);
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: lighten(rgba(31, 41, 55, 1), 10%);
+    }
+  }
+}
+
+.title-review {
+  display: flex;
+  justify-content: space-between;
+    align-items: center;
+}

@@ -1,60 +1,38 @@
-<div class="container mt-4">
-  <div class="text-center">
-    <h1>Skills</h1>
-  </div>
-
-  <% if current_user.role == 'teach' %>
-    <p>Je suis un enseignant</p>
-    <%end%>
-     <% if current_user.role == 'learn' %>
-    <p>Je suis un étudiant</p>
-
-    <%end%>
+<div class="container my-4">
+<div class="text-start mb-3">
+  <% if @skills.count.zero? %>
+    <p class="text-muted">Aucun résultat trouvé pour la requête "<%= params[:query] %>"</p>
+  <% else %>
+    <p>Il y a <span class="fw-bold"><%= @skills.count %></span> résultats pour la recherche<em class="font-italic">"<%= params[:query] %>"</em> :</p>
+  <% end %>
+</div>
 
   <div class="row">
     <% @skills.each do |skill| %>
       <div class="col-md-4 mb-4">
-         <div class="cardm">
-
-          <div class="cardimg">
-          <%= cl_image_tag(skill.user.photo.key, height: 300, width: 300, crop: :fill) if skill.user.photo.attached? %>
+        <div class="custom-card">
+          <!-- User profile image -->
+          <div class="custom-card-img-top">
+            <%= cl_image_tag(skill.user.photo.key, height: 300, width: 300, crop: :fill) if skill.user.photo.attached? %>
           </div>
 
-          <div class="card-body">
-            <h5 class="card-title text-center"><%= skill.title %></h5>
-            <p class="card-text">
-              <strong>title:</strong> <%= skill.title %><br>
-              <strong>description:</strong> <%= skill.description %><br>
+          <div class="custom-card-body">
+            <h5 class="custom-card-title text-center"><%= skill.title %></h5>
+            <p class="custom-card-text">
+
+              <%=  skill.description %>
             </p>
             <div class="text-center mt-3">
-              <a href="<%= user_path(skill.user) %>" class="btn btn-success">Voir Details Profil..</a>
+              <!-- Add an icon here if desired -->
+              <a href="<%= user_path(skill.user) %>" class="custom-btn custom-btn-success">Voir le Profil</a>
             </div>
-          </div>
-          <div class="card-footer">
-
           </div>
         </div>
       </div>
     <% end %>
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <%= link_to "Come Back", user_path(current_user), class: "btn btn-secondary mt-2" %>
-
+  <div class="text-center mt-2"> <!-- Ajout de la classe "text-center" pour centrer le bouton -->
+    <%= link_to "Retour", root_path , class: "custom-btn custom-btn-secondary" %>
   </div>
 </div>

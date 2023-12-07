@@ -1,0 +1,85 @@
+.card-formateur {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  overflow: hidden;
+  display: flex;
+  height: 100%;
+
+  .card-formateur-header {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+  }
+
+  .card-formateur-image {
+    width: 100px; /* Adjust the image width as needed */
+    height: 100px; /* Adjust the image height as needed */
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px;
+  }
+
+  .card-formateur-info {
+    flex: 1;
+  }
+
+  .header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.greeting {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+
+
+  .card-formateur-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .card-formateur-interest {
+    font-size: 16px;
+    margin: 5px 0;
+  }
+
+  .card-formateur-body {
+    padding: 20px;
+  }
+
+  .card-formateur-stats {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    .state-value {
+      font-weight: bold;
+    }
+  }
+
+  .card-formateur-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .card-formateur-date {
+      flex: 1;
+    }
+
+    .card-formateur-actions {
+      flex-shrink: 0;
+
+      .btn {
+        width: 100px; /* Adjust button width as needed */
+      }
+    }
+  }
+}

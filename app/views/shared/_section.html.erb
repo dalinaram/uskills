@@ -5,9 +5,9 @@
         <div class="col-lg-8 offset-lg-2 text-center">
           <h2 class="hero-title">Apprenez à Votre Rythme, Enrichissez Votre Avenir</h2>
           <p class="hero-subtitle">Découvrez des Cours Uniques Dispensés par des Experts</p>
-          <%= form_tag(search_skills_path, method: :get, class: "d-flex") do %>
-                          <input class="form-control me-2" name="query[title]" type="search" placeholder="Rechercher une catégorie" aria-label="Search"
-                          value="<%= params.dig(:query, :title) %>">
+                <%= form_tag(search_skills_path, method: :get, class: "d-flex") do %>
+                          <input class="form-control me-2" name="query" type="search" placeholder="Recherchez une catégorie" aria-label="Search" value="<%= params[:query] %>">
+
                           <button class="btn btn-search" type="submit">Rechercher</button>
                           <% end %>
 
