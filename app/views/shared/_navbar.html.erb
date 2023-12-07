@@ -4,6 +4,7 @@
       <%= image_tag("uskillslogo.png", alt: "App Logo", class: "navbar-logo") %>
 
 
+<<<<<<< HEAD
       <% end %>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,6 +27,23 @@
 
 
 
+=======
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+   
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+     
+   
+      <ul class="navbar-nav me-auto">
+        
+        
+        
+        <% if user_signed_in? %>
+        
+        <%= link_to "Profile" ,     user_path(current_user), class: "btn btn-primary my-2 my-sm-0 mx-5" %>
+      
+>>>>>>> 4ed8291516d5e783919b44db0b354776e73e887f
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <%= cl_image_tag(current_user.photo.key, height: 40, width: 40, crop: :fill) if current_user.photo.attached? %>

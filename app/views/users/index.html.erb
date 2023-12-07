@@ -8,6 +8,7 @@
   <div class="col-md-3 mb-4">
      <%= link_to user_path(t), class:"card_formateur" do %>
 
+<<<<<<< HEAD
       <% if t.photo.attached? %>
         <div class="image">
           <%= cl_image_tag(t.photo.key, height: 500, width: 500, crop: :fill) %>
@@ -23,6 +24,47 @@
             Avis
             <span class="state-value"><%= render_rating(t.rating) %></span>
           </p>
+=======
+<div class="container">
+  <div class="col-12"><br>
+    <div class="row">
+      <% @teachers.each do |t| %>
+      <!--====== CARD FORMATEUR PART START ======-->
+        <div class="col-md-3">
+          <div class="cardm">
+            <div class="flat-card d-flex">
+              <div class="flat-card-content d-flex flex-column">
+                <div class="flat-card-title">
+                  <div class="cardimg">
+
+                    <img src="https://res.cloudinary.com/deydjvnm9/image/upload/v1700222106/qtazyi2l8ymjlfcnybhv.jpg"
+                      class="img-thumbnail" alt="exmpl" width="300" height="250">
+                  </div>
+                  <div class="cardm">
+                  <h5>
+                    <%= t.name %>
+                  </h5>
+                  <h5>
+                    <%= t.last_name %>
+                  </h5>
+                  <p>
+                    <%= t.email %>
+                  </p>
+                  <p>
+                    <%= t.address %>
+                  </p>
+                  <p>
+                    <%= t.interest %>
+                  </p>
+                  <%= link_to "View More details", user_path(t)  %>
+                </div>
+              </div>
+              </div>
+
+            </div>
+          </div>
+
+>>>>>>> 4ed8291516d5e783919b44db0b354776e73e887f
         </div>
 
       </div>
