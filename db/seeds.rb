@@ -71,7 +71,7 @@ Reservation.create(teacher: julia, student: thomas, start_date: Date.today, end_
 Review.create(teacher_id: dalina.id, student_id: thomas.id, content: "Excellente expérience d'apprentissage !", rating: 5)
 Review.create(teacher_id: julia.id, student_id: thomas.id, content: "Hautement recommandé pour quiconque souhaite apprendre la Science des Données.", rating: 5)
 Review.create(teacher_id: marc.id, student_id: ahmed.id, content: "Très compétent en apprentissage automatique.", rating: 4)
-Review.create(teacher_id: thomas.id, student_id: mahmoud.id, content: "Les cours d'algèbre de Thomas sont très instructifs.", rating: 4)
+Review.create(teacher_id: dalina.id, student_id: mahmoud.id, content: "Les cours d'algèbre de Thomas sont très instructifs.", rating: 4)
 
 # Compétences
 Skill.create(title: "Algèbre Avancée", description: "Couvre tous les aspects de l'algèbre, y compris les équations linéaires, les équations quadratiques et les structures algébriques.", user: dalina)
@@ -128,4 +128,3 @@ Skill.create(
 )
 
 puts "Données de départ créées avec succès!"
-
