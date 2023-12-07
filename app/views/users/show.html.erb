@@ -26,11 +26,19 @@
   </div>
 <% end %>
 
+<% if @user.role == 'learn' %>
+  <div class="teacher-details">
+    <h2><i class="fas fa-cog"></i>Intérets</h2>
+
+    <p class="interests"><strong>Compétences :</strong> <%= @user.interest %></p>
+  </div>
+<% end %>
+
 
   <!-- Action Button for Teachers -->
   <% if current_user == @user && @user.role == "teach" %>
     <div class="teacher-actions">
-      <%= link_to "Ajouter une compétence", new_skill_path, class: "action-btn" %>
+      <%= link_to "Ajouter une compétence", new_skill_path, class: "btn btn-primary" %>
     </div>
   <% end %>
 
@@ -52,58 +60,58 @@
 
     <div class="map-container" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-map-markers-value="<%= @markers.to_json %>"></div>
 
+<%if @user.role ==  "teach"  %>
+    <div class="reviews" data-controller="reviews">
 
-<div class="reviews" data-controller="reviews">
+        <div class="title-review">
 
-    <div class="title-review">
+          <h3>Avis des étudiants</h3>
+          <% if @reviews.size > 1 %>
+          <button data-action="click->reviews#toggleReviews" data-reviews-target="toggleButton" class="btn btn-info mt-2">Voir plus</button>
+        <% end %>
+        </div>
+      <div id="reviews-container">
+        <% displayed_reviews = @reviews.take(1) %>
+        <% additional_reviews = @reviews.drop(1) %>
 
-      <h3>Avis des étudiants</h3>
-       <% if @reviews.size > 1 %>
-      <button data-action="click->reviews#toggleReviews" data-reviews-target="toggleButton" class="btn btn-info mt-2">Voir plus</button>
-    <% end %>
-    </div>
-  <div id="reviews-container">
-    <% displayed_reviews = @reviews.take(1) %>
-    <% additional_reviews = @reviews.drop(1) %>
-
-    <% displayed_reviews.each do |review| %>
-      <div class="review">
-        <p><span class="star-rating"><%= render_rating(review.rating) %></span> <br><%= review.content %></p>
-      </div>
-    <% end %>
-
-    <% if additional_reviews.any? %>
-      <div class="additional-reviews d-none" data-reviews-target="additionalReviews" >
-        <% additional_reviews.each do |review| %>
+        <% displayed_reviews.each do |review| %>
           <div class="review">
             <p><span class="star-rating"><%= render_rating(review.rating) %></span> <br><%= review.content %></p>
-
           </div>
+        <% end %>
+
+        <% if additional_reviews.any? %>
+          <div class="additional-reviews d-none" data-reviews-target="additionalReviews" >
+            <% additional_reviews.each do |review| %>
+              <div class="review">
+                <p><span class="star-rating"><%= render_rating(review.rating) %></span> <br><%= review.content %></p>
+
+              </div>
+            <% end %>
+          </div>
+
         <% end %>
       </div>
 
-    <% end %>
+<%if current_user.role == "learn"  %>
+      <%= form_with(model: [@user, Review.new], url: user_reviews_path(@user), local: true) do |form| %>
+  <div class="form-group">
+    <%= form.label :rating, 'Votre note:' %>
+    <%= form.number_field :rating, class: 'form-control', placeholder: 'Entrez votre note', min:0, max: 5 %>
   </div>
 
+        <div class="form-group">
+          <%= form.label :content, 'Votre commentaire:' %>
+          <%= form.text_area :content, class: 'form-control', placeholder: 'Partagez votre expérience...' %>
+        </div>
 
-  <%= form_with(model: [@user, Review.new], url: user_reviews_path(@user), local: true) do |form| %>
-    <div class="form-group">
-      <%= form.label :rating, 'Votre note:' %>
-      <%= form.number_field :rating, class: 'form-control', placeholder: 'Entrez votre note' %>
+        <%= form.submit 'Envoyer la critique', class: 'btn btn-primary' %>
+      <% end %>
+
+
     </div>
-
-    <div class="form-group">
-      <%= form.label :content, 'Votre commentaire:' %>
-      <%= form.text_area :content, class: 'form-control', placeholder: 'Partagez votre expérience...' %>
-    </div>
-
-    <%= form.submit 'Envoyer la critique', class: 'btn btn-primary' %>
-  <% end %>
-
-
-</div>
-
-
+<% end %>
+<% end %>
 
 
   <!-- Footer Actions -->
