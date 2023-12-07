@@ -62,10 +62,10 @@ son.photo.attach(io: URI.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:A
 
 
 # Messages
-Message.create(from_id: thomas.id, to_id: dalina.id, content: "Salut Dalina, je suis intéressé par ton cours d'algèbre.")
-Message.create(from_id: ahmed.id, to_id: julia.id, content: "Bonjour Julia, pouvez-vous fournir plus de détails sur votre programme de Science des Données ?")
-Message.create(from_id: dalina.id, to_id: thomas.id, content: "Salut Thomas, je suis diponible pour te former sur le cours que tu as choisit pendant les dates tu as selactionnées.")
-Message.create(from_id: thomas.id, to_id: dalina.id, content: "Merci beaucoup,j'espère que je serai à la hauteur de votre confiance.")
+Message.create(from_id: mahmoud.id, to_id: dalina.id, content: "Salut Dalina, je suis intéressé par ton cours d'algèbre.")
+Message.create(from_id: ahmed.id, to_id: dalina.id, content: "Bonjour Julia, pouvez-vous fournir plus de détails sur votre cours d'algèbre ?")
+
+
 
 # Réservations
 Reservation.create(teacher: dalina, student: mahmoud, start_date: Date.today, end_date: Date.today + 30)
@@ -83,7 +83,7 @@ Skill.create(title: "Algèbre Avancée", description: "Couvre tous les aspects d
 Skill.create(title: "Développement Web Front-End", description: "Cours complet sur HTML, CSS, JavaScript et React.", user: mahmoud)
 Skill.create(title: "Science des Données", description: "Apprenez les compétences essentielles en Science des Données, y compris l'analyse de données et la visualisation.", user: julia)
 Skill.create(title: "Apprentissage Automatique", description: "Découvrez les principes fondamentaux de l'apprentissage automatique.", user: marc)
-Skill.create(title: "Mathématiques Discrètes", description: "Explorez les concepts avancés des mathématiques discrètes, y compris les graphes, les arbres et les ensembles.", user: dalina)
+Skill.create(title: "mathématiques Discrètes", description: "Explorez les concepts avancés des mathématiques discrètes, y compris les graphes, les arbres et les ensembles.", user: dalina)
 Skill.create(title: "Programmation en Python", description: "Maîtrisez la programmation en Python, de l'analyse de données à l'automatisation des tâches.", user: dalina)
 Skill.create(title: "Conception d'Interface Utilisateur", description: "Apprenez à concevoir des interfaces utilisateur intuitives et esthétiques pour les applications web et mobiles.", user: julia)
 Skill.create(title: "Apprentissage Profond", description: "Plongez dans le monde de l'apprentissage profond avec des cours sur les réseaux de neurones et les architectures avancées.", user: marc)
@@ -93,7 +93,7 @@ Skill.create(title: "Science des Données Avancée", description: "Explorez les 
 Skill.create(title: "Intelligence Artificielle", description: "Plongez dans le monde passionnant de l'intelligence artificielle.", user: marc)
 Skill.create(title: "Composition Musicale",description: "Apprenez les fondamentaux de la composition musicale, y compris la théorie musicale, l'harmonie et l'arrangement.",user: bob
 )
-Skill.create(title: "Mathématiques Discrètes", description: "Explorez les concepts avancés des mathématiques discrètes, y compris les graphes, les arbres et les ensembles.", user: son)
+Skill.create(title: "mathématiques Discrètes", description: "Explorez les concepts avancés des mathématiques discrètes, y compris les graphes, les arbres et les ensembles.", user: son)
 
 # Skills for Rahma Chengou (Interest: Java)
 Skill.create(
