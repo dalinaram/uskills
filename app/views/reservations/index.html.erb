@@ -1,7 +1,6 @@
 <div class="container mt-4">
-   <div class="header">
-    <h2 class="greeting mb-4"> 👋 Bonjour <%= current_user.name %>, voici tes réservations :</h2>
-
+  <div class="header">
+    <h2 class="greeting mb-4">👋 Bonjour <%= current_user.name %>, voici tes réservations :</h2>
   </div>
 
   <% @reservations.each do |reservation| %>
@@ -16,28 +15,25 @@
         </div>
       </div>
       <div class="card-formateur-body">
-        <div class="card-formateur-stats">
+        <div class="card-formateur-stats mx-2">
           <p class="card-formateur-avis">
             Avis
             <span class="state-value"><%= render_rating(reservation.teacher.rating) %></span>
           </p>
         </div>
-        <div class="card-formateur-details">
-          <div class="card-formateur-date">
+        <div class="card-formateur-details ">
+          <div class="card-formateur-date mx-2">
             <p>Début : <%= reservation.start_date.strftime('%d %b %Y') %></p>
             <p>Fin : <%= reservation.end_date.strftime('%d %b %Y') %></p>
           </div>
           <div class="card-formateur-actions">
-            <% if reservation.statut == 'Validée' %>
-              <% if current_user.role == 'teach' %>
-                <%= button_to "Accepter", validate_path(), method: :post, params: { reservation_id: reservation.id }, class: "btn btn-primary" %>
-              <% elsif reservation.statut == 'Refusée' %>
-                <%= link_to "Refuser", user_reservation_path(reservation.teacher, reservation), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr(e)?" }, class: "btn btn-danger" %>
-              <% else %>
-                <!-- Handle other cases as needed -->
-              <% end %>
-              <%= reservation.statut %>
+            <% if current_user.role == 'teach' %>
+              <%= button_to "Accepter", validate_path(), method: :post, params: { reservation_id: reservation.id }, class: "btn btn-primary mb-2" %>
+              <%= link_to "Refuser", user_reservation_path(reservation.teacher, reservation), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr(e)?" }, class: "btn btn-danger" %>
+            <% else %>
+              <!-- Handle other cases as needed -->
             <% end %>
+            <%= reservation.statut %>
           </div>
         </div>
       </div>
