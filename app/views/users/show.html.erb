@@ -47,6 +47,7 @@
         <% end %>
       </div>
     <% end %>
+
   </div>
 
     <div class="map-container" data-controller="map" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>" data-map-markers-value="<%= @markers.to_json %>"></div>
@@ -76,6 +77,7 @@
         <% additional_reviews.each do |review| %>
           <div class="review">
             <p><span class="star-rating"><%= render_rating(review.rating) %></span> <br><%= review.content %></p>
+
           </div>
         <% end %>
       </div>
