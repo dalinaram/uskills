@@ -2,7 +2,12 @@ class ReservationsController < ApplicationController
   before_action :find_reservation, only: [:show, :destroy, :edit, :update]
 
   def index
-    @reservations = Reservation.all
+    # @reservations = Reservation.all
+    if current_user.role == "teach"
+    @reservations = Reservation.where(teacher_id: current_user)
+    else
+      @reservations = Reservation.where(student_id: current_user)
+    end
   end
 
   def new

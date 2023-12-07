@@ -7,12 +7,23 @@
     <div class="card-formateur mb-4">
       <div class="card-formateur-header">
         <div class="card-formateur-image">
+        <% if current_user.role == 'learn' %>
           <%= cl_image_tag(reservation.teacher.photo.key, height: 100, width: 100, crop: :fill) if reservation.teacher.photo.attached? %>
+        <% else %>
+          <%= cl_image_tag(reservation.student.photo.key, height: 100, width: 100, crop: :fill) if reservation.student.photo.attached? %>
+        <% end %>
         </div>
+        <% if current_user.role == 'learn' %>
         <div class="card-formateur-info">
           <p class="card-formateur-name"><%= reservation.teacher.name %> <%= reservation.teacher.last_name %></p>
           <p class="card-formateur-interest"><i class="fas fa-book"></i> <%= reservation.teacher.interest %></p>
         </div>
+        <% else %>
+          <div class="card-formateur-info">
+          <p class="card-formateur-name"><%= reservation.student.name %> <%= reservation.student.last_name %></p>
+          <p class="card-formateur-interest"><i class="fas fa-book"></i> <%= reservation.student.interest %></p>
+        </div>
+        <% end %>
       </div>
       <div class="card-formateur-body">
         <div class="card-formateur-stats mx-2">
