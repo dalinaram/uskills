@@ -11,7 +11,7 @@
               <div class="header-content-right">
                 <h4 class="sub-title">Hello, I’m</h4>
                 <h1 class="text-center">
-                  <%= @user.name %>
+                  <%= @user.name.capitalize! %>
                 </h1>
                 <div class="cardm">
                   <div class="skill-bar">
@@ -22,10 +22,10 @@
                           <% @user.skills.each do |skill| %>
                             <div class="#">
                               <li class="#"><strong>Skills:</strong>
-                                <%= skill.title %>
+                                <%= skill.title.capitalize! %>
                               </li>
                             </div>
-                            <div class="#">Description: <%= skill.description %>
+                            <div class="#">Description: <%= skill.description.capitalize! %>
                             </div>
                             <% end %>
                               <% end %>
@@ -38,7 +38,7 @@
 
                   <ul class="list-group list-group-flush">
                     <li class="#"><strong>Interests:</strong>
-                      <%= @user.interest %>
+                      <%= @user.interest.capitalize! %>
                     </li>
                   </ul>
 
