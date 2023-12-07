@@ -56,6 +56,7 @@
   background-color: rgba(31, 41, 55, 1);
   overflow: hidden; /* Ensures the border-radius applies to the image */
   text-decoration: none;
+  height: 100%;
 }
 
 .btn-search{
@@ -84,7 +85,7 @@
 .image {
   flex-shrink: 0; /* Prevent the image from shrinking */
   width: 50%; /* Set image width to half of the card */
-  height: 100%; /* Full height of the card */
+  /* Full height of the card */
 }
 
 .image img {

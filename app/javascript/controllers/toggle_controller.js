@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="toggle"
 export default class extends Controller {
-  static targets = ["input"]
+  static targets = ["input", "display"]
   connect() {
     console.log("Hello from toggle_controller.js")
 
@@ -10,7 +10,9 @@ export default class extends Controller {
   fire(event) {
     const choice = event.target.value
 
-      document.querySelector('#form').classList.toggle("d-none")
+    console.log(this.displayTarget)
+
+     this.displayTarget.classList.toggle("d-none")
 
   }
 }
