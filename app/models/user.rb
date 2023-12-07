@@ -5,7 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :skills
-  has_many :reservations
+  has_many :reservations_as_teacher, class_name: 'Reservation', foreign_key: 'teacher_id', dependent: :destroy
+  has_many :reservations_as_student, class_name: 'Reservation', foreign_key: 'student_id', dependent: :destroy
   has_many :sent_messages, foreign_key: 'student_id', class_name: 'Message'
   has_many :received_messages, foreign_key: 'teacher_id', class_name: 'Message'
   has_many :reviews, dependent: :destroy
