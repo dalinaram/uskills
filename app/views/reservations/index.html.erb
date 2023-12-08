@@ -39,8 +39,11 @@
           </div>
           <div class="card-formateur-actions">
             <% if current_user.role == 'teach' %>
-              <%= button_to "Accepter", validate_path(), method: :post, params: { reservation_id: reservation.id }, class: "btn btn-primary mb-2" %>
-              <%= link_to "Refuser", user_reservation_path(reservation.teacher, reservation), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr(e)?" }, class: "btn btn-danger" %>
+            <% if reservation.statut == "En attente"  %>
+            <%= button_to "Accepter", validate_path(), method: :post, params: { reservation_id: reservation.id }, class: "btn btn-primary mb-2" %>
+
+            <%= link_to "Refuser", user_reservation_path(reservation.teacher, reservation), data: { turbo_method: :delete, turbo_confirm: "Êtes-vous sûr(e)?" }, class: "btn btn-danger" %>
+            <% end %>
             <% else %>
               <!-- Handle other cases as needed -->
             <% end %>
