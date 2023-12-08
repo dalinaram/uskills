@@ -7,7 +7,7 @@ User.destroy_all
 
 # Users
 dalina = User.create(email: "dalina@gmail.com", name: "Dalina", last_name: "Lazourt", interest: "Algèbre", address: "26 rue Richelieu, 75001 Paris", rating: 5, role: "teach", password: "123456")
-dalina.photo.attach(io: URI.open('https://ca.slack-edge.com/T02NE0241-U05TPN9LFR8-0a7955ffc05f-512'), filename: 'dalina.jpg')
+dalina.photo.attach(io: URI.open('https://files.slack.com/files-tmb/T02NE0241-F069MH042RF-7d36cde55c/img_5364_720.jpg'), filename: 'dalina.jpg')
 
 mahmoud = User.create(email: "mahmoud@gmail.com", name: "Mahmoud", last_name: "Lajimi", interest: "Web Development - Front End", address: "8 rue Abel, 75012 Paris", rating: 5, role: "learn", password: "123456")
 mahmoud.photo.attach(io: URI.open('https://media.licdn.com/dms/image/D4E03AQESRl8wIrexZQ/profile-displayphoto-shrink_200_200/0/1695038982453?e=1707350400&v=beta&t=HVGL9mOaAXk5sUxVi3zWHOEAR__mlGgh--S9EHa2DbY'), filename: 'mahmoud.jpg')
@@ -53,7 +53,7 @@ amandine = User.create(email: "amandine@gmail.com", name: "Amandinne", last_name
 amandine.photo.attach(io: URI.open('https://www.monatout-rencontres.fr/blog/imgs/astuces-seduire-femme-russe.jpg'), filename: 'amandinne.jpg')
 
 adrian = User.create(email: "mamou@gmail.com", name: "Adrian", last_name: "Barbara", interest: "Mathématique", address: "Localisation ZAE la Grue 5 rue Gustave Eiffel 26120 Chabeuil  ", rating: 2, role: "teach", password: "123456")
-adrian.photo.attach(io: URI.open('https://source.unsplash.com/random/profil'), filename: 'adrian.jpg')
+adrian.photo.attach(io: URI.open('https://fr.web.img4.acsta.net/r_654_368/newsv7/21/04/08/12/27/4959673.jpg'), filename: 'adrian.jpg')
 
 son = User.create(email: "son@gmail.com", name: "Son", last_name: "Yang", interest: "Mathématique", address: "Localisation ZAE la Grue 5 rue Gustave Eiffel 26120 Chabeuil  ", rating: 5, role: "teach", password: "123456")
 son.photo.attach(io: URI.open('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbGYg5-oYG4oQgcDWUfn_gdcaOdZlcZxabYA&usqp=CAU'), filename: 'son.jpg')
