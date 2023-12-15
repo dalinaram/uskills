@@ -1,0 +1,11 @@
+# config/meta.yml
+
+meta_product_name: "Uskills"
+
+meta_title: "Uskills – Connectez vos compétences"
+
+meta_description: "Site déchanges de cpmpétences"
+
+meta_image: "uskillslogo.png" # should exist in `app/assets/images/`
+
+twitter_account: "@product_twitter_account" # required for Twitter Cards
